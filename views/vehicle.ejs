@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('header.ejs') %>
+<script src="/js/script.js"></script>
+<body>
+<%if (user) { %>
+<%- include('navbar.ejs') %>
+<% } else { %>
+<%- include('navbar1.ejs') %>
+<% } %>
+
+<main class="container">
+    <div class="row car_container">
+
+    <div class="col-md-4">
+    <img class="img-fluid mx-auto d-block" src="/<%= car.photo %>" alt="book cover">
+    <%if (user !== undefined && user !== null) { %>
+    <%if (resv === undefined || resv === null) { %>
+    <form class="row container col-md-11" action="/vehicle/add/<%= car.idCar %>"  style="margin: auto;" method="post">
+    <div class="form-group">
+    <label>Date in:
+        <input id="dateIn" class="date form-control" type="date" name="dateIn" required>
+    </label>
+
+    <br>
+
+    </div>
+    <div class="form-group">
+    <label>Date out:
+        <input id="dateOut" class="date form-control" type="date" name="dateOut" readonly required>
+    </label>
+    </div>
+
+    <br>
+
+    <div class="form-group">
+        <input id="days" type="range" class="custom-range" name="days" min="1" max="6" value="1">
+    </div>
+    <input id="price" type="hidden" value="<%= car.price %>">
+
+    <br>
+    <br>
+
+    <div class="form-group">
+        <input id="numbers" size="1" class="col-md-9" name="numbers" value="<%= car.price %>" readonly>
+        <i>&#36;</i>
+    </div>
+
+    <button class="btn btn-primary btn-block btn-sm col-sm-8 form-control"> Reserve</button>
+    </form>
+
+    <% } else { %>
+    <div class="price"> From
+    <i><%=  new Date(resv.dateIn).toDateString() +' '%></i> to <i> <%=' '+ new Date(resv.dateOut).toDateString()%></i>
+    </div><br>
+
+    <form class="row container col-md-11" action="<%= '/vehicle/edit/'+ resv.idReservation%>" style="margin: auto;" method="post">
+    <div class="form-group">
+        <label>Date in: </label><span> &ensp; &ensp;</span>
+        <input id="dateIn" class="date form-control" type="date" name="dateIn" required>
+    </div>
+
+    <br>
+
+    <div class="form-group">
+        <label>Date out: </label><span> &ensp; </span>
+        <input id="dateOut" class="date form-control" type="date" name="dateOut" readonly required>
+    </div>
+
+    <br>
+
+    <div class="form-group"><input id="days" type="range" class="custom-range" name="days" min="1" max="6" value="1"></div>
+    <input id="price" type="hidden" value="<%= car.price %>">
+
+    <br>
+    <br>
+
+    <div class="form-group"><span> &ensp; </span>
+    <input id="numbers" size="1" name="numbers" value="<%= car.price %>" readonly> <i>&#36;</i>
+    </div>
+    <button class="btn btn-success btn-block btn-sm col-md-8"> Edit</button>
+    </form>
+
+    <br>
+
+    <form class="row container col-md-11 " action="<%= '/vehicle/rem/'+ resv.idReservation%>" style="margin: auto;" method="post">
+    <button class="btn btn-danger btn-block btn-sm col-md-8"> Remove</button>
+    </form>
+    <% } %>
+    <% } %>
+    </div>
+
+    <div id="car_info" class="col-md-8 text-left card ">
+    <div class="model">
+        <strong> <i> <%= car.brand %> <%= car.model %> </i> </strong>
+    </div>
+
+    <div class="brand"> <br>Brand:
+    <a href="/data/<%= car.brand %>">
+        <%= car.brand %>
+    </a>
+    </div>
+
+    <div class="price"> Price:
+    <a>
+        <%= car.price %>
+    </a><i>&#36;</i>
+    </div>
+
+    <div class="type"> Category:
+    <a href="/data/<%= car.type %>">
+        <%= car.type %>
+    </a>
+    </div>
+
+    <div class="year"> Production:
+    <a href="/data/<%= car.year %>">
+        <%= car.year %>
+    </a>
+    </div>
+
+    <hr>
+
+    <div class="details text-justify">
+    <%= car.details %>
+    <%if (user) {%>
+    <%if (user.admin === 1) {%>
+    <%if (car.active === 0) {%>
+        <h5>This vehicle is not active, to change that <a href="/admin/car/<%= car.idCar%>" style="color: red">click here</a>.</h5>
+    <% } %>
+    <% } %>
+    <% } %>
+    </div>
+    </div>
+    </div>
+
+    <br>
+
+    <%if (carsArr !== undefined && carsArr !== null) { %>
+    <div class="container">
+    <ul class="pagination pagination-lg">
+    <% carsArr.forEach( (cr) => { %>
+        <li> <a href="<%= '/vehicle/'+ cr.idCar%>"> <img src="/<%= cr.photo %>" alt="cover"> </a></li>
+    <% }) %>
+    </ul>
+    </div>
+
+    <% }%>
+</main>
+<%- include('footer.ejs') %>
+</body>
+</html>

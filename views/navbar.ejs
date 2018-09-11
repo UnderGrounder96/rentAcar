@@ -1,0 +1,31 @@
+<nav class="navbar bg-white d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3  border-bottom box-shadow">
+    <h5 class="my-0 mr-md-auto font-weight-normal form-inline">
+    <a class="navbar-brand" class="form-inline" href="/">
+        <img  src="/images/logo.jpg" alt="Logo" height="45"></a>
+    <a class="nav-link" href="/catalog">Catalog</a>
+    <a class="nav-link" href="/library">Reservations</a>
+    <%if (user.admin == 1){ %>
+    <a class="nav-link" href="/admin" style="color: blue">Administration</a>
+    <% } %>
+    </h5>
+
+    <nav class="my-2 my-md-0 mr-md-3">
+    <form action="/find" method="POST" style="padding-right:5%;">
+    <div class="input-group">
+    <input type="search" name="item" class="form-control" placeholder="Brand, model, year" required autofocus>
+    <div class="input-group-addon">
+        <button class="btn btn-primary btn-sm" type="submit">
+        <i class="fa fa-search"></i>
+        </button>
+    </div>
+    </div>
+    </form>
+    </nav>
+
+    <nav class="my-2 my-md-0 mr-md-3">
+    <a href="/user"> <i class="fa fa-user fa-lg" style="color:blue"></i></a>
+    <br>
+    <br>
+    <a href="/logout"> <i class="fa fa-sign-out fa-lg" style="color:blue"></i></a>
+    </nav>
+</nav>

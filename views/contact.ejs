@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('header.ejs') %>
+<body>
+<%if (user) { %>
+<%- include('navbar.ejs') %>
+<% } else { %>
+<%- include('navbar1.ejs') %>
+<% } %>
+
+<main class="container">
+    <br>
+    <br>
+    <h2> Contact </h2>
+
+    <hr>
+
+    <div class="text-container text-justify">
+    RentAcar!<br>
+    Independency street n. 5<br>
+    078-5467 NeverLand<br>
+    NIP 222222222<br>
+    contact@rentA.car<br>
+    </div>
+
+</main>
+<%- include('footer.ejs') %>
+</body>
+</html>

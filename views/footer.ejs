@@ -1,0 +1,32 @@
+<footer class="container-fluid text-center page-footer pt-4">
+    <div class="row">
+
+    <div class="col-md-6 " id="info3">
+    <img  class="mx-auto d-block" src="/images/logo.jpg" alt="Logo" width="150">
+    </div>
+
+
+    <div class="col-md-6 text-left" id="info2">
+    <ul class="list-unstyled">
+        <li>
+            <a href="/policy">Policy</a>
+        </li>
+        <li>
+            <a href="/contact">Contact</a>
+        </li>
+        <li>
+            <a href="/terms-of-use">Terms of use</a>
+        </li>
+    </ul>
+    </div>
+    </div>
+
+    <div class="footer-copyright py-3">
+        &copy; <span id="cop"></span> <b>RentAcar!</b> All rights reserved.
+    </div>
+</footer>
+
+<script>
+let d = new Date();
+document.getElementById("cop").innerHTML = d.getFullYear();
+</script>

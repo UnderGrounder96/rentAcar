@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('header.ejs') %>
+<script src="/js/script.js"></script>
+<body>
+<%- include('navbar.ejs') %>
+
+<main class="container text-left">
+    <div class="container" role="tablist">
+    <%
+    switch (res) {
+    case "add": %>
+        <h6 class="classified"> Your reservation was <strong> added </strong> successfully.</h6>
+    <% break;
+    case "edit": %>
+        <h6 class="classified"> Your reservation was <strong> edited </strong> successfully.</h6>
+    <% break;
+    case "del":%>
+        <h6 class="classified"> Your reservation was <strong> removed </strong> successfully.</h6>
+    <% break;
+    }%>
+    </div>
+
+    <div class="container active show">
+
+    <br>
+
+    <%if (carsArr !== undefined && carsArr !== null) { %>
+    <div class="cars_container">
+    <div class="card-deck-wrapper">
+    <div class="card-deck">
+    <% carsArr.forEach( (car) => { %>
+    <div class="card text-center">
+    <br>
+    <img class="card-img-top img-fluid mx-auto d-block" src="/<%= car.photo %>" alt="<%= car.model + " " + ' image' %>">
+    <div class="card-body d-flex flex-column">
+        <p class="card-text">
+        <strong> <i> <%= car.model %> </i> </strong>
+    <br>
+        <a href="/data/<%= car.brand %> %>"><%= car.brand %></a>
+    <br>
+        <a><%= car.fullPrice %><i>&#36;</i></a><br><br>
+        <i class="col-md-6"><%=  new Date(car.dateIn).toDateString() %></i> <br>-<br> <i><%= new Date(car.dateOut).toDateString()%></i>
+        </p>
+    <a href="<%= '/vehicle/'+ car.idCar %>" class="btn btn-primary btn-block mt-auto"> Edit </a>
+    </div>
+    </div>
+    <% })%>
+    </div>
+    </div>
+    </div>
+
+    <% } else { %>
+    <h4> Your reservation list is <strong> empty </strong>- head to <a href="/catalog"> catalog.</a></h4>
+    <% } %>
+
+    </div>
+</main>
+<%- include('footer.ejs') %>
+</body>
+</html>

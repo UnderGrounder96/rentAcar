@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('header.ejs') %>
+<body>
+<%- include('navbar1.ejs') %>
+
+<main class="container login-form">
+    <form class="shadow" action="/register" method="POST">
+
+    <h2 class="text-center">Sing up</h2>
+    <div class="form-group">
+    <input type="text" class="form-control" name="name" placeholder="Full name" minlength="6" maxlength="20" autocomplete="off" required>
+    </div>
+
+    <div class="form-group">
+    <input type="email" class="form-control" name="email" placeholder="E-mail" minlength="4" maxlength="25" required>
+    </div>
+
+    <div class="form-group">
+    <input type="password" class="form-control" name="password" placeholder="Password" minlength="4" maxlength="20" required>
+    </div>
+
+    <div class="form-group">
+    <label>Over 17:
+    <select class="form-control" name="active">
+        <option value="1" selected>Yes</option>
+        <option value="0">No</option>
+    </select>
+    </label>
+    </div>
+
+    <div class="form-group">
+    <button type="submit" class="btn btn-success btn-block">Register</button>
+    </div>
+
+    <div class="clearfix">
+    Alredy have an account? <a href="/login">Log in here</a>
+    </div>
+    </form>
+
+    <%
+    switch (err) {
+    case "yes": %>
+        <p style="color: red; text-align:center;"> You need to be over 18, in order to our services.</p>
+    <% break;
+    case "no": %>
+        <p style="color: red; text-align:center;"> User already registered in database, head to <a href="/login">log in</a>.</p>
+    <% break;
+
+    }%>
+</main>
+<%- include('footer.ejs') %>
+</body>
+</html>

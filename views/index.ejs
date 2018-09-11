@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('header.ejs') %>
+<body>
+<%if (user) { %>
+<%- include('navbar.ejs') %>
+<% } else { %>
+<%- include('navbar1.ejs') %>
+<% } %>
+<main role="main">
+    <div class="jumbotron container text-left">
+
+        <div class="row">
+            <div class="col-md-8">
+                <h1 id="title">RentAcar!</h1>
+                <h4 id="title">Driving by your side.</h4>
+                <br>
+
+                <!--search-->
+                <form action="/find" method="post" style="width:80%;">
+                    <div class="input-group">
+                        <input type="search" name="item" class="form-control" placeholder="Brand, model, year" required autofocus>
+
+                        <div class="input-group-addon">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+            <%if (user === undefined || user === null) { %>
+                <div class="col-md-4 text-center">
+                    <form action="/register" method="post">
+                        <h6> Join us now and gain a 30 days trial. </h6>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="name" placeholder="Full Name" minlength="6" maxlength="20" autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" placeholder="E-mail"minlength="4" maxlength="20" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" placeholder="Password" minlength="4" maxlength="20" required>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                By signing up you agree to our <a href="/termsofuse">Terms</a>, <a href="/termsofuse">Privacy Policy</a>, and <a href="/termsofuse">Cookie Use</a>. You also agree that you’re over 18 years of age.
+                            </label>
+                            <button type="submit" class="btn btn-success btn-block">Sign up</button>
+                        </div>
+                    </form>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="container">
+
+        <div class="container text-left">
+            <h3> Most recent: </h3>
+            <%if (carsArr !== undefined && carsArr !== null) { %>
+                <div class="cars_container">
+                    <div class="card-deck-wrapper">
+                        <div class="card-deck text-center">
+                            <% carsArr.forEach( (car) => { %>
+                                <div class="card">
+                                    <br>
+                                    <img class="card-img-top img-fluid mx-auto d-block" src="/<%= car.photo %>" alt="<%= car.model + " " + ' image' %>">
+                                    <div class="card-body d-flex flex-column">
+                                        <p class="card-text">
+                                            <strong>
+                                                <i>
+                                                    <%= car.model %>
+                                                </i>
+                                            </strong>
+                                            <br>
+                                            <a href="/data/<%= car.brand %>">                                                             <%= car.brand %>
+                                            </a>
+                                            <br><%=car.year%>
+                                        </p>
+                                        <a href="<%= '/vehicle/'+ car.idCar %>" class="btn btn-primary btn-block mt-auto"> More </a>
+                                    </div>
+                                </div>
+
+                                <% }) %>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+    </div>
+</main>
+<%- include('footer.ejs') %>
+</body>
+</html>
