@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+/*Date.prototype.addDays = function(days) {
+    var date = new Date(this.valueOf());
+    date.setDate(date.getDate() + days);
+    return date;
+}*/
+
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+
+
+if(dd<10){
+        dd='0'+dd
+    } 
+if(mm<10){
+        mm='0'+mm
+    } 
+    a = yyyy+'-'+mm+'-'+dd;
+    $("input").attr("min", a);
+    $("#day").val(a);
+    
+    today.setDate(today.getDate() + 5);
+
+//var d = new Date();
+/*
+console.log('Today is: ' + d.toLocaleString());
+
+
+
+console.log('<br>5 days ago was: ' + d.toLocaleString());
+*/
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+
+if(dd<10){
+        dd='0'+dd
+    } 
+if(mm<10){
+        mm='0'+mm
+    } 
+
+var a = yyyy+'-'+mm+'-'+dd;
+
+
+//today.setDate(today.getDate()+5);
+
+
+$("#late").val(a);
+/*$("#late").attr("min", p);
+  $(#day").val(today);
+/*
+ $("#day").mouseout(function(){
+  var p = $("#day").val();
+    $("#late").attr("min", p);
+});
+*/
+});
+</script>
+</head>
+<body>
+
+<h2>Date Field Restrictions</h2>
+<p>Use the min and max attributes to add restrictions to dates:</p>
+
+<form action="/action_page.php">
+Enter a date before 1980-01-01:<br>
+<input id="day" type="date" name="bday" readonly required><br><br>
+Enter a date after 2000-01-01:<br>
+<input id="late" type="date" name="bday" required><br><br>
+<button>Submit</button>
+</form>
+
+<p><strong>Note:</strong> type="date" is not supported in Safari or Internet Explorer 11 and earlier versions.</p>
+
+</body>
+</html>

@@ -4,6 +4,7 @@
   "description": "car showroom",
   "main": "app.js",
   "dependencies": {
+    "aws-sdk": "^2.313.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.6.1",
