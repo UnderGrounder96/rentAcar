@@ -22,7 +22,7 @@ In order to use the ExpressJS program it is highly necessary to have an *interne
 
     If errors occured or NodeJS has not yet been installed please visit their website www.nodejs.org/en/download/ and follow the instructions there.
 
-    1) Installing MySQL v6.1+
+    1) Installing npm v6.1+
       npm comes bundled with a successful NodeJS installation, to check use the following code in the command line: 
 
       $ npm --version
@@ -122,7 +122,7 @@ This project is licensed under the GPL License - see the LICENSE.md file for det
 Acknowledgments
 ----------------------
 Official sites:
-	http:/npmjs.com/
+	http://npmjs.com/
 	http://mysql.com/
 	http://jquery.com/
 	http://nodejs.org/		
