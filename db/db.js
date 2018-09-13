@@ -12,7 +12,7 @@ db.connect(function (err) {
     if (!err)
         console.log("Database is connected.\n");
     else
-        console.log("Error connecting database!\n");
+        console.log("Error connecting database!\n\n"+ err);
 });
 
 module.exports = db;
