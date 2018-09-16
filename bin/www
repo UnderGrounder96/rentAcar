@@ -3,10 +3,9 @@
 /**
  * Module dependencies.
  */
-
+let http = require('http');
 let app = require('../app');
 let debug = require('debug')('virtual-reading-room:server');
-let http = require('http');
 
 /**
  * Get port from environment and store in Express.
