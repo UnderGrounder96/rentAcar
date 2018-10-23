@@ -4,13 +4,14 @@ This ExpressJS program simulates a car rental.
 
 Getting Started
 ------------------
-This ExpressJS program was created under Windows 10 (x64) Operative System, ExpressJS 4.16.3, NodeJS 8.11.1, npm 6.1.0 and MySQL 5.7.14.
+This ExpressJS program was created under Windows 10 (x64) Operative System, ExpressJS 4.16.3, NodeJS 8.11.1, 
+  npm 6.1.0 and MySQL 5.7.14.
 
 Prerequisites
 ---------------
 In order to use the ExpressJS program it is highly necessary to have an *internet connection* and install:
 	- NodeJS v8.11+
-	  - npm v6.1+
+	- npm v6.1+
 	- ExpressJS v4.16+
 	- MySQL v5.7+
 
@@ -20,7 +21,8 @@ In order to use the ExpressJS program it is highly necessary to have an *interne
     $ node --version
     [v8.11.1]
 
-    If errors occured or NodeJS has not yet been installed please visit their website www.nodejs.org/en/download/ and follow the instructions there.
+    If errors occured or NodeJS has not yet been installed please visit their website www.nodejs.org/en/download/ 
+    and follow the instructions there.
 
     1) Installing npm v6.1+
       npm comes bundled with a successful NodeJS installation, to check use the following code in the command line: 
@@ -30,10 +32,14 @@ In order to use the ExpressJS program it is highly necessary to have an *interne
 
 
   ii) Installing MySQL v5.7+
-    In order to install the MySQL server on Windows it is very important to follow the instructions on their website www.dev.mysql.com/downloads/windows/. On windows there are various variables involved about having the MySQL server, for example, to test the app the program MySQL Workbench was used to monitor the dataflow and a Wamp server was used to simulate the actual server.
-    Therefore, no real instructions can be provided here! If the instructions under the website given were followed a MySQL server should be working on the desired machine.
-    
-    It is very important to run the file ./db/db.sql on the server after the installation is complete. Again, no example will be shown here but under Workbench everything should turn out great.
+    In order to install the MySQL server on Windows it is very important to follow the instructions 
+    on their website www.dev.mysql.com/downloads/windows/. On windows there are various variables involved 
+    about having the MySQL server, for example, to test the app the program MySQL Workbench was used to monitor 
+    the dataflow and a Wamp server was used to simulate the actual server.    
+    Therefore, no real instructions can be provided here! If the instructions under the website given were followed 
+    a MySQL server should be working on the desired machine.    
+    It is very important to run the file ./db/db.sql on the server after the installation is complete. 
+    Again, no example will be shown here but under Workbench everything should turn out great.
 
   
   iii) Testing
