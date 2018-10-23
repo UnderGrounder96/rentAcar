@@ -120,13 +120,21 @@ Acknowledgments
 ----------------------
 Official sites:
 	http://npmjs.com/
+	
 	http://mysql.com/
+	
 	http://jquery.com/
-	http://nodejs.org/		
+	
+	http://nodejs.org/
+	
 	http://expressjs.com/
+	
 
 Tutorials:
 	http://w3schools.com/bootstrap/
+	
 	http://tutorialspoint.com/nodejs/
+	
 	http://mysqlclient.readthedocs.io/
+	
 	https://bit.ly/2N6J7Fc (code.tutsplus.com)
