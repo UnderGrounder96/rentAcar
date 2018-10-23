@@ -52,8 +52,8 @@ In order to use the ExpressJS program it is highly necessary to have an *interne
     
     1) NodeJS port error
       This happens when the program tries to run on a busy port, 
-      if that happens it is recommended to change the port number under the file ./bin/www on line 15 the code: 
-        let port = normalizePort(process.env.PORT || '3000');
+      if that happens it is recommended to change the port number under the file ./bin/www 
+      on line 15 the code: let port = normalizePort(process.env.PORT || '3000');
       
       Where 3000 is the default port used by the program.
   
