@@ -32,35 +32,44 @@ In order to use the ExpressJS program it is highly necessary to have an *interne
 
 
   ii) Installing MySQL v5.7+
+  
     In order to install the MySQL server on Windows it is very important to follow the instructions 
     on their website www.dev.mysql.com/downloads/windows/. On windows there are various variables involved 
     about having the MySQL server, for example, to test the app the program MySQL Workbench was used to monitor 
-    the dataflow and a Wamp server was used to simulate the actual server.    
+    the dataflow and a Wamp server was used to simulate the actual server.  
+    
     Therefore, no real instructions can be provided here! If the instructions under the website given were followed 
     a MySQL server should be working on the desired machine.    
+    
     It is very important to run the file ./db/db.sql on the server after the installation is complete. 
     Again, no example will be shown here but under Workbench everything should turn out great.
 
   
   iii) Testing
-    In order to test the program it's necessary to run it and check if no errors were presented. The most common errors could be:
+    In order to test the program it's necessary to run it and check if no errors were presented. 
+    The most common errors could be:
     
     1) NodeJS port error
-      This happens when the program tries to run on a busy port, if that happens it is recommended to change the port number under the file ./bin/www on line 15 the code: 
+      This happens when the program tries to run on a busy port, 
+      if that happens it is recommended to change the port number under the file ./bin/www on line 15 the code: 
         let port = normalizePort(process.env.PORT || '3000');
       
       Where 3000 is the default port used by the program.
   
     2) MySQL database errors
       - If the file ./db/db.sql was never ran against the server an error would be provided.
-      - A port/password/locahost error could be given if the server has different configuration than provided by the ./db/db.js and each should be set appropriately.
+      - A port/password/locahost error could be given if the server has different configuration 
+      than provided by the ./db/db.js and each should be set appropriately.
       
     3) Any possible error
-      Could be on the computer's end. Bad installation or wrong configuration. Besides the errors mentioned above everything should be working normally.      
+      Could be on the computer's end. Bad installation or wrong configuration. 
+      Besides the errors mentioned above everything should be working normally.      
 
 Deployment
 --------------
-The program was created to be easy to use and it is fool proof (to a dreggre). All user inputs return success or error messages.
+The program was created to be easy to use and it is fool proof (to a dreggre). 
+All user inputs return success or error messages.
+
 In order to use please run:
 
     ~/RentAcar> npm i
