@@ -1,5 +1,10 @@
 #!/usr/bin/env node
 
+/* IGNORE.me
+https://community.apigee.com/articles/28041/nodejs-and-self-signed-ssl-certificates.html
+https://forge.autodesk.com/blog/enable-https-local-nodejs
+https://www.google.com/search?q=ssl+on+local+nodejs+page
+
 /**
  * Module dependencies.
  */
