@@ -47,7 +47,7 @@ In order to use the ExpressJS program it is highly necessary to have an *interne
 
   
   iii) Testing
-    In order to test the program it's necessary to run it and check if no errors were presented. 
+    In order to test the program it's necessary to run the app and check if no errors were presented. 
     The most common errors could be:
     
     1) NodeJS port error
