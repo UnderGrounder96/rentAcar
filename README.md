@@ -52,26 +52,27 @@ In order to use the ExpressJS program it is highly necessary to have an *interne
     
     1) NodeJS port error
       This happens when the program tries to run on a busy port, 
-      if that happens it is recommended to change the port number under the file ./bin/www 
-      on line 15 the code: let port = normalizePort(process.env.PORT || '3000');
+      if that happens it is recommended to change the port number under the file *./bin/www* 
+      15: let port = normalizePort(process.env.PORT || '3000'); 
       
       Where 3000 is the default port used by the program.
   
     2) MySQL database errors
-      - If the file ./db/db.sql was never ran against the server an error would be provided.
+      - If the file *./db/db.sql* was never ran against the server an error would be provided.
       - A port/password/locahost error could be given if the server has different configuration 
-      than provided by the ./db/db.js and each should be set appropriately.
+      than provided by the *./db/db.js* and each should be set appropriately.
       
     3) Any possible error
       Could be on the computer's end. Bad installation or wrong configuration. 
-      Besides the errors mentioned above everything should be working normally.      
+      
+      Aside from the errors mentioned above everything should be working normally.      
 
 Deployment
 --------------
 The program was created to be easy to use and it is fool proof (to a dreggre). 
 All user inputs return success or error messages.
 
-In order to use please run:
+In order to install all npm dependencies:
 
     ~/RentAcar> npm i
     [*installation warnings*]
@@ -79,7 +80,7 @@ In order to use please run:
     [audited 1547 packages in 2.69s]
     [found 0 vulnerabilities]
     
-In order to install all npm dependencies and only then the NodeJS server:
+ In order to use please run the NodeJS server:
 
     ~/RentAcar/bin> node www
     [Database connected.]
@@ -104,7 +105,7 @@ Files
 	www - executable file for the main program
 	
 /RentAcar/db:
-	folder containing ALL database information, from its representaion to actual SQL executable code
+	folder containing all database information, from its representaion to actual SQL executable code
 	
 /RentAcar/node_modules:
 	folder responsable for containing all dependencies, generated after a successufully "npm i" installation
