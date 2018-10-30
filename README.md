@@ -59,8 +59,8 @@ In order to use the ExpressJS program it is highly necessary to have an *interne
   
     2) MySQL database errors
       - If the file *./db/db.sql* was never ran against the server an error would be provided.
-      - A port/password/locahost error could be given if the server has different configuration 
-      than provided by the *./db/db.js* and each should be set appropriately.
+      - A locahost/password/port/user error could be given if the server has different configuration 
+      than provided by the file *./db/db.js* and each should be set appropriately.
       
     3) Any possible error
       Could be on the computer's end. Bad installation or wrong configuration. 
