@@ -4,7 +4,7 @@ This ExpressJS program simulates a car rental.
 
 Getting Started
 ------------------
-This ExpressJS program was created under Windows 10 (x64) Operative System, NodeJS 8.11.1 (+ ExpressJS 4.16.3), 
+This program was created under Windows 10 (x64) Operative System, NodeJS 8.11.1 (+ ExpressJS 4.16.3), 
   npm 6.1.0 and MySQL 5.7.14.
 
 Prerequisites
