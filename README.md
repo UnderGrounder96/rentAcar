@@ -121,6 +121,7 @@ Files
 
 Versioning
 ------------
+
 Version 1.8 - Current version
 Version 2.0(TBA) - Add new vehicles to the website
 Version 2.5(TBA) - Real e-mail verification
