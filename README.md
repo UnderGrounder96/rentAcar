@@ -4,7 +4,7 @@ This ExpressJS program simulates a car rental.
 
 Getting Started
 ------------------
-This ExpressJS program was created under Windows 10 (x64) Operative System, ExpressJS 4.16.3, NodeJS 8.11.1, 
+This ExpressJS program was created under Windows 10 (x64) Operative System, NodeJS 8.11.1 (+ ExpressJS 4.16.3), 
   npm 6.1.0 and MySQL 5.7.14.
 
 Prerequisites
@@ -22,7 +22,7 @@ In order to use the ExpressJS program it is highly necessary to have an *interne
     [v8.11.1]
 
     If errors occured or NodeJS has not yet been installed please visit their 
-    website www.nodejs.org/en/download/ and follow the instructions there.
+    website http://nodejs.org/en/download/ and follow the instructions there.
 
     1) Installing npm v6.1+
       npm comes bundled with a successful NodeJS installation, 
@@ -35,7 +35,7 @@ In order to use the ExpressJS program it is highly necessary to have an *interne
   ii) Installing MySQL v5.7+
   
     In order to install the MySQL server on Windows it is very important to follow the instructions 
-    on their website www.dev.mysql.com/downloads/windows/. On windows there are various variables involved 
+    on their website http://dev.mysql.com/downloads/windows/. On windows there are various variables involved 
     about having the MySQL server, for example, to test the app the program MySQL Workbench was used to monitor 
     the dataflow and a Wamp server was used to simulate the actual server.  
     
@@ -135,6 +135,7 @@ This project is licensed under the GPL License - see the LICENSE.md file for det
 Acknowledgments
 ----------------------
 Official sites:
+
 	http://npmjs.com/
 	
 	http://mysql.com/
@@ -147,6 +148,7 @@ Official sites:
 	
 
 Tutorials:
+
 	http://w3schools.com/bootstrap/
 	
 	http://tutorialspoint.com/nodejs/
