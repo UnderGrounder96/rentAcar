@@ -11,9 +11,7 @@ Prerequisites
 ---------------
 In order to use the ExpressJS program it is highly necessary to have an *internet connection* and install:
 
-	- NodeJS v8.11+
-	- npm v6.1+
-	- ExpressJS v4.16+
+	- NodeJS v8.11+ (includes npm v6.1+)
 	- MySQL v5.7+
 
   i) Installing NodeJS v8.11+
@@ -36,14 +34,15 @@ In order to use the ExpressJS program it is highly necessary to have an *interne
   ii) Installing MySQL v5.7+
   
     In order to install the MySQL server on Windows it is very important to follow the instructions 
-    on their website http://dev.mysql.com/downloads/windows/. On windows there are various variables involved 
-    about having the MySQL server, for example, to test the app the program MySQL Workbench was used to monitor 
+    on their website http://dev.mysql.com/downloads/windows/. 
+    On windows there are various variables involved about having a MySQL server. 
+    For example to test the app, the program MySQL Workbench was used to monitor 
     the dataflow and a Wamp server was used to simulate the actual server.  
     
-    Therefore, no real instructions can be provided here! If the instructions under the website given were 
+    Therefore, no real instructions can be provided here!!! If the instructions under the official website were 
     followed a MySQL server should be working on the desired machine.    
     
-    It is very important to run the file ./db/db.sql on the server after the installation is complete. 
+    It is very important to run the file *./db/db.sql* on the server after the installation is complete. 
     Again, no example will be shown here but under Workbench everything should turn out great.
 
   
