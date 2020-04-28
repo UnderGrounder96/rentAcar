@@ -1,6 +1,6 @@
 RentAcar!
 -------------------------
-This ExpressJS program simulates a car rental.
+This NodeJS program simulates a car rental.
 
 Getting Started
 ------------------
