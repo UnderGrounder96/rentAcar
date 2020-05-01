@@ -3,14 +3,11 @@
 
 <%- include('header.ejs') %>
 
-<body>
-<%if (user) { %>
-<%- include('navbar.ejs') %>
-<% } else { %>
-<%- include('navbar1.ejs') %>
-<% } %>
+<body class="container shadow bg">
 
-<main class="container text-left">
+<%- include('navbar.ejs') %>
+
+<main class="container text-left" role="main">
     <%if (brand !== undefined && brand !== null) { %>
     <div class="row">
     <div class="col-md-2 text-center">

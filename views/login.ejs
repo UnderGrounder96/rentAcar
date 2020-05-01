@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('header.ejs') %>
-<body>
-<%- include('navbar1.ejs') %>
 
-<main class="container login-form">
-    <form class="shadow" action="/login" method="post">
+<%- include('header.ejs') %>
+
+<body class="container shadow bg">
+
+<%- include('navbar.ejs') %>
+
+<main class="container" role="main">
+    <form class="shadow login-form" action="/login" method="post">
 
     <h2 class="text-center">Log in</h2>
     <div class="form-group">

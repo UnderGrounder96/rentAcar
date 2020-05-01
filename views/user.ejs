@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
-<%- include('header.ejs') %>
-<link rel='stylesheet' href='/stylesheets/user.css' />
-<body>
- <%- include('navbar.ejs') %>
 
-<main class="container user_profile">
+<%- include('header.ejs') %>
+
+<link rel='stylesheet' href='/stylesheets/user.css' />
+
+<body class="container shadow bg">
+
+<%- include('navbar.ejs') %>
+
+<main class="container user_profile" role="main">
     <div class="row car_header">
 
     <div class="col col-span-6 text-left">
@@ -28,6 +32,8 @@
 
     <br>
 </main>
+
 <%- include('footer.ejs') %>
+
 </body>
 </html>

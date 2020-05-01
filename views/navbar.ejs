@@ -1,31 +1,66 @@
-<nav class="navbar bg-white d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3  border-bottom box-shadow">
+<nav class="navbar bg-white d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom box-shadow">
     <h5 class="my-0 mr-md-auto font-weight-normal form-inline">
-    <a class="navbar-brand" class="form-inline" href="/">
-        <img  src="/images/logo.jpg" alt="Logo" height="45"></a>
-    <a class="nav-link" href="/catalog">Catalog</a>
-    <a class="nav-link" href="/library">Reservations</a>
-    <%if (user.admin == 1){ %>
-    <a class="nav-link" href="/admin" style="color: blue">Administration</a>
-    <% } %>
+        <a class="navbar-brand" class="form-inline" href="/">
+            <img class="img-fluid" src="/images/logo.jpg" alt="Logo" width="150px">
+        </a>
+
+        <%if (user){ %>
+            <a class="nav-link" href="/catalog"><strong>Catalog</strong></a>
+            <a class="nav-link" href="/library"><strong>Reservations</strong></a>
+            <%if (user.admin == 1){ %>
+                <a class="nav-link" href="/admin" style="color: blue"><strong>Administration</strong></a>
+            <% } %>
+        <% } %>
     </h5>
 
-    <nav class="my-2 my-md-0 mr-md-3">
-    <form action="/find" method="POST" style="padding-right:5%;">
-    <div class="input-group">
-    <input type="search" name="item" class="form-control" placeholder="Brand, model, year" required autofocus>
-    <div class="input-group-addon">
-        <button class="btn btn-primary btn-sm" type="submit">
-        <i class="fa fa-search"></i>
-        </button>
-    </div>
-    </div>
-    </form>
-    </nav>
+    <%if (user){ %>
+        <div class="my-2 my-md-0 mr-md-3">
+            <a class="col-" href="/user">
+                <i class="fa fa-user fa-lg" style="color:blue"></i>
+            </a>
 
-    <nav class="my-2 my-md-0 mr-md-3">
-    <a href="/user"> <i class="fa fa-user fa-lg" style="color:blue"></i></a>
-    <br>
-    <br>
-    <a href="/logout"> <i class="fa fa-sign-out fa-lg" style="color:blue"></i></a>
-    </nav>
+            <a class="" href="/logout">
+                <i class="fa fa-sign-out fa-lg" style="color:blue"></i>
+            </a>
+
+            <br />
+
+            <form class="" action="/find" method="POST" style="padding-right:5%;">
+                <div class="input-group">
+                    <input type="search" name="item" class="form-control"
+                           placeholder="Brand, model, year" required autofocus>
+                    <div class="input-group-addon">
+                        <button class="btn btn-primary btn-sm" type="submit">
+                        <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    <% } else { %>
+        <form class="navbar-form" role="form" action="/login" method="post" class="form-inline">
+            <div class="input-group">
+                <div class="formBox">
+                    <input type="text" size="25" class="form-control" name="email"
+                           placeholder="E-mail" minlength="4" maxlength="25" required=>
+                    <p>
+                        <input type="checkbox" id="remember_me" name="remember_me" checked tabindex="3">
+                        <label for="remember_me" class="greyText">Remember me</label>
+                    </p>
+                </div>
+
+                <div class="formBox">
+                    <input type="password" size="15" class="form-control" name="password"
+                           placeholder="Password" minlength="4" maxlength="20" autocomplete="new-password" required>
+                    <a class="greyText" id="userForgotPassword"
+                       rel="nofollow" href="/password-help">Forgot password?</a>
+                </div>
+
+                <div class="input-group-addon">
+                    <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                </div>
+            </div>
+        </form>
+    <% } %>
 </nav>
