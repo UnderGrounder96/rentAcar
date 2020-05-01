@@ -1,6 +1,8 @@
 RentAcar!
 ------------------------------------
-This NodeJS program simulates a car rental.
+This NodeJS program simulates a car rental. 
+
+Currently live at: https://rent-a-car-live.herokuapp.com/
 
 Getting Started
 ------------------
@@ -121,7 +123,7 @@ Files
 
 Versioning
 ------------
-Version 1.8 - Current version
+Version 1.9 - Current version
 
 Version 2.0(TBA) - Add new vehicles to the website
 
