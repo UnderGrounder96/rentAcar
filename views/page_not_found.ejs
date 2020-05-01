@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('header.ejs') %>
-<body>
-<%if (user) { %>
-<%- include('navbar.ejs') %>
-<% } else { %>
-<%- include('navbar1.ejs') %>
-<% } %>
 
-<main role="main" class="container text-center">
-    <img src="/images/Error.png" alt="not_found" class="img-fluid mx-auto d-block">
+<%- include('header.ejs') %>
+
+<body class="container shadow bg">
+
+<%- include('navbar.ejs') %>
+
+<main class="container text-center" role="main">
+    <img class="img-fluid mx-auto d-block" src="/images/Error.png" alt="not_found">
 </main>
+
 <%- include('footer.ejs') %>
+
 </body>
 </html>

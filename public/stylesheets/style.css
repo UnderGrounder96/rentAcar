@@ -2,6 +2,19 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+ main::after {
+  background: url("/images/logo.jpg") center center no-repeat;
+  content: "";
+  opacity: 0.1;
+  top: 0;
+  scroll-behavior: smooth;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
 nav .navbar-brand{
   font-family: 'Cherry Swash', sans-serif;
   font-size: 22px;
@@ -16,22 +29,6 @@ img {
 
 img:hover {
   opacity: 0.5;
-}
-
-main {
-  margin-bottom: 8%;
-}
-
-main::after {
-  content: "";
-  background: url("/images/logo.jpg") center center no-repeat fixed;
-  opacity: 0.1;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
 }
 
 .nav-link{
@@ -112,27 +109,6 @@ select .form-control + button {
   font-size: 21px;
 }
 
-#info{
-  margin-top: 2%;
-  padding-top: 2%;
-  padding-bottom: 2%;
-  margin-bottom: 2%;
-  background-color: white;
-  border: 1px solid #E0E0E0;
-  margin: 2%;
-}
-
-#info2{
-  margin-top: 3%;
-  margin-bottom: 3%;
-  padding-left: 20%;
-}
-
-#info3{
-  margin-top: 3%;
-  margin-bottom: 3%;
-}
-
 #car_info {
   background-color: white;
   padding: 3%;
@@ -160,8 +136,6 @@ select .form-control + button {
 }
 
 footer {
-  background-color: white;
-  margin-top: 10%;
   border-top: 1px solid #E0E0E0;
 }
 

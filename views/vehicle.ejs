@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('header.ejs') %>
-<script src="/js/script.js"></script>
-<body>
-<%if (user) { %>
-<%- include('navbar.ejs') %>
-<% } else { %>
-<%- include('navbar1.ejs') %>
-<% } %>
 
-<main class="container">
+<%- include('header.ejs') %>
+
+<script src="/js/script.js"></script>
+
+<body class="container shadow bg">
+
+<%- include('navbar.ejs') %>
+
+<main class="container" role="main">
     <div class="row car_container">
 
     <div class="col-md-4">
