@@ -1,4 +1,4 @@
-node_modules/
-package-lock.*
+.env
 bugfixes.txt
-*.env
+package-lock.json
+node_modules/
