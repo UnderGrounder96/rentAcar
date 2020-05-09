@@ -74,42 +74,46 @@ Deployment
 The program was created to be easy to use and it is fool proof (to a dreggre).
 All user inputs return success or error messages.
 
-In order to install all npm dependencies:
+Before starting. Please rename the file '.env.default' to '.env', and set your MySQL credentials.
 
-    ~/RentAcar> npm i
+In order to link all npm dependencies:
+
+    ~/RentAcar> npm ln
     [*installation warnings*]
 
-    [audited 1547 packages in 2.69s]
+    [audited 173 packages in 1.253s]
     [found 0 vulnerabilities]
 
- In order to use please run the NodeJS server:
+ In order to start the NodeJS server, execute:
 
-    ~/RentAcar/bin> npm start
+    ~/RentAcar> npm start
     [Database connected.]
 
 Then opening the (default) website on **Google Chrome**(*):
 
-  loccalhost:3000
+  localhost:3000
 
 Files
 ------
 /RentAcar:
-	LICENSE.md - license
+  .env.default - please rename to .env and use your own MySQL credentials
+  .gitignore - git file that helps ignoring other files
+	LICENSE - license
 	app.js - main program
 	README.md - this readme
-	package.json - all dependencies and start
+	package.json - npm config file
 
 /RentAcar/auth:
-	folder responsable for handling login information, heavily Passport module based.
+	folder responsable for handling login information
 
 /RentAcar/bin:
-	www - executable file for the main program
+	www - main executable program file
 
 /RentAcar/db:
-	folder containing all database information, from its representaion to actual SQL executable code
+	folder containing all database information, from its representaion to actual SQL file code
 
 /RentAcar/node_modules:
-	folder responsable for containing all dependencies, generated after a successufully "npm i" installation
+	folder generated after a successufully "npm i" installation
 
 /RentAcar/public:
 	folder containing all additional files used, from javascripts to database images
@@ -124,9 +128,9 @@ Versioning
 ------------
 Version 1.9 - Current version
 
-Version 2.0(TBA) - Add new vehicles to the website
+Version 3.0(TBA) - Feature that allows to add new vehicles into the website
 
-Version 2.5(TBA) - Real e-mail verification
+Version 5.5(TBA) - Real e-mail verification
 
 Author
 ---------
