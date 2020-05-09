@@ -18,7 +18,12 @@
   },
   "devDependencies": {},
   "scripts": {
+    "start": "node bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "12.16.x",
+    "npm" : "6.14.x"
   },
   "keywords": [
     "car",

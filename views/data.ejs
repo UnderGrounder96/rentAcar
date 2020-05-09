@@ -5,102 +5,111 @@
 
 <body class="container shadow bg">
 
-<%- include('navbar.ejs') %>
+    <%- include('navbar.ejs') %>
 
-<main class="container text-left" role="main">
-    <%if (brand !== undefined && brand !== null) { %>
-    <div class="row">
-    <div class="col-md-2 text-center">
-    <%if (type !== undefined && type !== null) { %>
-    Search by brand: <br> <br>
-    <ul class="list-group">
-    <% type.forEach( (tp) => { %>
-        <li class="list-group-item"> <a href="<%= '/data/'+ tp.name%>"> <%= tp.name %> </a></li>
-    <% }) %>
-    </ul>
-    <% } %>
-    </div>
+    <main class="container text-left" role="main">
 
-    <div class="col-sm container">
-    <h2><em><%= brand.name %></em>:</h2>
-    <h6><%= brand.details %></h6>
+        <%if (brand !== undefined && brand !== null) { %>
 
-    <hr>
+        <div class="row">
+            <div class="col-md-2 text-center">
+                <%if (type !== undefined && type !== null) { %>
+                Search by brand: <br> <br>
+                <ul class="list-group">
+                    <% type.forEach( (tp) => { %>
+                    <li class="list-group-item"> <a href="<%= '/data/'+ tp.name%>"> <%= tp.name %> </a></li>
+                    <% }) %>
+                </ul>
+                <% } %>
+            </div>
 
-    <%if (carsArr !== undefined && carsArr !== null) { %>
-    <div class="cars_container">
-    <div class="card-deck-wrapper">
-    <div class="card-deck text-center">
-    <% carsArr.forEach( (car) => { %>
-    <div class="card ">
-    <br>
-    <img class="card-img-top img-fluid mx-auto d-block" src="/<%= car.photo %>"
-         alt="<%= car.model + " " + ' image' %>" >
-    <div class="card-body d-flex flex-column">
-        <p class="card-text text-center">
-        <strong><i><%= car.model %></i></strong>
-    <br>
-        <a href="/data/<%= car.brand %>"> <%= car.brand %></a>
-    <br>
-        <%=car.year%>
-        </p>
-        <a href="<%= '/vehicle/'+ car.idCar %>" class="btn btn-primary btn-block mt-auto"> More </a>
-    </div>
-    </div>
-    <% })  %>
-    </div>
-    </div>
-    </div>
+            <div class="col-sm container">
+                <h2><em><%= brand.name %></em>:</h2>
+                <h6><%= brand.details %></h6>
 
-    <% } else {    %>
-    <h4> This list is <strong>empty</strong> - head back to <a href="/"> main menu.</a></h4>
-    <% } %>
+                <hr>
 
-    </div>
-    </div>
-    <% } else {    %>
-    <h2>Vehicles from <em><%= data %></em>: </h2>
-    <%if (carsArr !== undefined && carsArr !== null) { %>
-    <div class="cars_container">
-    <div class="card-deck-wrapper">
-    <div class="card-deck text-center">
+                <%if (carsArr !== undefined && carsArr !== null) { %>
+                <div class="cars_container">
+                    <div class="card-deck-wrapper">
+                        <div class="card-deck text-center">
+                            <% carsArr.forEach( (car) => { %>
+                            <div class="card ">
+                                <br>
+                                <img class="card-img-top img-fluid mx-auto d-block"
+                                    src="/<%= car.photo %>"
+                                    alt="<%= car.model + " " + ' image' %>">
+                                <div class="card-body d-flex flex-column">
+                                    <p class="card-text text-center">
+                                        <strong><i><%= car.model %></i></strong>
+                                        <br>
+                                        <a href="/data/<%= car.brand %>"> <%= car.brand %></a>
+                                        <br>
+                                        <%=car.year%>
+                                    </p>
+                                    <a href="<%= '/vehicle/'+ car.idCar %>" class="btn btn-primary btn-block mt-auto">
+                                        More
+                                    </a>
+                                </div>
+                            </div>
+                            <% })  %>
+                        </div>
+                    </div>
+                </div>
 
-    <% carsArr.forEach( (car) => { %>
-    <div class="card ">
-    <br>
-    <img class="card-img-top img-fluid mx-auto d-block" src="/<%= car.photo %>" alt="<%= car.model + " " + ' image' %>" >
-    <div class="card-body d-flex flex-column">
-        <p class="card-text text-center"><strong><i><%= car.model %></i></strong>
-        <br>
-            <a href="/data/<%= car.brand %>"><%= car.brand %></a>
-        <br>
-            <%=car.year%>
-        </p>
-        <a href="<%= '/vehicle/'+ car.idCar %>" class="btn btn-primary btn-block mt-auto"> More </a>
-    </div>
-    </div>
-    <% })  %>
+                <% } else {    %>
+                <h4> This list is <strong>empty</strong> - head back to <a href="/"> main menu.</a></h4>
+                <% } %>
 
-    </div>
-    </div>
-    </div>
+            </div>
+        </div>
 
-    <% } else {    %>
-    <h4> This list is <strong>empty</strong> - head back to <a href="/catalog"> main menu.</a></h4>
-    <% } %>
+        <% } else {    %>
 
-    <%if (type !== undefined && type !== null) { %>
-    <div class="container">
-    <ul class="pagination pagination-lg">
-        <% type.forEach( (tp) => { %>
-        <li> <a href="<%= '/vehicle/'+ tp.idCar%>"> <img src="/<%= tp.photo %>" alt="cover"> </a></li>
-        <% }) %>
-    </ul>
-    </div>
-    <% }%>
+        <h2>Vehicles from <em><%= data %></em>: </h2>
+        <%if (carsArr !== undefined && carsArr !== null) { %>
+        <div class="cars_container">
+            <div class="card-deck-wrapper">
+                <div class="card-deck text-center">
 
-    <% }%>
-</main>
-<%- include('footer.ejs') %>
+                    <% carsArr.forEach( (car) => { %>
+                    <div class="card ">
+                        <br>
+                        <img class="card-img-top img-fluid mx-auto d-block" src="/<%= car.photo %>"
+                            alt="<%= car.model + " " + ' image' %>">
+                        <div class="card-body d-flex flex-column">
+                            <p class="card-text text-center"><strong><i><%= car.model %></i></strong>
+                                <br>
+                                <a href="/data/<%= car.brand %>"><%= car.brand %></a>
+                                <br>
+                                <%=car.year%>
+                            </p>
+                            <a href="<%= '/vehicle/'+ car.idCar %>" class="btn btn-primary btn-block mt-auto"> More </a>
+                        </div>
+                    </div>
+                    <% })  %>
+
+                </div>
+            </div>
+        </div>
+
+        <% } else {    %>
+        <h4> This list is <strong>empty</strong> - head back to <a href="/catalog"> main menu.</a></h4>
+        <% } %>
+
+        <%if (type !== undefined && type !== null) { %>
+        <div class="container">
+            <ul class="pagination pagination-lg">
+                <% type.forEach( (tp) => { %>
+                <li> <a href="<%= '/vehicle/'+ tp.idCar%>"> <img src="/<%= tp.photo %>" alt="cover"> </a></li>
+                <% }) %>
+            </ul>
+        </div>
+        <% }%>
+
+        <% }%>
+    </main>
+    <%- include('footer.ejs') %>
 </body>
+
 </html>
