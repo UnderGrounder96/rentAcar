@@ -6,7 +6,7 @@ router.get('/', function (req, res, next) {
     if(req.user)
         res.redirect('/library');
 
-    res.render('login', {err:req.query.err, user:req.user});
+    res.render('login', {user:null, err:req.query.err});
 });
 
 router.post('/', passport.authenticate('local', {
