@@ -1,10 +1,5 @@
 #!/usr/bin/env node
 
-/* IGNORE.me
-https://community.apigee.com/articles/28041/nodejs-and-self-signed-ssl-certificates.html
-https://forge.autodesk.com/blog/enable-https-local-nodejs
-https://www.google.com/search?q=ssl+on+local+nodejs+page
-
 /**
  * Module dependencies.
  */
@@ -72,10 +67,12 @@ function onError(error) {
       console.error(bind + ' requires elevated privileges');
       process.exit(1);
       break;
+
     case 'EADDRINUSE':
       console.error(bind + ' is already in use');
       process.exit(1);
       break;
+      
     default:
       throw error;
   }
