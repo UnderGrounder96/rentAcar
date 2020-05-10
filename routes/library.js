@@ -8,10 +8,10 @@ router.get('/', auth(), function (req, res) {
 
     if(req.user) {
         const sql =`
-            SELECT * FROM reservations 
-                JOIN cars ON reservations.idCar=cars.idCar 
-                WHERE reservations.idUser="${req.user.idUser}" 
-                    AND DATE(dateOut)>=CURDATE() 
+            SELECT * FROM reservations
+                JOIN cars ON reservations.idCar=cars.idCar
+                WHERE reservations.idUser="${req.user.idUser}"
+                    AND DATE(dateOut)>=CURDATE()
                     AND reservations.active>0
                     AND cars.active>0;`;
 
@@ -22,8 +22,9 @@ router.get('/', auth(), function (req, res) {
                 res.render('library', {res:rs, carsArr:result, user:req.user});
         });
 
-    } else
-        res.redirect('/');
+    }
+
+    res.redirect('/');
 });
 
 module.exports = router;

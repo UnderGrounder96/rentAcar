@@ -5,10 +5,8 @@ router.get('/', function (req, res, next) {
     if(req.user)
         res.redirect('/library');
 
-    else {
-        //res.send('Reset password!');
-        res.render('password-help');
-    }
+    //res.send('Reset password!');
+    res.render('password-help', {user:null});
 });
 
 module.exports = router;
