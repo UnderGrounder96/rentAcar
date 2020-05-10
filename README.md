@@ -74,7 +74,7 @@ Deployment
 The program was created to be easy to use and it is fool proof (to a dreggre).
 All user inputs return success or error messages.
 
-Before starting. Please rename the file '.env.default' to '.env', and set your MySQL credentials.
+Before starting. Please rename the file '.env.default' to '.env', and set in it your MySQL credentials.
 
 In order to link all npm dependencies:
 
