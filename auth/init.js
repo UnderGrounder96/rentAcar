@@ -38,9 +38,7 @@ function initPassport() {
                     if (!result.length)
                         return done(null, false);
 
-                    let dbPassword = result[0].pass;
-
-                    if (!(req.body.password === dbPassword))
+                    if (!(req.body.password === result[0].pass))
                         return done(null, false);
 
                     return done(null, result[0]);
