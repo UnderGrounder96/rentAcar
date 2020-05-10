@@ -10,18 +10,24 @@
 <%- include('navbar.ejs') %>
 
 <main class="container" role="main">
-    <div class="jumbotron container text-left">
-
+    <div class="jumbotron">
         <div class="row">
-            <div class="col-md-8">
-                <h1 id="title">RentAcar!</h1>
-                <h4 id="title">Driving by your side.</h4>
-                <br>
+
+            <div class="col">
+                <h1 id="title">
+                    RentAcar!
+                </h1>
+
+                <h4 id="title">
+                    Driving by your side.
+                </h4>
+
+                <br />
 
                 <!--search-->
-                <form action="/find" method="post" style="width:80%;">
+                <form class="col-md" action="/find" method="post">
                     <div class="input-group">
-                        <input type="search" name="item" class="form-control"
+                        <input class="form-control" type="search" name="item"
                             placeholder="Brand, model, year" required autofocus>
 
                         <div class="input-group-addon">
@@ -31,39 +37,50 @@
                         </div>
                     </div>
                 </form>
-
             </div>
 
             <%if (user === undefined || user === null) { %>
-            <div class="col-md-4 text-center">
+            <div class="col-md text-center">
                 <form action="/register" method="post">
-                    <h6> Join us now and gain a 30 days trial. </h6>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="name"
+                        <h6>
+                            Join us now and gain a 30 days trial.
+                        </h6>
+                        <input class="form-control" type="text" name="name"
                                 placeholder="Full Name" minlength="6"
                                 maxlength="20" autocomplete="off" required>
                     </div>
+
                     <div class="form-group">
-                        <input type="email" class="form-control" name="email"
+                        <input class="form-control" type="email" name="email"
                                 placeholder="E-mail" minlength="4"
                                 maxlength="25" required>
                     </div>
+
                     <div class="form-group">
-                        <input type="password" class="form-control"
+                        <input class="form-control" type="password"
                                 name="password" placeholder="Password"
                                 minlength="4" maxlength="20"
                                 autocomplete="new-password" required>
-                    </div>
-                    <div class="form-group">
+
                         <label>
                             By signing up you agree to our
-                            <a href="/terms-of-use">Terms of use</a>,
-                            <a href="/terms-of-use">Privacy Policy</a>, and
-                            <a href="/terms-of-use">Cookie Use</a>.
+                            <a href="/terms-of-use" target="_blank">
+                                Terms of use
+                            </a>,
+                            <a href="/terms-of-use" target="_blank">
+                                Privacy Policy
+                            </a>, and
+                            <a href="/terms-of-use" target="_blank">
+                                Cookie Use
+                            </a>.
                             You also agree that you’re over 18 years of age.
                         </label>
+
                         <button type="submit"
-                            class="btn btn-success btn-block">Sign up</button>
+                            class="btn btn-success btn-block">
+                            Sign up
+                        </button>
                     </div>
                 </form>
             </div>
@@ -71,19 +88,22 @@
         </div>
     </div>
 
-    <hr>
+    <hr />
 
     <div class="container">
-
         <div class="container text-left">
-            <h3> Trending: </h3>
+            <h3>
+                Trending:
+            </h3>
             <%if (carsArr !== undefined && carsArr !== null) { %>
             <div class="cars_container">
                 <div class="card-deck-wrapper">
                     <div class="card-deck text-center">
                         <% carsArr.forEach( (car) => { %>
                         <div class="card">
-                            <br>
+
+                            <br />
+
                             <img class="card-img-top img-fluid mx-auto d-block"
                                     src="/<%= car.photo %>"
                                     alt="<%= car.model + " " + ' image' %>">
@@ -94,15 +114,21 @@
                                             <%= car.model %>
                                         </i>
                                     </strong>
-                                    <br>
+
+                                    <br />
+
                                     <a href="/data/<%= car.brand %>">
                                         <%= car.brand %>
                                     </a>
-                                    <br><%=car.year%>
+
+                                    <br />
+
+                                    <%=car.year%>
                                 </p>
                                 <a href="<%= '/vehicle/'+ car.idCar %>"
                                     class="btn btn-primary btn-block mt-auto">
-                                    More </a>
+                                    More
+                                </a>
                             </div>
                         </div>
 
@@ -118,5 +144,4 @@
 <%- include('footer.ejs') %>
 
 </body>
-
 </html>
