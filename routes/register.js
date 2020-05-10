@@ -1,57 +1,47 @@
 let express = require('express');
 let router = express.Router();
+let auth = require('passport-local-authenticate');
 const db = require('../db/db');
 
 router.get('/', function (req, res, next) {
-    let err = req.query.err;
-
     if(req.user)
-        res.redirect('/library');
+        return res.redirect('/library');
 
-    else {
-        if(err)
-            res.render('register', {err:err});
-        else
-            res.render('register', {err:null});
-    }
+    res.render('register', {user: null, err:req.query.err});
 });
 
-
-router.post('/', (req, res, next) => {
+router.post('/', function (req, res, next) {
     if (req.body.active === 0)
-        res.redirect('/register?err=yes');
+        return res.redirect('/register?err=yes');
 
-    else {
+    auth.hash(req.body.password, function(err, passHashed) {
         let user = {
             "admin": 0,
             "active": 1,
             "email": req.body.email,
-            "pass": req.body.password,
+            "pass": passHashed.salt,
             "fullName": req.body.name
-        };
+        };/*
+        console.log("pass: "+req.body.password)
+        console.log("\npassHash: "+passHashed.hash); // Hashed password
+        console.log("\npassSalt: "+passHashed.salt); // Salt
+        console.log("user: "+user)
+*/
+        db.query(`INSERT INTO users SET ?`, user,
+            function (err) {
+                if (err)
+                    return res.redirect('/register?err=no');
 
-        db.query(`INSERT into users SET ?`, user, function (err) {
-            if (err) {
-                console.log("An error ocurred: ", err);
-                res.redirect('/register?err=no');
-            }
-        });
-
-        db.query(`SELECT * FROM users WHERE email="${user.email}";`, function (err, result) {
-            if (err) {
-                console.log("An error ocurred: ", err);
-                res.redirect('/register?err=no');
-
-            } else {
-                req.login(result[0], function (err) {
+                req.login(user, function (err) {
                     if (err)
                         return next(err);
 
                     return res.redirect('/library');
                 });
             }
-        })
-    }
+        );
+
+    });
 });
 
 module.exports = router;

@@ -6,7 +6,6 @@ let createError = require('http-errors');
 let session = require('express-session');
 let cookieParser = require('cookie-parser');
 
-
 let data = require('./routes/data');
 let data1 = require('./routes/data1');
 let index = require('./routes/index');
@@ -22,7 +21,6 @@ let libraryRouter = require('./routes/library');
 let termsOfUse = require('./routes/terms-of-use');
 let registerRouter = require('./routes/register');
 let passwordHelpRouter = require('./routes/password-help');
-
 
 let app = express();
 require('./auth').init(app);
@@ -42,7 +40,7 @@ app.use(session({
   name: 'session_id',
   saveUninitialized: false,
   resave: true,
-  cookie: { maxAge: new Date(Date.now() + (60 * 1000 * 30 * 2)) }
+  cookie: { maxAge: Date.now() + (60 * 1000 * 30 * 2) }
 }));
 
 app.use(passport.initialize());
@@ -63,7 +61,6 @@ app.use('/library', libraryRouter);
 app.use('/terms-of-use', termsOfUse);
 app.use('/register', registerRouter);
 app.use('/password-help', passwordHelpRouter);
-
 
 // page not found
 app.get('*', function (req, res) {
