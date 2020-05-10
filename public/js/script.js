@@ -6,7 +6,6 @@ $(document).ready(() => {
         $(this).addClass("active");
     });
 
-
     /*-----------------DATE HANDLERS------------------------*/
     let td = new Date();
     let dd = td.getDate();
@@ -82,7 +81,7 @@ $(document).ready(() => {
     }
 
     ///------------------ NOT WORKING!!!
-/*
+    /*
     $("#cars, #resvs, #users").click(function(){
         _show(this);
 
@@ -99,6 +98,5 @@ $(document).ready(() => {
                 $("#users1").show();
                 break;
         }
-    });
-*/
+    });*/
 });

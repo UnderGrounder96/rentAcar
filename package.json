@@ -9,7 +9,8 @@
   "homepage": "https://rent-a-car-live.herokuapp.com",
   "repository": "github:UnderGrounder96/RentAcar",
   "scripts": {
-    "start": "node bin/www"
+    "start": "node bin/www",
+    "test": "npx nodemon bin/www"
   },
   "dependencies": {
     "cookie-parser": "^1.4.3",
@@ -22,6 +23,9 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
   },
   "engines": {
     "node": "~12.16.3",
