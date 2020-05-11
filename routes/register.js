@@ -1,7 +1,7 @@
 let express = require('express');
 let router = express.Router();
-let auth = require('passport-local-authenticate');
 const db = require('../db/db');
+const crypto = require('crypto');
 
 router.get('/', function (req, res, next) {
     if(req.user)
@@ -14,33 +14,33 @@ router.post('/', function (req, res, next) {
     if (req.body.active === 0)
         return res.redirect('/register?err=yes');
 
-    auth.hash(req.body.password, function(err, passHashed) {
+    crypto.scrypt(req.body.password, 'salt', 32, function (err, passEncrypted) {
         let user = {
             "admin": 0,
             "active": 1,
             "email": req.body.email,
-            "pass": passHashed.salt,
+            "pass": passEncrypted,
             "fullName": req.body.name
-        };/*
-        console.log("pass: "+req.body.password)
-        console.log("\npassHash: "+passHashed.hash); // Hashed password
-        console.log("\npassSalt: "+passHashed.salt); // Salt
-        console.log("user: "+user)
-*/
-        db.query(`INSERT INTO users SET ?`, user,
-            function (err) {
+        };
+
+        db.query(`INSERT INTO users SET ?`, user, function (err) {
+            if (err)
+                return res.redirect('/register?err=no');
+        });
+
+        db.query(`SELECT * FROM users WHERE email="${user.email}";`,
+            function (err, result) {
                 if (err)
                     return res.redirect('/register?err=no');
 
-                req.login(user, function (err) {
+                req.login(result[0], function (err) {
                     if (err)
                         return next(err);
 
                     return res.redirect('/library');
-                });
+                })
             }
-        );
-
+        )
     });
 });
 

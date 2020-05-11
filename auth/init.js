@@ -1,15 +1,18 @@
 let passport = require('passport');
 let LocalStrategy = require('passport-local').Strategy;
 let authenticationMiddleware = require('./middleware');
-let auth = require('passport-local-authenticate');
 const db = require('../db/db');
+const crypto = require('crypto');
 
 passport.serializeUser(function(user, done){
-    done(null, user);
+    return done(null, user.idUser);
 });
 
-passport.deserializeUser(function(user, done){
-    done(null, user);
+passport.deserializeUser(function(idUser, done){
+    db.query(`SELECT idUser, fullName, email, admin, active FROM users
+                WHERE idUser="${idUser}";`, function(err, result){
+        return done(err, result[0]);
+    });
 });
 
 function initPassport() {
@@ -20,27 +23,24 @@ function initPassport() {
         },
         function (req, username, password, done) {
             db.query(`SELECT * FROM users
-            WHERE email="${req.body.email}"
-                AND active>0;`,
-                function (err, result) {
-                    if (err)
-                        return done(null, false, {message:err});
+                        WHERE email="${req.body.email}"
+                        AND active>0;`, function (err, result) {
+                if (err)
+                    return done(null, false, {message:err});
 
-                    if (!result.length)
-                        return done(null, false);
+                if (!result.length)
+                    return done(null, false);
 
-                    let dbPass = result[0].pass;
+                crypto.scrypt(req.body.password, 'salt', 32,
+                    function (err, passDecrypted) {
+                        if (passDecrypted.toString('hex')
+                                !== result[0].pass.toString('hex'))
+                            return done(null, false);
 
-                    auth.hash(req.body.password, function(err, dbPass) {
-                        auth.verify(req.body.password, dbPass, function(err, verified) {
-                            if (!verified)
-                                return done(null, false);
-
-                            return done(null, result[0]);
-                        });
-                    });
-                }
-            );
+                        return done(null, result[0]);
+                    }
+                );
+            });
         }
     ));
 
