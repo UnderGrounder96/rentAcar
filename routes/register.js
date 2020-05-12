@@ -19,7 +19,7 @@ router.post('/', function (req, res, next) {
             "admin": 0,
             "active": 1,
             "email": req.body.email,
-            "pass": passEncrypted,
+            "pass": passEncrypted.toString('hex'),
             "fullName": req.body.name
         };
 

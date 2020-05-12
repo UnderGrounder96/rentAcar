@@ -33,8 +33,7 @@ function initPassport() {
 
                 crypto.scrypt(req.body.password, 'salt', 32,
                     function (err, passDecrypted) {
-                        if (passDecrypted.toString('hex')
-                                !== result[0].pass.toString('hex'))
+                        if (passDecrypted.toString('hex') != result[0].pass)
                             return done(null, false);
 
                         return done(null, result[0]);
