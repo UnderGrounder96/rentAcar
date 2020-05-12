@@ -8,8 +8,8 @@
 }
 
 .user_profile .user {
-    font-size: 22px;
-    margin: 1% 0 6% 0;
+  font-size: 22px;
+  margin: 1% 0 6% 0;
 }
 
 .user_profile::after {
