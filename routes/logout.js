@@ -1,9 +1,9 @@
-let express = require('express');
-let router = express.Router();
+const express = require('express'),
+  router = express.Router();
 
-router.get('/', function(req, res){
-    req.logout();
-    res.redirect('/');
-});
+router.get('/', (req, res) => {
+  req.logout();
+  return res.redirect('/');
+})
 
 module.exports = router;

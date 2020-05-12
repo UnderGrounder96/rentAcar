@@ -1,12 +1,11 @@
-let express = require('express');
-let router = express.Router();
+const express = require('express'),
+  router = express.Router();
 
 router.get('/', function (req, res, next) {
-    if(req.user)
-        res.redirect('/library');
+  if (req.user) return res.redirect('/library');
 
-    //res.send('Reset password!');
-    res.render('password-help', {user:null});
-});
+  // res.send('Reset password!');
+  res.render('password-help', { user: null })
+})
 
-module.exports = router;
+module.exports = router

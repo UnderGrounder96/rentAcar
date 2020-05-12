@@ -1,8 +1,8 @@
-let express = require('express');
-let router = express.Router();
+const express = require('express'),
+  router = express.Router();
 
-router.get('/', function (req, res, next) {
-    res.render('contact',{user:req.user});
-});
+router.get('/', (req, res) => {
+  return res.render('contact', { user: req.user })
+})
 
-module.exports = router;
+module.exports = router

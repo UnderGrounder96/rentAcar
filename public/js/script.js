@@ -1,102 +1,105 @@
 $(document).ready(() => {
-    $(".classified" ).delay(3000).fadeOut(5000); // fades .classified
+  $('.classified').delay(3000).fadeOut(5000);
 
-    $(".nav-link").click(function () {
-        $(".nav-link").removeClass("active");
-        $(this).addClass("active");
-    });
+  $('.nav-link').click(() => {
+    $('.nav-link').removeClass('active');
+    $(this).addClass('active');
+  })
 
-    /*-----------------DATE HANDLERS------------------------*/
-    let td = new Date();
-    let dd = td.getDate();
-    let mm = td.getMonth()+1; //January is 0!
-    let yyyy = td.getFullYear();
+  /* -----------------DATE HANDLERS - USER---------------------- */
+  let date = new Date(),
+    todayDay = date.getDate(),
+    todayMonth = date.getMonth() + 1,
+    todayFullDate = date.getFullYear(); // January is 0!
 
-    if(dd<10)
-        dd='0'+dd;
+  const dateClassObj = $('.date');
 
-    if(mm<10)
-        mm='0'+mm;
+  todayDay = _addZero(todayDay);
+  todayMonth = _addZero(todayMonth);
 
-    let date = $(".date");
-    let d = $("#dateOut"); // holds dateOut Obj
-    let today = yyyy+'-'+mm+'-'+dd;
+  todayFullDate += '-' + todayMonth + '-' + todayDay;
 
-    date.val(today);
-    date.attr("min", today);
+  dateClassObj.val(todayFullDate);
+  dateClassObj.attr('min', todayFullDate);
 
+  $('#dateIn, #days').change(() => {
+    let days = $('#days').val(),
+      price = $('#price').val();
 
-    $("#dateIn, #days").change(function(){
-        let a = $("#days").val();
-        let b = $("#price").val();
-        let c = a*b;
+    price *= days;
 
-        $("#numbers").val(c); // changes price
+    // changes price
+    $('#numbers').val(price);
 
-        today = $("#dateIn").val(); // console.log(today);
+    todayFullDate = $('#dateIn').val();
 
-        td = new Date(today);
+    date = new Date(todayFullDate);
 
-        a--;
-        td.setDate(td.getDate() + a); // console.log(td.toLocaleDateString());
+    //ok?
+    --days;
 
-        dd = td.getDate();
-        mm = td.getMonth()+1; //January is 0!
-        yyyy = td.getFullYear();
+    // console.log(date.toLocaleDateString());
+    date.setDate(date.getDate() + days);
 
-        if(dd<10)
-            dd='0'+dd;
+    todayDay = date.getDate();
+    todayMonth = date.getMonth() + 1; // January is 0!
 
-        if(mm<10)
-            mm='0'+mm;
+    todayDay = _addZero(todayDay);
+    todayMonth = _addZero(todayMonth);
 
-        today = yyyy+'-'+mm+'-'+dd;
+    todayFullDate = date.getFullYear() + '-' + todayMonth + '-' + todayDay;
 
-        d.val(today);
-    });
+    $('#dateOut').val(todayFullDate);
+  })
 
-    /*-----------------------ADMIN------------------------*/
-    $(".hide").hide();
-    $("#cars1").show();
+  /* -----------------------ADMIN------------------------ */
+  $('.hide').hide();
+  $('#cars1').show();
 
-    $("#cars").click(function(){
-        _show(this);
-        $("#cars1").show();
-    });
+  $('#cars').click(() => {
+    _show(this);
+    $('#cars1').show();
+  })
 
-    $("#resvs").click(function(){
-        _show(this);
-        $("#resvs1").show();
-    });
+  $('#resvs').click(() => {
+    _show(this);
+    $('#resvs1').show();
+  })
 
-    $("#users").click(function(){
-        _show(this);
-        $("#users1").show();
-    });
+  $('#users').click(() => {
+    _show(this);
+    $('#users1').show();
+  })
 
-    function _show(show) {
-        $(".hide").hide();
-        $("a").removeClass("active");
-        $(show).addClass("active");
-    }
+  function _show(toShow) {
+    $('.hide').hide();
+    $('a').removeClass('active');
+    $(toShow).addClass('active');
+  }
 
-    ///------------------ NOT WORKING!!!
-    /*
-    $("#cars, #resvs, #users").click(function(){
-        _show(this);
+  function _addZero(arg) {
+    if (arg < 10) { arg = '0' + arg; }
 
-        switch (show) {
-            case $("#cars"):
-                $("#cars1").show();
-                break;
+    return arg;
+  }
 
-            case $("#resvs"):
-                $("#resvs1").show();
-                break;
+  /*
+  // ------------------ NOT WORKING!!!
+    $("#cars, #resvs, #users").click(() => {
+      _show(this);
 
-            case $("#users"):
-                $("#users1").show();
-                break;
-        }
-    });*/
-});
+      switch (toShow) {
+        case $("#cars"):
+          $("#cars1").show();
+          break;
+
+        case $("#resvs"):
+          $("#resvs1").show();
+          break;
+
+        case $("#users"):
+          $("#users1").show();
+          break;
+      }
+    }); */
+})
