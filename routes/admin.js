@@ -1,215 +1,142 @@
-const express = require('express'),
-  router = express.Router(),
+const router = require('express').Router(),
   db = require('../db/db');
 
-router.get('/', function (req, res, next) {
-  const rs = req.query.res
+router.get('/', (req, res) => {
+  if (!req.user) return res.redirect('/');
+  if (!req.user.admin) return res.redirect('/library/');
 
-  if (req.user) {
-    if (req.user.admin === 1) {
-      const sql = 'SELECT * FROM cars;'
-
-      const sql1 = `SELECT * FROM reservations
-        JOIN cars ON reservations.idCar=cars.idCar
-        WHERE DATE(reservations.dateOut)>=CURDATE();`
-
-      const sql2 = `SELECT idUser, fullName, email, admin, active FROM users;`
-
-      db.query(sql, (error, result) => {
-        db.query(sql1, (error1, result1) => {
-          db.query(sql2, (error2, result2) => {
-            res.render('admin', {
-              car: null,
-              carsArr: result,
-              res: rs,
-              resv: null,
-              resArr: result1,
-              userArr: result2,
-              userData: null,
-              user: req.user
-            })
-          })
-        })
-      })
-    } else { res.redirect('/library/') }
-  } else { res.redirect('/') }
-})
-
-router.get('/car/:car_id', function (req, res, next) {
-  if (req.user) {
-    if (req.user.admin === 1) {
-      const sql = `SELECT * FROM cars WHERE idCar="${req.params.car_id}";`
-      const sql1 = 'SELECT name FROM brand;'
-      const sql2 = 'SELECT DISTINCT type FROM cars;'
-
-      db.query(sql, (error, result) => {
-        db.query(sql1, (error1, result1) => {
-          db.query(sql2, (error2, result2) => {
-            res.render('admin', {
-              car: result[0],
-              slctArr: result1,
-              slct1Arr: result2,
-              carsArr: null,
-              res: null,
-              resv: null,
-              resArr: null,
-              userArr: null,
-              userData: null,
-              user: req.user
-            })
-          })
-        })
-      })
-    } else { res.redirect('/library/') }
-  } else { res.redirect('/') }
-})
-
-router.get('/resv/:res_id', function (req, res, next) {
-  if (req.user) {
-    if (req.user.admin === 1) {
-      const sql = `
-                SELECT * FROM ((reservations JOIN cars ON reservations.idCar=cars.idCar)
-                  JOIN users ON reservations.idUser=users.idUser)
-                    WHERE idReservation="${req.params.res_id}"
-                        AND DATE(dateOut)>=CURDATE();`
-
-      db.query(sql, (error, result) => {
+  db.query(`SELECT * FROM cars;`, (err, result) => {
+    db.query(`SELECT * FROM reservations
+      JOIN cars ON reservations.idCar=cars.idCar
+      WHERE DATE(reservations.dateOut)>=CURDATE();`, (err1, result1) => {
+      db.query(`SELECT idUser, fullName, email, admin, active FROM users;`, (err2, result2) => {
         res.render('admin', {
           car: null,
-          carsArr: null,
-          resv: result[0],
-          res: null,
-          resArr: null,
-          userArr: null,
+          carsArr: result,
+          res: req.query.res,
+          resv: null,
+          resArr: result1,
+          userArr: result2,
           userData: null,
           user: req.user
-        })
-      })
-    } else { res.redirect('/library/') }
-  } else { res.redirect('/') }
-})
+        });
+      });
+    });
+  });
+});
 
-router.get('/user/:user_id', function (req, res, next) {
-  if (req.user) {
-    if (req.user.admin === 1) {
-      const sql = `
-                SELECT idUser, fullName, email, admin, active FROM users
-                    WHERE idUser="${req.params.user_id}";`
+router.get('/car/:car_id', (req, res) => {
+  if (!req.user) return res.redirect('/');
+  if (!req.user.admin) return res.redirect('/library/');
 
-      db.query(sql, (error, result) => {
+  db.query(`SELECT * FROM cars WHERE idCar="${req.params.car_id}";`, (err, result) => {
+    db.query(`SELECT name FROM brand;`, (err1, result1) => {
+      db.query(`SELECT DISTINCT type FROM cars;`, (err2, result2) => {
         res.render('admin', {
-          car: null,
+          car: result[0],
+          slctArr: result1,
+          slct1Arr: result2,
           carsArr: null,
           res: null,
           resv: null,
           resArr: null,
           userArr: null,
-          userData: result[0],
+          userData: null,
           user: req.user
-        })
-      })
-    } else { res.redirect('/library/') }
-  } else { res.redirect('/') }
-})
+        });
+      });
+    });
+  });
+});
 
-router.post('/editCar/:car_id', function (req, res, next) {
-  const car = {
-    year: req.body.year,
-    type: req.body.type,
-    model: req.body.model,
-    price: req.body.price,
-    brand: req.body.brand,
-    active: req.body.active,
-    idCar: req.params.car_id
-  }
+router.get('/resv/:res_id', (req, res) => {
+  if (!req.user) return res.redirect('/');
+  if (!req.user.admin) return res.redirect('/library/');
 
-  const query = `
-        UPDATE cars
-            SET model="${car.model}",
-                year="${car.year}",
-                type="${car.type}",
-                brand="${car.brand}",
-                price="${car.price}",
-                active="${car.active}"
-            WHERE idCar="${car.idCar}";`
+  db.query(`SELECT * FROM ((reservations JOIN cars ON reservations.idCar=cars.idCar)
+    JOIN users ON reservations.idUser=users.idUser)
+    WHERE idReservation="${req.params.res_id}"
+    AND DATE(dateOut)>=CURDATE();`, (err, result) => {
+    res.render('admin', {
+      car: null,
+      carsArr: null,
+      resv: result[0],
+      res: null,
+      resArr: null,
+      userArr: null,
+      userData: null,
+      user: req.user
+    });
+  });
+});
 
-  db.query(query, function (err) {
-    if (err) {
-      res.send({
-        code: 400,
-        failed: 'could not change data'
-      })
-    } else { res.redirect('/admin?res=editCar') }
-  })
-})
+router.get('/user/:user_id', (req, res) => {
+  if (!req.user) return res.redirect('/');
+  if (!req.user.admin) return res.redirect('/library/');
 
-router.post('/editRes/:res_id', function (req, res, next) {
-  const resv = {
-    active: req.body.active,
-    dateIn: req.body.dateIn,
-    dateOut: req.body.dateOut,
-    fullPrice: req.body.numbers,
-    idReservation: req.params.res_id
-  }
+  db.query(`SELECT idUser, fullName, email, admin, active FROM users
+    WHERE idUser="${req.params.user_id}";`, (err, result) => {
+    res.render('admin', {
+      car: null,
+      carsArr: null,
+      res: null,
+      resv: null,
+      resArr: null,
+      userArr: null,
+      userData: result[0],
+      user: req.user
+    });
+  });
+});
 
-  const sql = `
-        UPDATE reservations
-            SET fullPrice="${resv.fullPrice}",
-                active="${resv.active}",
-                dateIn="${resv.dateIn}",
-                dateOut="${resv.dateOut}"
-            WHERE idReservation="${resv.idReservation}";`
+router.post('/editCar/:car_id', (req, res) => {
+  db.query(`UPDATE cars
+    SET model="${req.body.model}",
+      year="${req.body.year}",
+      type="${req.body.type}",
+      brand="${req.body.brand}",
+      price="${req.body.price}",
+      active="${req.body.active}"
+    WHERE idCar="${req.params.car_id}";`, (err) => {
+    if (err) return res.send({ code: 400, failed: __print('change', err)});
+    return res.redirect('/admin?res=editCar');
+  });
+});
 
-  db.query(sql, function (err) {
-    if (err) {
-      res.send({
-        code: 400,
-        failed: 'could not change data'
-      })
-    } else { res.redirect('/admin?res=editRes') }
-  })
-})
+router.post('/editRes/:res_id', (req, res) => {
+  db.query(`UPDATE reservations
+    SET fullPrice="${req.body.numbers}",
+      active="${req.body.active}",
+      dateIn="${req.body.dateIn}",
+      dateOut="${req.body.dateOut}"
+    WHERE idReservation="${req.params.res_id}";`, (err) => {
+    if (err) return res.send({ code: 400, failed: __print('change', err)});
+    return res.redirect('/admin?res=editRes');
+  });
+});
 
-router.post('/rem/:res_id/', function (req, res, next) {
-  const sql = `
-        DELETE FROM reservations
-            WHERE idReservation="${req.params.res_id}";`
+router.post('/rem/:res_id/', (req, res) => {
+  db.query(`DELETE FROM reservations
+    WHERE idReservation="${req.params.res_id}";`, (err) => {
+    if (err) return res.send({ code: 400, failed: __print('delete', err)});
+    return res.redirect('/admin?res=rem');
+  });
+});
 
-  db.query(sql, function (err) {
-    if (err) {
-      res.send({
-        code: 400,
-        failed: 'could not delete data'
-      })
-    } else { res.redirect('/admin?res=rem') }
-  })
-})
+router.post('/editUse/:user_id', (req, res) => {
+  db.query(`UPDATE users
+    SET fullName="${req.body.name}",
+      email="${req.body.email}",
+      admin="${req.body.admin}",
+      active="${req.body.active}"
+    WHERE idUser="${req.params.user_id}";`, (err) => {
+    if (err) return res.send({ code: 400, failed: __print('change', err)});
+    return res.redirect('/admin?res=editUse');
+  });
+});
 
-router.post('/editUse/:user_id', function (req, res, next) {
-  const userData = {
-    admin: req.body.admin,
-    email: req.body.email,
-    active: req.body.active,
-    fullName: req.body.name,
-    idUser: req.params.user_id
-  }
+function __print(str, err){
+  return "It wasn't possible to " + str + " the data! Due to " + err;
+}
 
-  const sql = `
-        UPDATE users
-            SET fullName="${userData.fullName}",
-                email="${userData.email}",
-                admin="${userData.admin}",
-                active="${userData.active}"
-            WHERE idUser="${userData.idUser}";`
-
-  db.query(sql, function (err) {
-    if (err) {
-      res.send({
-        code: 400,
-        failed: 'could not change data'
-      })
-    } else { res.redirect('/admin?res=editUse') }
-  })
-})
-
-module.exports = router
+module.exports = router;

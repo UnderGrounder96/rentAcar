@@ -1,15 +1,8 @@
-const express = require('express'),
-  router = express.Router(),
-  auth = require('../auth/middleware'),
-  db = require('../db/db');
+const router = require('express').Router();
 
-router.get('/', auth(), (req, res, next) => {
-  if (req.user) {
-    db.query(`SELECT idUser, fullName, email FROM users
-        WHERE email="${req.user.email}"; `, (err, result) => {
-      if (!result.length) { res.render('No such user found!') } else { res.render('user', { userData: result[0], user: req.user }) }
-    })
-  } else { res.redirect('/') }
-})
+router.get('/', (req, res) => {
+  if (!req.user) return res.redirect('/');
+  res.render('user', { user: req.user });
+});
 
-module.exports = router
+module.exports = router;

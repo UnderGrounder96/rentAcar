@@ -5,40 +5,33 @@ const crypto = require('crypto'),
   db = require('../db/db');
 
 passport.serializeUser((user, done) => {
-  return done(null, user.idUser);
-})
+  done(null, user.idUser);
+});
 
 passport.deserializeUser((idUser, done) => {
   db.query(`SELECT idUser, fullName, email, admin, active FROM users
     WHERE idUser="${idUser}";`, (err, result) => {
-    return done(err, result[0]);
-  })
-})
+    done(err, result[0]);
+  });
+});
 
-function initPassport () {
+function initPassport() {
   passport.use('local', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
-    passReqToCallback: true
-  }, (req, username, password, done) => {
+    passReqToCallback: true}, (req, username, password, next) => {
     db.query(`SELECT * FROM users
-              WHERE email="${req.body.email}"
-              AND active>0;`, (err, result) => {
-      if (!result.length) {
-        return done(null, false)
-      }
-
-      crypto.scrypt(password, 'salt', 32, (err, passDecrypted) => {
-        if (passDecrypted.toString('hex') !== result[0].pass) {
-          return done(null, false)
-        }
-
-        return done(null, result[0])
-      })
-    })
-  }))
-
-  passport.authenticationMiddleware = authenticationMiddleware
+      WHERE email="${username}"
+      AND active>0;`, (err, result) => {
+      if (!result.length) return next(null, false);
+      crypto.scrypt(password, 'salt', 32, (err, passEncrypted) => {
+        if (result[0].pass !== passEncrypted.toString('hex'))
+          return next(null, false);
+        return next(null, result[0]);
+      });
+    });
+  }));
+  passport.authenticationMiddleware = authenticationMiddleware;
 }
 
-module.exports = initPassport
+module.exports = initPassport;

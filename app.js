@@ -5,14 +5,12 @@ const path = require('path'),
   session = require('express-session'),
   createError = require('http-errors'),
   cookieParser = require('cookie-parser'),
-
+  app = express(),
   data = require('./routes/data'),
-  data1 = require('./routes/data1'),
   index = require('./routes/index'),
   admin = require('./routes/admin'),
   logout = require('./routes/logout'),
   vehicle = require('./routes/vehicle'),
-  vehicle1 = require('./routes/vehicle1'),
   contact = require('./routes/contact'),
   catalog = require('./routes/catalog'),
   userRouter = require('./routes/user'),
@@ -20,8 +18,7 @@ const path = require('path'),
   libraryRouter = require('./routes/library'),
   termsOfUse = require('./routes/terms-of-use'),
   registerRouter = require('./routes/register'),
-  passwordHelpRouter = require('./routes/password-help'),
-  app = express();
+  passwordHelpRouter = require('./routes/password-help');
 
 require('./auth').init(app);
 
@@ -48,11 +45,9 @@ app.use(passport.session())
 
 app.use('/', index)
 app.use('/data', data)
-app.use('/data1', data1)
 app.use('/admin', admin)
 app.use('/logout', logout)
 app.use('/vehicle', vehicle)
-app.use('/vehicle1', vehicle1)
 app.use('/user', userRouter)
 app.use('/contact', contact)
 app.use('/catalog', catalog)
