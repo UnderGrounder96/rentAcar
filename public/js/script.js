@@ -38,11 +38,10 @@ $(document).ready(() => {
     //ok?
     --days;
 
-    // console.log(date.toLocaleDateString());
     date.setDate(date.getDate() + days);
 
     todayDay = date.getDate();
-    todayMonth = date.getMonth() + 1; // January is 0!
+    todayMonth = date.getMonth() + 1;
 
     todayDay = _addZero(todayDay);
     todayMonth = _addZero(todayMonth);
@@ -77,10 +76,9 @@ $(document).ready(() => {
     $(toShow).addClass('active');
   }
 
-  function _addZero(arg) {
-    if (arg < 10) { arg = '0' + arg; }
-
-    return arg;
+  function _addZero(str) {
+    if (str < 10) str = '0' + str;
+    return str;
   }
 
   /*

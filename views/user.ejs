@@ -26,19 +26,20 @@
                 <i class="fa fa-user"></i>
             </div>
             <div class="user">
-                <strong>Username:</strong> <%= userData.fullName %>
+                <strong>Username:</strong> <%= user.fullName %>
             </div>
             <div class="user">
-                <strong>Adres-email:</strong> <%= userData.email %>
+                <strong>Adres-email:</strong> <%= user.email %>
             </div>
             <a href='/catalog' class="btn btn-lg btn-secondary">
                 Catalog
             </a>
         </div>
     </div>
-
     <br /> <!-- to be removed through padding-->
 </main>
+
+<br /> <!-- to be removed through padding-->
 
 <%- include('footer.ejs') %>
 

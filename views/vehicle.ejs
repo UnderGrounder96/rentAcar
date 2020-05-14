@@ -83,7 +83,7 @@
 
     <br>
 
-    <form class="row container col-md-11 " action="<%= '/vehicle/rem/'+ resv.idReservation%>" style="margin: auto;" method="post">
+    <form class="row container col-md-11 " action="/vehicle/rem/<%= resv.idReservation%>" style="margin: auto;" method="post">
     <button class="btn btn-danger btn-block btn-sm col-md-8"> Remove</button>
     </form>
     <% } %>
@@ -140,13 +140,14 @@
     <div class="container">
     <ul class="pagination pagination-lg">
     <% carsArr.forEach( (cr) => { %>
-        <li> <a href="<%= '/vehicle/'+ cr.idCar%>"> <img src="/<%= cr.photo %>" alt="cover"> </a></li>
+        <li> <a href="/vehicle/<%= cr.idCar%>"> <img src="/<%= cr.photo %>" alt="cover"> </a></li>
     <% }) %>
     </ul>
     </div>
-
     <% }%>
 </main>
+
 <%- include('footer.ejs') %>
+
 </body>
 </html>

@@ -1,31 +1,21 @@
-const express = require('express'),
-  router = express.Router(),
+const router = require('express').Router(),
   db = require('../db/db');
 
-router.get('/', function (req, res, next) {
-  if (req.user) {
-    db.query('SELECT DISTINCT type FROM cars WHERE active>0;',
-      (error, result) => {
-        if (!result.length) {
-          res.send('No brands found!')
-        } else {
-          db.query('SELECT * FROM cars WHERE active>0 ORDER BY model, type;',
-            (error1, result1) => {
-              if (!result1.length) {
-                res.send('No brands found!')
-              } else {
-                res.render('catalog', {
-                  carArr: result1,
-                  carsArr: result,
-                  user: req.user
-                })
-              }
-            })
-        }
-      })
-  } else {
-    res.redirect('/')
-  }
-})
+router.get('/', (req, res) => {
+  if (!req.user) return res.redirect('/');
 
-module.exports = router
+  db.query(`SELECT * FROM cars
+    WHERE active>0 ORDER BY model, type;`, (err, result) => {
+    if (!result.length) throw "No brand vehicles found!";
+
+    db.query(`SELECT DISTINCT type FROM cars`, (err1, result1) => {
+      return res.render('catalog', {
+        carArr: result,
+        carsArr: result1,
+        user: req.user
+      });
+    });
+  });
+});
+
+module.exports = router;
