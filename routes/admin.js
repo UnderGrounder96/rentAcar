@@ -6,22 +6,22 @@ router.get('/', (req, res) => {
   if (!req.user.admin) return res.redirect('/library/');
 
   db.query(`SELECT * FROM cars;`, (err, result) => {
-    db.query(`SELECT * FROM reservations
-      JOIN cars ON reservations.idCar=cars.idCar
-      WHERE DATE(reservations.dateOut)>=CURDATE();`, (err1, result1) => {
-      db.query(`SELECT idUser, fullName, email, admin, active FROM users;`, (err2, result2) => {
-        res.render('admin', {
-          car: null,
-          carsArr: result,
-          res: req.query.res,
-          resv: null,
-          resArr: result1,
-          userArr: result2,
-          userData: null,
-          user: req.user
-        });
+  db.query(`SELECT * FROM reservations
+    JOIN cars ON reservations.idCar=cars.idCar
+    WHERE DATE(reservations.dateOut)>=CURDATE();`, (err1, result1) => {
+    db.query(`SELECT idUser, fullName, email, admin, active FROM users;`, (err2, result2) => {
+      res.render('admin', {
+        car: null,
+        carsArr: result,
+        res: req.query.res,
+        resv: null,
+        resArr: result1,
+        userArr: result2,
+        userData: null,
+        user: req.user
       });
     });
+  });
   });
 });
 
@@ -30,22 +30,22 @@ router.get('/car/:car_id', (req, res) => {
   if (!req.user.admin) return res.redirect('/library/');
 
   db.query(`SELECT * FROM cars WHERE idCar="${req.params.car_id}";`, (err, result) => {
-    db.query(`SELECT name FROM brand;`, (err1, result1) => {
-      db.query(`SELECT DISTINCT type FROM cars;`, (err2, result2) => {
-        res.render('admin', {
-          car: result[0],
-          slctArr: result1,
-          slct1Arr: result2,
-          carsArr: null,
-          res: null,
-          resv: null,
-          resArr: null,
-          userArr: null,
-          userData: null,
-          user: req.user
-        });
-      });
+  db.query(`SELECT name FROM brand;`, (err1, result1) => {
+  db.query(`SELECT DISTINCT type FROM cars;`, (err2, result2) => {
+    return res.render('admin', {
+      car: result[0],
+      slctArr: result1,
+      slct1Arr: result2,
+      carsArr: null,
+      res: null,
+      resv: null,
+      resArr: null,
+      userArr: null,
+      userData: null,
+      user: req.user
     });
+  });
+  });
   });
 });
 
@@ -76,7 +76,7 @@ router.get('/user/:user_id', (req, res) => {
 
   db.query(`SELECT idUser, fullName, email, admin, active FROM users
     WHERE idUser="${req.params.user_id}";`, (err, result) => {
-    res.render('admin', {
+    return res.render('admin', {
       car: null,
       carsArr: null,
       res: null,

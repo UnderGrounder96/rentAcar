@@ -1,27 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Crimson+Text:400,700,900,400italic,700italic,900italic|Playfair+Display:400,700,900,400italic,700italic,900italic|Rock+Salt:400);
 
-.user_profile {
-  border: 10px solid;
-  border-radius: 2px;
-  display: block;
-  position: relative;
-}
-
-.user_profile .user {
-  font-size: 22px;
-  margin: 1% 0 6% 0;
-}
-
-.user_profile::after {
-  content: "";
-  background: url("/images/logo.jpg") center center no-repeat;
-  opacity: 0.1;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
+main {
+  border: 5px solid;
+  border-radius: 5px;
 }
 
 .car_header * {

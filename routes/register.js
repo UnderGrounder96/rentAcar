@@ -4,11 +4,11 @@ const router = require('express').Router(),
 
 router.get('/', (req, res) => {
   if (req.user) return res.redirect('/library');
-  res.render('register', { user: null, err: req.query.err });
+  res.render('register', { user: null, err: null });
 });
 
 router.post('/', (req, res, next) => {
-  if (req.body.active === "0") return res.redirect('/register?err=yes');
+  if (req.body.active === "0") return res.render('register', { user: null, err: "yes" });
 
   crypto.scrypt(req.body.password, 'salt', 32, (err, passEncrypted) => {
     const user = {
@@ -20,16 +20,14 @@ router.post('/', (req, res, next) => {
     };
 
     db.query(`INSERT INTO users SET ?`, user, (err) => {
-      if (err) return res.redirect('/register?err=no');
-    });
+      if (err) return res.render('register', { user: null, err: "no" });
 
-    db.query(`SELECT * FROM users
-      WHERE email="${user.email}";`, (err, result) => {
-      if (err) return res.redirect('/register?err=no');
-      
-      req.login(result[0], (err) => {
-        if (err) return next(err);
-        return res.redirect('/library');
+      db.query(`SELECT * FROM users
+        WHERE email="${user.email}";`, (err, result) => {
+        return req.login(result[0], (err) => {
+          if (err) return next(err);
+          return res.redirect('/library');
+        });
       });
     });
   });

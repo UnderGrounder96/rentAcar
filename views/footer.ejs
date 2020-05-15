@@ -1,5 +1,5 @@
-<footer class="page-footer ">
-  <ul class="row pt-3 text-center list-unstyled list-inline">
+<footer class="page-footer pt-4">
+  <ul class="row text-center list-unstyled list-inline">
     <li class="col list-inline-item">
       <a href="/policy">Policy</a>
     </li>
@@ -13,13 +13,8 @@
     </li>
   </ul>
 
-  <div class="footer-copyright py-2 text-center">
-    &copy; 2018 - <span id="cop"></span>. <b>RentAcar!</b> All rights reserved.
+  <div class="footer-copyright py-1 text-center">
+    &copy; 2018 - <%= new Date().getFullYear() %>.
+    <strong>RentAcar!</strong> All rights reserved.
   </div>
 </footer>
-
-<script>
-  $(document).ready(function(){
-    $("#cop").text(new Date().getFullYear());
-  });
-</script>

@@ -6,17 +6,17 @@ const path = require('path'),
   createError = require('http-errors'),
   cookieParser = require('cookie-parser'),
   app = express(),
-  data = require('./routes/data'),
-  index = require('./routes/index'),
-  admin = require('./routes/admin'),
-  logout = require('./routes/logout'),
-  vehicle = require('./routes/vehicle'),
-  contact = require('./routes/contact'),
-  catalog = require('./routes/catalog'),
+  dataRouter = require('./routes/data'),
+  indexRouter = require('./routes/index'),
+  adminRouter = require('./routes/admin'),
+  logoutRouter = require('./routes/logout'),
+  vehicleRouter = require('./routes/vehicle'),
+  contactRouter = require('./routes/contact'),
+  catalogRouter = require('./routes/catalog'),
   userRouter = require('./routes/user'),
   loginRouter = require('./routes/login'),
   libraryRouter = require('./routes/library'),
-  termsOfUse = require('./routes/terms-of-use'),
+  termsOfUseRouter = require('./routes/terms-of-use'),
   registerRouter = require('./routes/register'),
   passwordHelpRouter = require('./routes/password-help');
 
@@ -43,18 +43,18 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.use('/', index)
-app.use('/data', data)
-app.use('/admin', admin)
-app.use('/logout', logout)
-app.use('/vehicle', vehicle)
+app.use('/', indexRouter)
 app.use('/user', userRouter)
-app.use('/contact', contact)
-app.use('/catalog', catalog)
+app.use('/data', dataRouter)
+app.use('/admin', adminRouter)
 app.use('/login', loginRouter)
+app.use('/logout', logoutRouter)
+app.use('/vehicle', vehicleRouter)
+app.use('/contact', contactRouter)
+app.use('/catalog', catalogRouter)
 app.use('/library', libraryRouter)
-app.use('/terms-of-use', termsOfUse)
 app.use('/register', registerRouter)
+app.use('/terms-of-use', termsOfUseRouter)
 app.use('/password-help', passwordHelpRouter)
 
 // page not found
