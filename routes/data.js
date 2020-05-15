@@ -24,10 +24,10 @@ router.get('/:data', (req, res) => {
       });
     } else {
       db.query(`SELECT * FROM cars
-      WHERE model LIKE "%${req.params.data}%"
-      OR year LIKE "%${req.params.data}%"
-      OR type LIKE "%${req.params.data}%"
-      AND active>0;`, (err1, result1) => {
+        WHERE model LIKE "%${req.params.data}%"
+        OR year LIKE "%${req.params.data}%"
+        OR type LIKE "%${req.params.data}%"
+        AND active>0;`, (err1, result1) => {
         if (!result1.length)
           return res.render('page_not_found', { user: req.user });
 

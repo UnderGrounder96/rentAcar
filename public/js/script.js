@@ -22,33 +22,18 @@ $(document).ready(() => {
   dateClassObj.val(todayFullDate);
   dateClassObj.attr('min', todayFullDate);
 
+  $('#spMin').click(() => {
+    $('#days').val(1);
+    __change();
+  });
+
+  $('#spMax').click(() => {
+    $('#days').val(6);
+    __change();
+  });
+
   $('#dateIn, #days').change(() => {
-    let days = $('#days').val(),
-      price = $('#price').val();
-
-    price *= days;
-
-    // changes price
-    $('#numbers').val(price);
-
-    todayFullDate = $('#dateIn').val();
-
-    date = new Date(todayFullDate);
-
-    //ok?
-    --days;
-
-    date.setDate(date.getDate() + days);
-
-    todayDay = date.getDate();
-    todayMonth = date.getMonth() + 1;
-
-    todayDay = _addZero(todayDay);
-    todayMonth = _addZero(todayMonth);
-
-    todayFullDate = date.getFullYear() + '-' + todayMonth + '-' + todayDay;
-
-    $('#dateOut').val(todayFullDate);
+    __change();
   })
 
   /* -----------------------ADMIN------------------------ */
@@ -81,6 +66,35 @@ $(document).ready(() => {
     return str;
   }
 
+  function __change(){
+    let days = $('#days').val(),
+    price = $('#price').val();
+
+    price *= days;
+
+    // changes price
+    $('#numbers').val(price);
+
+    todayFullDate = $('#dateIn').val();
+
+    date = new Date(todayFullDate);
+
+    // days goes from 1-6 henche:
+    --days;
+
+    date.setDate(date.getDate() + days);
+
+    todayDay = date.getDate();
+    todayMonth = date.getMonth() + 1;
+
+    todayDay = _addZero(todayDay);
+    todayMonth = _addZero(todayMonth);
+
+    todayFullDate = date.getFullYear() + '-' + todayMonth + '-' + todayDay;
+
+    $('#dateOut').val(todayFullDate);
+  }
+
   /*
   // ------------------ NOT WORKING!!!
     $("#cars, #resvs, #users").click(() => {
@@ -100,4 +114,4 @@ $(document).ready(() => {
           break;
       }
     }); */
-})
+});

@@ -8,8 +8,7 @@ router.get('/', (req, res) => {
 
 router.post('/', passport.authenticate('local', {
   successRedirect: '/library',
-  failureRedirect: '/login?err=yes',
-  session: true
+  failureRedirect: '/login?err=yes'
 }));
 
 module.exports = router;
