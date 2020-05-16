@@ -8,7 +8,8 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res, next) => {
-  if (req.body.active === "0") return res.render('register', { user: null, err: "yes" });
+  if (req.body.active === "0")
+    return res.render('register', { user: null, err: "yes" });
 
   crypto.scrypt(req.body.password, 'salt', 32, (err, passEncrypted) => {
     const user = {
@@ -20,10 +21,11 @@ router.post('/', (req, res, next) => {
     };
 
     db.query(`INSERT INTO users SET ?`, user, (err) => {
-      if (err) return res.render('register', { user: null, err: "no" });
+      if (err)
+        return res.render('register', { user: null, err: "no" });
 
       db.query(`SELECT * FROM users
-        WHERE email="${user.email}";`, (err, result) => {
+        WHERE email LIKE ?;`, user.email, (err, result) => {
         return req.login(result[0], (err) => {
           if (err) return next(err);
           return res.redirect('/library');

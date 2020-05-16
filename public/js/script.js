@@ -22,18 +22,37 @@ $(document).ready(() => {
   dateClassObj.val(todayFullDate);
   dateClassObj.attr('min', todayFullDate);
 
-  $('#spMin').click(() => {
-    $('#days').val(1);
-    __change();
-  });
+  $('#dateIn, #days').click(() => {
+    let days = $('#days').val(),
+    price = $('#price').val(),
+    hours = 20;
 
-  $('#spMax').click(() => {
-    $('#days').val(6);
-    __change();
-  });
+    price *= days;
+    hours *= days;
 
-  $('#dateIn, #days').change(() => {
-    __change();
+    // changes price
+    $('#numbers').val(price);
+    $('#spMin').text(hours+'h');
+
+    todayFullDate = $('#dateIn').val();
+
+    date = new Date(todayFullDate);
+
+    // needed for getDate()
+    --days;
+    date.setDate(date.getDate() + days);
+
+    todayDay = date.getDate();
+    todayMonth = date.getMonth() + 1; // January is 0!
+
+    todayDay = _addZero(todayDay);
+    todayMonth = _addZero(todayMonth);
+
+    todayFullDate = date.getFullYear() +
+      '-' + todayMonth +
+      '-' + todayDay;
+
+    $('#dateOut').val(todayFullDate);
   })
 
   /* -----------------------ADMIN------------------------ */
@@ -66,37 +85,9 @@ $(document).ready(() => {
     return str;
   }
 
-  function __change(){
-    let days = $('#days').val(),
-    price = $('#price').val();
 
-    price *= days;
-
-    // changes price
-    $('#numbers').val(price);
-
-    todayFullDate = $('#dateIn').val();
-
-    date = new Date(todayFullDate);
-
-    // days goes from 1-6 henche:
-    --days;
-
-    date.setDate(date.getDate() + days);
-
-    todayDay = date.getDate();
-    todayMonth = date.getMonth() + 1;
-
-    todayDay = _addZero(todayDay);
-    todayMonth = _addZero(todayMonth);
-
-    todayFullDate = date.getFullYear() + '-' + todayMonth + '-' + todayDay;
-
-    $('#dateOut').val(todayFullDate);
-  }
-
-  /*
   // ------------------ NOT WORKING!!!
+  /*
     $("#cars, #resvs, #users").click(() => {
       _show(this);
 
@@ -113,5 +104,6 @@ $(document).ready(() => {
           $("#users1").show();
           break;
       }
-    }); */
+    });
+  */
 });

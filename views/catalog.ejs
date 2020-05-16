@@ -40,7 +40,9 @@
       <a href="/data/<%= car.brand %>">
         <%= car.brand %>
       </a>
-      - <%=car.year%>
+      - <%= car.year %>
+      <br />
+      <em><%= car.price %>&#36;</em>
     </p>
     <a href="/vehicle/<%= car.idCar %>"
       class="btn btn-primary btn-block mt-auto">

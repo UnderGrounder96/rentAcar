@@ -8,6 +8,7 @@
 <%- include('navbar.ejs') %>
 
 <main class="container" role="main">
+  <div class="container">
   <% switch (res) {
     case "editCar": %>
     <h6 class="classified">
@@ -81,18 +82,18 @@
       </a>
       -
       <strong>
-        <i><%= res.fullPrice %> &#36;</i>
+        <em><%= res.fullPrice %> &#36;</em>
       </strong>
 
       <br />
-      <i class="w-0 p-0">
+      <em class="w-0 p-0">
         <%=  new Date(res.dateIn).toDateString() %>
-      </i>
+      </em>
 
       <br />
-      <i class="w-0 p-0">
+      <em class="w-0 p-0">
         <%= new Date(res.dateOut).toDateString() %>
-      </i>
+      </em>
     </p>
 
     <a href="/admin/resv/<%= res.idReservation %>"
@@ -102,7 +103,7 @@
   </div>
   <% })%>
   </div>
-  <% } else { %>
+  <% } else { //---------- NOT WORKING %>
     <br />
     <h4> There are no <strong> reservations </strong>.</h4>
   <% } %>
@@ -114,7 +115,7 @@
   <% userArr.forEach( (use) => { %>
   <div class="card text-center">
     <p class="card-text">
-      <strong> <i> <%= use.fullName %> </i> </strong>
+      <strong> <em> <%= use.fullName %> </em> </strong>
       <br />
       <a><%= use.idUser %></a>
       <br />
@@ -130,17 +131,22 @@
   <% } %>
   </div>
 
+  <div class="container row book_container mx-auto">
   <% if (car) { %>
-  <div class="col-md-5">
+  <div class="col">
     <img class="img-fluid mx-auto d-block"
       src="/<%= car.photo %>">
+    <hr />
+    <p class="py-3 synopsis text-justify">
+      <%= car.details %>
+    </p>
   </div>
 
-  <div id="car_info" class="col-sm-7 text-left card ">
+  <div id="car_info" class="text-center card">
   <form action="/admin/editCar/<%= car.idCar%>" method="post">
     <div class="form-group">
       <label><%= car.brand %>:
-        <input type="text" class="form-control col-md-10" maxlength="20"
+        <input type="text" class="col form-control" maxlength="20"
           name="model" value="<%= car.model%>" required>
       </label>
     </div>
@@ -167,51 +173,47 @@
     </label>
     </div>
 
-    <div class="form-group">
-      <label> Production:
-      <input type="number" class="form-control w-50" name="year"
+    <div class="form-group row">
+      <label class="col"> Production:
+      <input type="number" class="mx-auto col-md-5 form-control" name="year"
         value="<%= car.year %>" required>
       </label>
     </div>
 
-    <div class="form-group">
-      <label> Price (<i>&#36;</i>):
-        <input type="number" class="form-control w-50"
-          name="price" value="<%= car.price %>" required>
-      </label>
-    </div>
-
-    <div class="form-group">
-    <label>Active:
-      <select class="form-control" name="active">
+    <div class="row form-group">
+    <label class="col">Active:
+    <select class="form-control" name="active">
       <option value="1" selected>Yes</option>
       <option value="0">No</option>
-      </select>
+    </select>
+    </label>
+
+    <label class="col">Total(<em>&#36;</em>):<br />
+      <input type="number" id="numbers" class="form-control" min="100"
+        max="5000" name="numbers" value="<%= car.price %>">
     </label>
     </div>
 
     <hr>
-
-    <div class="py-3 synopsis text-justify">
-      <%= car.details %>
-    </div>
 
     <input type="submit"
       class="btn btn-success btn-block btn-sm col-md-12" value="Change">
   </form>
   </div>
   <% } %>
+  </div>
 
+  <div class="container row book_container mx-auto">
   <%if (resv) { %>
-  <div class="col-md-5">
+  <div class="col">
     <img class="img-fluid mx-auto d-block"
       src="/<%= resv.photo %>">
   </div>
 
-  <div id="car_info" class="col-md-5 text-left card">
+  <div id="car_info" class="text-center card">
   <div class="title">
   <strong>
-    <i> <%= resv.brand %> <%= resv.model %> </i>
+    <em> <%= resv.brand %> <%= resv.model %> </em>
   </strong>
   </div>
 
@@ -239,7 +241,7 @@
     To: <em><%= new Date(resv.dateOut).toDateString() %></em>
   </div>
 
-  <hr />
+  <hr class="pb-2"/>
 
   <form action="/admin/editRes/<%= resv.idReservation%>" method="post">
   <div class="form-group">
@@ -256,46 +258,44 @@
   </label>
   </div>
 
-  <div class="form-group">
-  <label>Active:
+  <div class="row form-group">
+  <label class="col">Active:
   <select class="form-control" name="active">
     <option value="1" selected>Yes</option>
     <option value="0">No</option>
   </select>
   </label>
+
+  <label>Total(<em>&#36;</em>):<br />
+    <input id="price" type="hidden" value="<%= resv.price %>">
+    <input type="number" id="numbers" class="mx-auto col-md-8 form-control" min="100"
+      max="500000" name="numbers" value="<%= resv.price %>" readonly>
+  </label>
   </div>
 
-  <div class="form-group">
-    <span id="spMin" class="font-weight-bold text-primary mr-1">1</span>
-    <input id="days" class="col-md-5 custom-range"
+  <div class="form-group row">
+    <span id="spMin" class="font-weight-bold text-primary mr-3">20h</span>
+    <input id="days" class="col custom-range"
       type="range" name="days" min="1" max="6" value="1">
-    <span id="spMax" class="font-weight-bold text-primary">5</span>
   </div>
 
-  <div class="form-group">
-    <label>Full price:
-      <input id="price" type="hidden" value="<%= resv.price %>">
-      <input id="numbers" size="3" name="numbers"
-        value="<%= resv.price %>" readonly> <i>&#36;</i>
-    </label>
-  </div>
-
-  <input type="submit" class="col-md-6 btn btn-primary btn-sm" value="Edit">
+  <input type="submit" class="col btn btn-primary btn-sm" value="Edit">
   </form>
 
   <form class="py-2" action="/admin/rem/<%= resv.idReservation%>" method="post">
-  <input type="submit" class="col-md-6 btn btn-danger btn-sm" value="Remove">
+  <input type="submit" class="col btn btn-danger btn-sm" value="Remove">
   </form>
   </div>
   <% } %>
+  </div>
 
   <%if (userData) { %>
   <div class="text-center">
-    <i class="fa fa-user fa-4x"></i>
+    <em class="fa fa-user fa-4x"></em>
   </div>
 
-  <div id="car_info" class="col-md-9 text-left mx-auto card">
-  <form action="/admin/editUse/<%= userData.idUser%>" method="post">
+  <form id="car_info" class="col-md-5 text-left mx-auto card"
+    action="/admin/editUse/<%= userData.idUser%>" method="post">
   <div class="form-group">
   <label>Full Name:</label>
   <input type="text" size="14" maxlength="20" class="form-control"
@@ -325,10 +325,10 @@
   </div>
 
   <input type="submit"
-    class="btn btn-danger btn-block btn-sm col-sm-12" value="Edit">
+    class="btn btn-danger btn-block btn-sm" value="Edit">
   </form>
-  </div>
   <% } %>
+</div>
 </main>
 
 <%- include('footer.ejs') %>
