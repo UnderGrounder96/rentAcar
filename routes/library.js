@@ -6,10 +6,10 @@ router.get('/', (req, res) => {
 
   db.query(`SELECT * FROM reservations
     JOIN cars ON reservations.idCar=cars.idCar
-    WHERE reservations.idUser="${req.user.idUser}"
+    WHERE reservations.idUser LIKE ?
     AND DATE(dateOut)>=CURDATE()
-    AND reservations.active>0
-    AND cars.active>0;`, (err, result) => {
+    AND reservations.active NOT LIKE 0
+    AND cars.active NOT LIKE 0;`, req.user.idUser, (err, result) => {
     if (!result.length) return res.render('library', {
       res: req.query.res,
       carsArr: null,

@@ -15,37 +15,33 @@
     src="/<%= car.photo %>" alt="<%= car.model %> image">
   <%if (user) { %>
     <%if (!resv) { %>
-    <form action="/vehicle/add/<%= car.idCar %>" method="post">
+    <form class="text-center py-3 row" action="/vehicle/add/<%= car.idCar %>" method="post">
       <div class="form-group">
-      <label>Date in:
-          <input id="dateIn" class="date form-control"
-            type="date" name="dateIn" required>
-      </label>
-      </div>
-
-      <div class="form-group">
-      <label>Date out:
-        <input id="dateOut" class="date form-control"
+        <label>Date in:
+        <input id="dateIn" class="mx-auto col date form-control"
+          type="date" name="dateIn" required>
+        </label>
+        <label>Date out:
+        <input id="dateOut" class="mx-auto col date form-control"
           type="date" name="dateOut" readonly required>
-      </label>
+        </label>
       </div>
 
       <div class="form-group">
-        <span id="spMin" class="font-weight-bold text-primary mr-1">1</span>
-        <input id="days" class="col-md-5 custom-range"
+        <span id="spMin" class="font-weight-bold text-primary mr-3">20h</span>
+        <input id="days" class="col-md-8 custom-range"
           type="range" name="days" min="1" max="6" value="1">
-        <span id="spMax" class="font-weight-bold text-primary">5</span>
       </div>
 
-      <div class="form-group">
+      <div class="form-group row">
         <em>Total (&#36;):</em>
         <input id="price" type="hidden" value="<%= car.price %>">
-        <input id="numbers" size="3" name="numbers"
-          value="<%= car.price %>" readonly>
+        <input id="numbers" class="mx-auto col-md-6 form-control"
+          size="3" name="numbers" value="<%= car.price %>" readonly>
       </div>
 
       <input type="submit"
-      class="col-md-6 btn btn-primary btn-block form-control" value="Reserve">
+      class="mx-auto col-md-6 btn btn-primary btn-block form-control" value="Reserve">
     </form>
 
     <% } else { %>
@@ -59,45 +55,42 @@
         <em>
           <u><%= new Date(resv.dateOut).toDateString()%></u>
         </em>
-    </div>
 
-    <form action="/vehicle/edit/<%= resv.idReservation%>" method="post">
+
+    <form class="my-3 row" action="/vehicle/edit/<%= resv.idReservation%>" method="post">
       <div class="form-group">
-        <label>Date in: </label>
-        <input id="dateIn" class="col-md-6 date form-control"
+        <label>Date in:
+        <input id="dateIn" class="mx-auto col date form-control"
           type="date" name="dateIn" required>
-      </div>
-
-      <div class="form-group">
-        <label>Date out: </label>
-        <input id="dateOut" class="col-md-6 date form-control"
+        </label>
+        <label>Date out:
+        <input id="dateOut" class="mx-auto col date form-control"
           type="date" name="dateOut" readonly required>
+        </label>
       </div>
 
       <div class="form-group">
-        <span id="spMin" class="font-weight-bold text-primary mr-1">1</span>
-        <input id="days" class="col-md-5 custom-range"
+        <span id="spMin" class="font-weight-bold text-primary mr-3">20h</span>
+        <input id="days" class="col-md-8 custom-range"
           type="range" name="days" min="1" max="6" value="1">
-        <span id="spMax" class="font-weight-bold text-primary">5</span>
       </div>
 
-      <div class="form-group">
+      <div class="form-group row">
         <em>Total (&#36;):</em>
         <input id="price" type="hidden" value="<%= car.price %>">
-        <input id="numbers" size="3" name="numbers"
-          value="<%= car.price %>" readonly>
+        <input id="numbers" class="mx-auto col-md-6 form-control"
+          size="3" name="numbers" value="<%= car.price %>" readonly>
       </div>
 
-      <input type="submit"
-        class="col-md-6 btn btn-success btn-block form-control" value="Edit">
+      <input type="submit" value="Edit"
+        class="mx-auto col col-md-6 btn btn-success btn-block form-control">
     </form>
 
-    <br />
-
-    <form action="/vehicle/rem/<%= resv.idReservation%>" method="post">
-      <input type="submit"
-      class="col-md-6 btn btn-danger btn-block form-control" value="Remove">
+    <form class="row" action="/vehicle/rem/<%= resv.idReservation%>" method="post">
+      <input type="submit" value="Remove"
+        class="mx-auto col-md-6 btn btn-danger btn-block form-control">
     </form>
+    </div>
     <% } %>
   <% } %>
   </div>

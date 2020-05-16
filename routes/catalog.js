@@ -5,7 +5,7 @@ router.get('/', (req, res) => {
   if (!req.user) return res.redirect('/');
 
   db.query(`SELECT * FROM cars
-    WHERE active>0 ORDER BY model, type;`, (err, result) => {
+    WHERE active NOT LIKE 0 ORDER BY model, type;`, (err, result) => {
     if (!result.length) throw "No brand vehicles found!";
 
     db.query(`SELECT DISTINCT type FROM cars`, (err1, result1) => {

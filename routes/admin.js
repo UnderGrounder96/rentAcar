@@ -9,7 +9,8 @@ router.get('/', (req, res) => {
   db.query(`SELECT * FROM reservations
     JOIN cars ON reservations.idCar=cars.idCar
     WHERE DATE(reservations.dateOut)>=CURDATE();`, (err1, result1) => {
-    db.query(`SELECT idUser, fullName, email, admin, active FROM users;`, (err2, result2) => {
+    db.query(`SELECT idUser, fullName, email, admin, active
+      FROM users;`, (err2, result2) => {
       res.render('admin', {
         car: null,
         carsArr: result,
@@ -29,7 +30,7 @@ router.get('/car/:car_id', (req, res) => {
   if (!req.user) return res.redirect('/');
   if (!req.user.admin) return res.redirect('/library/');
 
-  db.query(`SELECT * FROM cars WHERE idCar="${req.params.car_id}";`, (err, result) => {
+  db.query(`SELECT * FROM cars WHERE idCar LIKE ?;`, req.params.car_id, (err, result) => {
   db.query(`SELECT name FROM brand;`, (err1, result1) => {
   db.query(`SELECT DISTINCT type FROM cars;`, (err2, result2) => {
     return res.render('admin', {
@@ -53,10 +54,11 @@ router.get('/resv/:res_id', (req, res) => {
   if (!req.user) return res.redirect('/');
   if (!req.user.admin) return res.redirect('/library/');
 
-  db.query(`SELECT * FROM ((reservations JOIN cars ON reservations.idCar=cars.idCar)
+  db.query(`SELECT *
+    FROM ((reservations JOIN cars ON reservations.idCar=cars.idCar)
     JOIN users ON reservations.idUser=users.idUser)
-    WHERE idReservation="${req.params.res_id}"
-    AND DATE(dateOut)>=CURDATE();`, (err, result) => {
+    WHERE idReservation LIKE ?
+    AND DATE(dateOut)>=CURDATE();`, req.params.res_id, (err, result) => {
     res.render('admin', {
       car: null,
       carsArr: null,
@@ -75,7 +77,7 @@ router.get('/user/:user_id', (req, res) => {
   if (!req.user.admin) return res.redirect('/library/');
 
   db.query(`SELECT idUser, fullName, email, admin, active FROM users
-    WHERE idUser="${req.params.user_id}";`, (err, result) => {
+    WHERE idUser LIKE ?;`, req.params.user_id,(err, result) => {
     return res.render('admin', {
       car: null,
       carsArr: null,
@@ -90,46 +92,62 @@ router.get('/user/:user_id', (req, res) => {
 });
 
 router.post('/editCar/:car_id', (req, res) => {
+  if (!req.user) return res.redirect('/');
+  if (!req.user.admin) return res.redirect('/library/');
+
   db.query(`UPDATE cars
-    SET model="${req.body.model}",
-      year="${req.body.year}",
-      type="${req.body.type}",
-      brand="${req.body.brand}",
-      price="${req.body.price}",
-      active="${req.body.active}"
-    WHERE idCar="${req.params.car_id}";`, (err) => {
+    SET model=?,
+      year=?,
+      type=?,
+      brand=?,
+      price=?,
+      active=?
+    WHERE idCar LIKE ?;`, [req.body.model,
+      req.body.year, req.body.type, req.body.brand, req.body.numbers,
+      req.body.active, req.params.car_id], (err) => {
     if (err) return res.send({ code: 400, failed: __print('change', err)});
     return res.redirect('/admin?res=editCar');
   });
 });
 
 router.post('/editRes/:res_id', (req, res) => {
+  if (!req.user) return res.redirect('/');
+  if (!req.user.admin) return res.redirect('/library/');
+  
   db.query(`UPDATE reservations
-    SET fullPrice="${req.body.numbers}",
-      active="${req.body.active}",
-      dateIn="${req.body.dateIn}",
-      dateOut="${req.body.dateOut}"
-    WHERE idReservation="${req.params.res_id}";`, (err) => {
+    SET fullPrice=?,
+      active=?,
+      dateIn=?,
+      dateOut=?
+    WHERE idReservation LIKE ?;`, [req.body.numbers, req.body.active,
+      req.body.dateIn, req.body.dateOut, req.params.res_id], (err) => {
     if (err) return res.send({ code: 400, failed: __print('change', err)});
     return res.redirect('/admin?res=editRes');
   });
 });
 
 router.post('/rem/:res_id/', (req, res) => {
+  if (!req.user) return res.redirect('/');
+  if (!req.user.admin) return res.redirect('/library/');
+
   db.query(`DELETE FROM reservations
-    WHERE idReservation="${req.params.res_id}";`, (err) => {
+    WHERE idReservation LIKE ?;`, req.params.res_id, (err) => {
     if (err) return res.send({ code: 400, failed: __print('delete', err)});
     return res.redirect('/admin?res=rem');
   });
 });
 
 router.post('/editUse/:user_id', (req, res) => {
+  if (!req.user) return res.redirect('/');
+  if (!req.user.admin) return res.redirect('/library/');
+
   db.query(`UPDATE users
-    SET fullName="${req.body.name}",
-      email="${req.body.email}",
-      admin="${req.body.admin}",
-      active="${req.body.active}"
-    WHERE idUser="${req.params.user_id}";`, (err) => {
+    SET fullName=?,
+      email=?,
+      admin=?,
+      active=?
+    WHERE idUser LIKE ?;`, [req.body.name, req.body.email,
+      req.body.admin, req.body.active, req.params.user_id], (err) => {
     if (err) return res.send({ code: 400, failed: __print('change', err)});
     return res.redirect('/admin?res=editUse');
   });
