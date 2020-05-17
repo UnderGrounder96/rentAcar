@@ -30,9 +30,9 @@
     </h2>
 
     <% if (carsArr) { %>
-    <div class="col-md cars_container card-deck-wrapper card-deck">
+    <div class="row col-md cars_container card-deck-wrapper card-deck">
     <% carsArr.forEach( (car) => { %>
-    <div class="my-2 card text-center">
+    <div class="col my-2 card text-center">
       <img class="card-img-top img-fluid mx-auto d-block"
         src="/<%= car.photo %>"
         alt="<%= car.model %> image">

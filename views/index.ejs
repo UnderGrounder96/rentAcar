@@ -86,9 +86,9 @@
         Trending:
     </h3>
     <%if (carsArr) { %>
-    <div class="cars_container card-deck-wrapper card-deck">
+    <div class="row cars_container card-deck-wrapper card-deck">
       <% carsArr.forEach( (car) => { %>
-      <div class="my-2 card text-center">
+      <div class="col my-2 card text-center">
       <img class="img-fluid"
         src="/<%= car.photo %>"
         alt="<%= car.model %> image">
