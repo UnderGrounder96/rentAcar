@@ -1,19 +1,20 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: "Lucida Grande";
+}
+
+main {
   position: relative;
 }
 
 main::after {
-  background: url("/images/logo.jpg") center no-repeat;
   content: "";
-  opacity: 0.1;
-  top: 0;
-  scroll-behavior: smooth;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
+  background: url("/images/logo.jpg") center no-repeat;
   z-index: -1;
+  opacity: 0.1;
+  margin: auto;
+  position: absolute;
+  scroll-behavior: smooth;
+  top: 0; left: 0; bottom: 0; right: 0;
 }
 
 nav .navbar-brand {
@@ -23,7 +24,7 @@ nav .navbar-brand {
 }
 
 img:hover {
-  opacity: 0.5;
+  opacity: 0.9;
 }
 
 .nav-link {
@@ -48,23 +49,16 @@ input::-webkit-input-placeholder {
 .jumbotron {
   background-image: url('/images/jumbo1.jpg');
   color: white;
-  padding: 7%;
   position: relative;
-}
-
-.jumbotron row {
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, .5);
 }
 
 .jumbotron::before {
   content: "";
-  display: block;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, .5);
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
 }
 
 #title {
@@ -104,10 +98,6 @@ input::-webkit-input-placeholder {
 #car_info {
   background-color: white;
   padding: 3%;
-}
-
-.card {
-  margin-bottom: 2%;
 }
 
 .cars_container {

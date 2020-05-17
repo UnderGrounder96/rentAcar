@@ -27,7 +27,8 @@ router.get('/:data', (req, res) => {
         WHERE model LIKE CONCAT('%', ?, '%')
         OR year LIKE CONCAT('%', ?, '%')
         OR type LIKE CONCAT('%', ?, '%')
-        AND active NOT LIKE 0;`, [req.params.data,
+        OR price LIKE CONCAT('%', ?, '%')
+        AND active NOT LIKE 0;`, [req.params.data, req.params.data,
           req.params.data, req.params.data], (err1, result1) => {
         if (!result1.length)
           return res.render('page_not_found', { user: req.user });
