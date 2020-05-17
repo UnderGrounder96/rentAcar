@@ -1,12 +1,12 @@
-<nav class="navbar bg-white d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom box-shadow">
-<h5 class="my-0 mr-md-auto font-weight-normal form-inline">
-  <a class="navbar-brand" class="form-inline" href="/">
+<nav class="container navbar py-3 my-3 border-bottom">
+<h5 class="col font-weight-bold form-inline">
+  <a class="navbar-brand" href="/">
     <img class="img-fluid" src="/images/logo.jpg" alt="Logo" width="150px">
   </a>
 
   <%if (user){ %>
-    <a class="nav-link" href="/catalog"><strong>Catalog</strong></a>
-    <a class="nav-link" href="/library"><strong>Reservations</strong></a>
+    <a class="nav-link" href="/catalog">Catalog</a>
+    <a class="nav-link" href="/library">Reservations</a>
     <%if (user.admin){ %>
       <a class="nav-link text-primary" href="/admin">
         <strong>Administration</strong>
@@ -15,22 +15,23 @@
   <% } %>
 </h5>
 
+
 <%if (user){ %>
-<div class="my-2 my-md-0 mr-md-3">
-  <a class="col" href="/user">
-    <i class="fa fa-user fa-lg text-primary"></i>
+  <div class="row">
+  <a class="nav-link" href="/user">
+    <i class="text-primary fa fa-user fa-lg"></i>
   </a>
 
-  <a class="col" href="/logout">
-    <i class="fa fa-sign-out fa-lg text-primary"></i>
+  <a class="nav-link" href="/logout">
+    <i class="text-primary fa fa-sign-out fa-lg"></i>
   </a>
 
-  <form class="col" action="/find" method="POST">
+  <form class="col form-inline" action="/find" method="POST">
   <div class="input-group">
     <input type="search" name="item" class="form-control"
       placeholder="Brand, model, year" required autofocus>
     <div class="input-group-addon">
-      <button class="btn btn-primary btn-sm" type="submit">
+      <button class="btn btn-outline-primary" type="submit">
       <i class="fa fa-search"></i>
       </button>
     </div>
@@ -39,30 +40,19 @@
 </div>
 
 <% } else { %>
-<form class="navbar-forml" role="form" action="/login" method="post" class="form-inline">
-<div class="input-group">
-  <div class="formBox">
-    <input type="text" size="25" class="form-control" name="email"
+<form class="navbar-forml form-inline" role="form" action="/login" method="post">
+  <div class="input-group">
+    <input type="email"  class="form-control" name="email"
       placeholder="E-mail" minlength="4" maxlength="25" required>
-    <p>
-      <input type="checkbox" id="remember_me" name="remember_me"
-        tabindex="3" checked>
-      <label for="remember_me" class="greyText">Remember me</label>
-    </p>
   </div>
-
-  <div class="formBox">
-    <input type="password" size="15" class="form-control" name="password"
+  <div class="input-group col">
+    <input type="password" class="form-control" name="password"
       placeholder="Password" minlength="4" maxlength="20"
       autocomplete="new-password" required>
-    <a class="greyText" id="userForgotPassword"
-      rel="nofollow" href="/password-help">Forgot password?</a>
   </div>
-
   <div class="input-group-addon">
-    <input type="submit" class="btn btn-primary btn-block" value="Log in">
+    <input type="submit" class="btn btn-outline-primary" value="Log in">
   </div>
-</div>
 </form>
 <% } %>
 </nav>

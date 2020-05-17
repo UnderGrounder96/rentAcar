@@ -60,7 +60,7 @@
       - <%=car.year%>
     </p>
     <a href="/admin/car/<%= car.idCar %>"
-      class="btn btn-success btn-block mt-auto">
+      class="btn btn-outline-success btn-block mt-auto">
       More
     </a>
     </div>
@@ -97,7 +97,7 @@
     </p>
 
     <a href="/admin/resv/<%= res.idReservation %>"
-      class="btn btn-primary btn-block mt-auto">
+      class="btn btn-outline-primary btn-block mt-auto">
       More
     </a>
   </div>
@@ -122,7 +122,7 @@
     </p>
 
     <a href="/admin/user/<%= use.idUser %>"
-      class="btn btn-danger btn-block mt-auto">
+      class="btn btn-outline-danger btn-block mt-auto">
       More
     </a>
   </div>
@@ -197,7 +197,7 @@
     <hr>
 
     <input type="submit"
-      class="btn btn-success btn-block btn-sm col-md-12" value="Change">
+      class="btn btn-outline-success btn-block btn-sm col-md-12" value="Change">
   </form>
   </div>
   <% } %>
@@ -279,11 +279,11 @@
       type="range" name="days" min="1" max="6" value="1">
   </div>
 
-  <input type="submit" class="col btn btn-primary btn-sm" value="Edit">
+  <input type="submit" class="col btn btn-outline-primary btn-sm" value="Edit">
   </form>
 
   <form class="py-2" action="/admin/rem/<%= resv.idReservation%>" method="post">
-  <input type="submit" class="col btn btn-danger btn-sm" value="Remove">
+  <input type="submit" class="col btn btn-outline-danger btn-sm" value="Remove">
   </form>
   </div>
   <% } %>
@@ -325,7 +325,7 @@
   </div>
 
   <input type="submit"
-    class="btn btn-danger btn-block btn-sm" value="Edit">
+    class="btn btn-outline-danger btn-block btn-sm" value="Edit">
   </form>
   <% } %>
 </div>
@@ -333,8 +333,6 @@
 
 <%- include('footer.ejs') %>
 
-</body>
-
 <script src="/js/script.js"></script>
-
+</body>
 </html>

@@ -15,7 +15,7 @@
     src="/<%= car.photo %>" alt="<%= car.model %> image">
   <%if (user) { %>
     <%if (!resv) { %>
-    <form class="text-center py-3 row" action="/vehicle/add/<%= car.idCar %>" method="post">
+    <form class="py-3 row" action="/vehicle/add/<%= car.idCar %>" method="post">
       <div class="form-group">
         <label>Date in:
         <input id="dateIn" class="mx-auto col date form-control"
@@ -27,21 +27,17 @@
         </label>
       </div>
 
-      <div class="form-group">
+      <div class="form-group form-inline">
         <span id="spMin" class="font-weight-bold text-primary mr-3">20h</span>
-        <input id="days" class="col-md-8 custom-range"
+        <input id="days" class="col custom-range"
           type="range" name="days" min="1" max="6" value="1">
+          <em class="col text-center">Total (&#36;):</em>
+          <input id="price" type="hidden" value="<%= car.price %>">
+          <input id="numbers" class="form-control"
+            size="3" name="numbers" value="<%= car.price %>" readonly>
       </div>
-
-      <div class="form-group row">
-        <em>Total (&#36;):</em>
-        <input id="price" type="hidden" value="<%= car.price %>">
-        <input id="numbers" class="mx-auto col-md-6 form-control"
-          size="3" name="numbers" value="<%= car.price %>" readonly>
-      </div>
-
-      <input type="submit"
-      class="mx-auto col-md-6 btn btn-primary btn-block form-control" value="Reserve">
+        <input type="submit"
+          class="mx-1 btn btn-outline-primary form-control" value="Reserve">
     </form>
 
     <% } else { %>
@@ -57,7 +53,7 @@
         </em>
 
 
-    <form class="my-3 row" action="/vehicle/edit/<%= resv.idReservation%>" method="post">
+    <form class="my-2 row" action="/vehicle/edit/<%= resv.idReservation%>" method="post">
       <div class="form-group">
         <label>Date in:
         <input id="dateIn" class="mx-auto col date form-control"
@@ -69,26 +65,22 @@
         </label>
       </div>
 
-      <div class="form-group">
+      <div class="form-group form-inline">
         <span id="spMin" class="font-weight-bold text-primary mr-3">20h</span>
-        <input id="days" class="col-md-8 custom-range"
+        <input id="days" class="col custom-range"
           type="range" name="days" min="1" max="6" value="1">
+          <em class="col text-center">Total (&#36;):</em>
+          <input id="price" type="hidden" value="<%= car.price %>">
+          <input id="numbers" class="form-control"
+            size="3" name="numbers" value="<%= car.price %>" readonly>
       </div>
-
-      <div class="form-group row">
-        <em>Total (&#36;):</em>
-        <input id="price" type="hidden" value="<%= car.price %>">
-        <input id="numbers" class="mx-auto col-md-6 form-control"
-          size="3" name="numbers" value="<%= car.price %>" readonly>
-      </div>
-
-      <input type="submit" value="Edit"
-        class="mx-auto col col-md-6 btn btn-success btn-block form-control">
+        <input type="submit"
+          class="mx-1 btn btn-outline-success btn-block form-control" value="Edit">
     </form>
 
     <form class="row" action="/vehicle/rem/<%= resv.idReservation%>" method="post">
       <input type="submit" value="Remove"
-        class="mx-auto col-md-6 btn btn-danger btn-block form-control">
+        class="mx-1 btn btn-outline-danger btn-block form-control">
     </form>
     </div>
     <% } %>
@@ -153,8 +145,6 @@
 
 <%- include('footer.ejs') %>
 
-</body>
-
 <script src="/js/script.js"></script>
-
+</body>
 </html>
