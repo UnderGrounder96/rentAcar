@@ -24,7 +24,7 @@
   </div>
 
   <div class="container active show p5">
-  <% if (typeof carsArr !== "undefined" && carsArr !== null) { %>
+  <% if (carsArr) { %>
   <div class="cars_container card-deck-wrapper card-deck">
     <% carsArr.forEach( (car) => { %>
     <div class="card text-center">
@@ -36,7 +36,7 @@
         <i> <%= car.model %> </i>
       </strong>
       <br />
-      <a href="/data/<%= car.brand %>">
+      <a href="/catalog/<%= car.brand %>">
         <%= car.brand %>
       </a>
       -
@@ -57,14 +57,13 @@
     </div>
     <% }) %>
   </div>
-
+  </div>
   <% } else { %>
   <h4>
     Your reservation list is <strong> empty </strong>
     - head to <a href="/catalog"> catalog.</a>
   </h4>
   <% } %>
-  </div>
 </main>
 
 <%- include('footer.ejs') %>

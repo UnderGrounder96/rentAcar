@@ -54,7 +54,7 @@
         <em><%= car.model %></em>
       </strong>
       <br />
-      <a href="/data/<%= car.brand %>">
+      <a href="/catalog/<%= car.brand %>">
         <%= car.brand %>
       </a>
       - <%=car.year%>
@@ -70,43 +70,45 @@
   </div>
 
   <div id="resvs1" class="hide">
-  <% if (resArr) { %>
-  <div class="cars_container card-deck-wrapper card-deck">
-  <% resArr.forEach( (res) => { %>
-  <div class="card text-center">
-    <img class="card-img-top img-fluid mx-auto d-block"
-      src="/<%= res.photo %>" alt="<%= res.model %> image">
-    <p class="card-text">
-      <a href="/vehicle/<%= res.idCar %> %>">
-        <%= res.model %>
+  <% if (resArr) {
+    if (resArr.length) { %>
+    <div class="cars_container card-deck-wrapper card-deck">
+    <% resArr.forEach( (res) => { %>
+    <div class="card text-center">
+      <img class="card-img-top img-fluid mx-auto d-block"
+        src="/<%= res.photo %>" alt="<%= res.model %> image">
+      <p class="card-text">
+        <a href="/vehicle/<%= res.idCar %> %>">
+          <%= res.model %>
+        </a>
+        -
+        <strong>
+          <em><%= res.fullPrice %> &#36;</em>
+        </strong>
+
+        <br />
+        <em class="w-0 p-0">
+          <%=  new Date(res.dateIn).toDateString() %>
+        </em>
+
+        <br />
+        <em class="w-0 p-0">
+          <%= new Date(res.dateOut).toDateString() %>
+        </em>
+      </p>
+
+      <a href="/admin/resv/<%= res.idReservation %>"
+        class="btn btn-outline-primary btn-block mt-auto">
+        More
       </a>
-      -
-      <strong>
-        <em><%= res.fullPrice %> &#36;</em>
-      </strong>
-
-      <br />
-      <em class="w-0 p-0">
-        <%=  new Date(res.dateIn).toDateString() %>
-      </em>
-
-      <br />
-      <em class="w-0 p-0">
-        <%= new Date(res.dateOut).toDateString() %>
-      </em>
-    </p>
-
-    <a href="/admin/resv/<%= res.idReservation %>"
-      class="btn btn-outline-primary btn-block mt-auto">
-      More
-    </a>
+    </div>
+    <% })%>
   </div>
-  <% })%>
-  </div>
-  <% } else { //---------- NOT WORKING %>
-    <br />
-    <h4> There are no <strong> reservations </strong>.</h4>
-  <% } %>
+
+  <% } else { %>
+    <h4 class="my-3"> There are no <strong>reservations</strong>.</h4>
+  <% }
+  }%>
   </div>
 
   <div id="users1" class="hide">

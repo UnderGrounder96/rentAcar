@@ -113,7 +113,7 @@ router.post('/editCar/:car_id', (req, res) => {
 router.post('/editRes/:res_id', (req, res) => {
   if (!req.user) return res.redirect('/');
   if (!req.user.admin) return res.redirect('/library/');
-  
+
   db.query(`UPDATE reservations
     SET fullPrice=?,
       active=?,
