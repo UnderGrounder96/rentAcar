@@ -40,8 +40,8 @@
 </div>
 
 <% } else { %>
-<form class="navbar-forml form-inline" role="form" action="/login" method="post">
-  <div class="input-group">
+<form class="navbar-forml form-inline row" role="form" action="/login" method="post">
+  <div class="input-group col">
     <input type="email"  class="form-control" name="email"
       placeholder="E-mail" minlength="4" maxlength="25" required>
   </div>
@@ -50,7 +50,7 @@
       placeholder="Password" minlength="4" maxlength="20"
       autocomplete="new-password" required>
   </div>
-  <div class="input-group-addon">
+  <div class="input-group-addon col">
     <input type="submit" class="btn btn-outline-primary" value="Log in">
   </div>
 </form>
