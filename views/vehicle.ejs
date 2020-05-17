@@ -37,7 +37,7 @@
             size="3" name="numbers" value="<%= car.price %>" readonly>
       </div>
         <input type="submit"
-          class="mx-1 btn btn-outline-primary form-control" value="Reserve">
+          class="mx-1 mt-3 btn btn-outline-primary form-control" value="Reserve">
     </form>
 
     <% } else { %>
@@ -132,7 +132,7 @@
 
   <ul class="list-unstyled pagination">
   <% carsArr.forEach( (cr) => { %>
-  <li class="page-item">
+  <li class="mx-2 page-item">
     <a href="/vehicle/<%= cr.idCar%>">
       <img class="img-fluid img-thumbnail" src="/<%= cr.photo %>">
     </a>
