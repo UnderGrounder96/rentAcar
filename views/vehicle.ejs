@@ -52,7 +52,6 @@
           <u><%= new Date(resv.dateOut).toDateString()%></u>
         </em>
 
-
     <form class="my-2 row" action="/vehicle/edit/<%= resv.idReservation%>" method="post">
       <div class="form-group">
         <label>Date in:
@@ -93,7 +92,7 @@
     </div>
 
     <div class="brand"> <br>Brand:
-      <a href="/data/<%= car.brand %>">
+      <a href="/catalog/<%= car.brand %>">
           <%= car.brand %>
       </a>
     </div>

@@ -7,53 +7,66 @@
 
 <%- include('navbar.ejs') %>
 
-<main class="container row text-center" role="main">
-  <div class="col-md-2 text-center">
-    Search by category: <br> <br>
-    <%if (typeof carsArr !== "undefined" && carsArr !== null) { %>
-    <ul class="list-group">
-      <% carsArr.forEach( (cr) => { %>
+<main class="container" role="main">
+  <% if (brand) {  %>
+    <div class="row">
+    <div class="col-sm-2 text-center">
+    <% if (type) { %>
+      Search by brand: <br> <br>
+      <ul class="list-group">
+      <% type.forEach( (tp) => { %>
       <li class="list-group-item">
-      <a href="/data/<%= cr.type %>">
-        <%= cr.type %>
-      </a>
+        <a href="/catalog/<%= tp.name%>">
+          <%= tp.name %>
+        </a>
       </li>
       <% }) %>
-    </ul>
+      </ul>
     <% } %>
-  </div>
-
-  <div class="col-sm panel-body tab-content text-left">
-  <div id="all" class="tab-pane active">
-  <% if (typeof carArr !== "undefined" && carArr !== null) { %>
-  <div class="cars_container card-deck-wrapper card-deck">
-    <% carArr.forEach( (car) => { %>
-    <div class="card text-center">
-    <img class="card-img-top img-fluid mx-auto d-block"
-      src="/<%= car.photo %>" alt="<%= car.model %> image">
-
-    <p class="card-text">
-      <strong>
-        <em> <%= car.model %> </em>
-      </strong>
-      <br />
-      <a href="/data/<%= car.brand %>">
-        <%= car.brand %>
-      </a>
-      - <%= car.year %>
-      <br />
-      <em><%= car.price %>&#36;</em>
-    </p>
-    <a href="/vehicle/<%= car.idCar %>"
-      class="btn btn-outline-primary">
-      More
-    </a>
     </div>
-    <% }) %>
+
+    <div class="col">
+    <h2>
+      <em><%= brand.name %></em>:
+    </h2>
+    <h6><%= brand.details %></h6>
+
+    <hr />
+
+    <% if (carsArr.length) { %>
+    <div class="cars_container card-deck-wrapper card-deck">
+    <% carsArr.forEach( (car) => { %>
+    <div class="card text-center">
+      <img class="card-img-top img-fluid mx-auto d-block"
+        src="/<%= car.photo %>"
+        alt="<%= car.model %> image">
+
+      <p class="card-text text-center">
+        <strong><em><%= car.model %></em></strong>
+        <br>
+        <a href="/catalog/<%= car.brand %>">
+          <%= car.brand %>
+        </a>
+        - <%= car.year %>
+        <br />
+        <em><%= car.price %> &#36;</em>
+      </p>
+      <a href="/vehicle/<%= car.idCar %>"
+        class="btn btn-outline-primary">
+          More
+      </a>
+    </div>
+    <% })  %>
+    </div>
+
+    <% } else {    %>
+      <h4>
+        This list is <strong>empty</strong>.
+      </h4>
+    <% } %>
+    </div>
   </div>
-  <% } %>
-  </div>
-  </div>
+    <% } %>
 </main>
 
 <%- include('footer.ejs') %>

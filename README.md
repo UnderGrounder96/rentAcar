@@ -126,7 +126,7 @@ Files
 
 Versioning
 ------------
-Version 1.9 - Current version
+Version 2.0 - Current version
 
 Version 3.0(TBA) - Feature that allows to add new vehicles into the website
 
