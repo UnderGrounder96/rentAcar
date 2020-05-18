@@ -26,7 +26,7 @@
     <i class="text-primary fa fa-sign-out fa-lg"></i>
   </a>
 
-  <form class="col form-inline" action="/find" method="POST">
+  <form class="col form-row" action="/find" method="POST">
   <div class="input-group">
     <input type="search" name="item" class="form-control"
       placeholder="Brand, model, year" required autofocus>
@@ -40,7 +40,7 @@
 </div>
 
 <% } else { %>
-<form class="navbar-forml form-inline row" role="form" action="/login" method="post">
+<form class="navbar-forml form-inline form-row" role="form" action="/login" method="post">
   <div class="input-group col">
     <input type="email"  class="form-control" name="email"
       placeholder="E-mail" minlength="4" maxlength="25" required>
