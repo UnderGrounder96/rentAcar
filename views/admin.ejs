@@ -155,7 +155,7 @@
 
     <div class="form-group">
     <label>Brand:
-      <select class="selectpicker form-control"
+      <select class="selectpicker form-control custom-select"
         data-style="btn-info" name="brand" required>
         <% slctArr.forEach(function(slct){ %>
           <option value="<%= slct.name %>"><%= slct.name %></option>
@@ -166,7 +166,7 @@
 
     <div class="form-group">
     <label>Category:
-      <select class="selectpicker form-control"
+      <select class="selectpicker form-control custom-select"
         data-style="btn-info" name="type" required>
         <% slct1Arr.forEach(function(slct1){ %>
         <option value="<%= slct1.type %>"><%= slct1.type %></option>
@@ -184,7 +184,7 @@
 
     <div class="row form-group">
     <label class="col">Active:
-    <select class="form-control" name="active">
+    <select class="form-control custom-select" name="active">
       <option value="1" selected>Yes</option>
       <option value="0">No</option>
     </select>
@@ -262,7 +262,7 @@
 
   <div class="row form-group">
   <label class="col">Active:
-  <select class="form-control" name="active">
+  <select class="col-7 form-control custom-select" name="active">
     <option value="1" selected>Yes</option>
     <option value="0">No</option>
   </select>
@@ -270,7 +270,7 @@
 
   <label>Total(<em>&#36;</em>):<br />
     <input id="price" type="hidden" value="<%= resv.price %>">
-    <input type="number" id="numbers" class="mx-auto col-md-8 form-control" min="100"
+    <input type="number" id="numbers" class="mx-auto col-9 form-control" min="100"
       max="500000" name="numbers" value="<%= resv.price %>" readonly>
   </label>
   </div>
@@ -296,7 +296,7 @@
     <em class="fa fa-user fa-4x"></em>
   </div>
 
-  <form id="car_info" class="col-md-5 text-left mx-auto card"
+  <form id="car_info" class="col-5 mx-auto card"
     action="/admin/editUse/<%= userData.idUser%>" method="post">
   <div class="form-group">
   <label>Full Name:</label>
