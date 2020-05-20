@@ -4,33 +4,34 @@ This NodeJS program simulates a car rental.
 
 Currently live at: https://rent-a-car-live.herokuapp.com/
 
+
 Getting Started
 ------------------
-This program was created under Windows 10 (x64) Operative System using NodeJS 8.11.1 (+ ExpressJS 4.16.3),
-  npm 6.1.0 and MySQL 5.7.14.
+This program was created under Windows 10 (x64) Operative System using NodeJS 12.16.3 (+ ExpressJS 4.16.3),
+  npm 6.14.4 and MySQL 5.7.14.
 
 Prerequisites
 ---------------
 In order to use the ExpressJS program it is highly necessary to have an *internet connection* and install:
 
-	- NodeJS v8.11+ (includes npm v6.1+)
+	- NodeJS v12.16+ (includes npm v6.14+)
 	- MySQL v5.7+
 
-  i) Installing NodeJS v8.11+
+  i) Installing NodeJS v12.16+
     It is possible that NodeJS has been already installed, to check use the following code in the command line:
 
     $ node --version
-    [v8.11.1]
+    [v12.16.3]
 
     If errors occured or NodeJS has not yet been installed please visit their
     website http://nodejs.org/en/download/ and follow the instructions there.
 
-    1) Installing npm v6.1+
+    1) Installing npm v6.14+
       npm comes bundled with a successful NodeJS installation,
       to check use the following code in the command line:
 
       $ npm --version
-      [v6.1.0]
+      [v6.14.4]
 
 
   ii) Installing MySQL v5.7+
