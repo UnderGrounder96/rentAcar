@@ -11,25 +11,25 @@ router.post('/', (req, res, next) => {
   if (req.body.active === "0")
     return res.render('register', { user: null, err: "yes" });
 
-  crypto.scrypt(req.body.password, 'salt', 32, (err, passEncrypted) => {
-    const user = {
+  const passEncrypted = crypto.createHmac('sha256', req.body.password)
+    .update(req.body.email).digest('hex'),
+    user = {
       admin: 0,
       active: 1,
       email: req.body.email,
-      pass: passEncrypted.toString('hex'),
+      pass: passEncrypted,
       fullName: req.body.name
     };
 
-    db.query(`INSERT INTO users SET ?`, user, (err) => {
-      if (err)
-        return res.render('register', { user: null, err: "no" });
+  db.query(`INSERT INTO users SET ?`, user, (err) => {
+    if (err)
+      return res.render('register', { user: null, err: "no" });
 
-      db.query(`SELECT * FROM users
-        WHERE email LIKE ?;`, user.email, (err, result) => {
-        return req.login(result[0], (err) => {
-          if (err) return next(err);
-          return res.redirect('/library');
-        });
+    db.query(`SELECT * FROM users
+      WHERE email LIKE ?;`, user.email, (err, result) => {
+      return req.login(result[0], (err) => {
+        if (err) return next(err);
+        return res.redirect('/library');
       });
     });
   });

@@ -1,4 +1,12 @@
-.env
 TODO.txt
+
+# Logs
+logs
+*.log
+
+# env and package-lock file
+.env
 package-lock.json
+
+# Dependency directories
 node_modules/

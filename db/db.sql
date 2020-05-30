@@ -136,7 +136,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Lucio Afonso','lucioafonso@icloud.com','016ac1d2551495aa2ad524ed24dd539fcb3a4b2de851ba20ab03786ed0a262fd',1,1);
+INSERT INTO `users` VALUES (1,'Lucio Afonso','lucioafonso@icloud.com','4319e682d889bdb3fbacd69c5615cfe09b7ec8ec87977c9ba620b412bc80d857',1,1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 

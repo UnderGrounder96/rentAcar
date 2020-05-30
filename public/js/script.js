@@ -10,7 +10,7 @@ $(document).ready(() => {
   let date = new Date(),
     todayDay = date.getDate(),
     todayMonth = date.getMonth() + 1,
-    todayFullDate = date.getFullYear(); // January is 0!
+    todayFullDate = date.getFullYear();
 
   const dateClassObj = $('.date');
 
@@ -106,4 +106,8 @@ $(document).ready(() => {
       }
     });
   */
+});
+
+$(window).on( "load", () => {
+  $('.se-pre-con').delay(1000).fadeOut(2000);
 });

@@ -21,7 +21,7 @@ router.get('/:data', (req, res) => {
     db.query(`SELECT DISTINCT type FROM cars
       WHERE active NOT LIKE 0
       ORDER BY type;`, (err1, result1) => {
-      db.query(`SELECT idCar, photo FROM cars
+      db.query(`SELECT idCar, photo, model FROM cars
         WHERE active NOT LIKE 0
         ORDER BY RAND()
         LIMIT 10;`, result[0].idCar, (err2, result2) => {

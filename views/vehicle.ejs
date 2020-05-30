@@ -11,8 +11,9 @@
   <div class="row car_container">
 
   <div class="col">
-  <img class="img-fluid"
-    src="/<%= car.photo %>" alt="<%= car.model %> image">
+  <img class="img-fluid" loading="lazy"
+    src="/<%= car.photo %>"
+    alt="<%= car.model %> image">
   <%if (user) { %>
     <%if (!resv) { %>
     <form class="py-3 row" action="/vehicle/add/<%= car.idCar %>" method="post">
@@ -134,7 +135,9 @@
   <% carsArr.forEach( (cr) => { %>
   <li class="mx-2 page-item">
     <a href="/vehicle/<%= cr.idCar%>">
-      <img class="img-fluid img-thumbnail" src="/<%= cr.photo %>">
+      <img class="img-fluid img-thumbnail"  loading="lazy"
+        src="/<%= cr.photo %>"
+        alt="<%= cr.model %> image">
     </a>
   </li>
   <% }) %>

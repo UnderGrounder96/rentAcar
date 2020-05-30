@@ -45,7 +45,7 @@
   <div class="row cars_container card-deck-wrapper card-deck">
     <% carsArr.forEach( (car) => { %>
     <div class="col my-2 card text-center">
-    <img class="card-img-top img-fluid mx-auto d-block"
+    <img class="card-img-top img-fluid mx-auto d-block" loading="lazy"
       src="/<%= car.photo %>"
       alt="<%= car.model %> image">
 
@@ -75,7 +75,7 @@
     <div class="row cars_container card-deck-wrapper card-deck">
     <% resArr.forEach( (res) => { %>
     <div class="col my-2 card text-center">
-      <img class="card-img-top img-fluid mx-auto d-block"
+      <img class="card-img-top img-fluid mx-auto d-block" loading="lazy"
         src="/<%= res.photo %>" alt="<%= res.model %> image">
       <p class="card-text">
         <a href="/vehicle/<%= res.idCar %> %>">
@@ -136,8 +136,9 @@
   <div class="container row book_container mx-auto">
   <% if (car) { %>
   <div class="col">
-    <img class="img-fluid mx-auto d-block"
-      src="/<%= car.photo %>">
+    <img class="img-fluid mx-auto d-block" loading="lazy"
+      src="/<%= car.photo %>"
+      alt="<%= car.model %> image">
     <hr />
     <p class="py-3 synopsis text-justify">
       <%= car.details %>
@@ -208,8 +209,9 @@
   <div class="container row book_container mx-auto">
   <%if (resv) { %>
   <div class="col">
-    <img class="img-fluid mx-auto d-block"
-      src="/<%= resv.photo %>">
+    <img class="img-fluid mx-auto d-block" loading="lazy"
+      src="/<%= resv.photo %>"
+      alt="<%= resv.model %> image">
   </div>
 
   <div id="car_info" class="text-center card">
