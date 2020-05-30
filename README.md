@@ -114,7 +114,7 @@ Files
 	folder containing all database information, from its representaion to actual SQL file code
 
 /RentAcar/node_modules:
-	folder generated after a successufully "npm i" installation
+	folder generated after a successufully "npm ln" installation
 
 /RentAcar/public:
 	folder containing all additional files used, from javascripts to database images

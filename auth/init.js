@@ -25,12 +25,14 @@ function initPassport() {
       AND active NOT LIKE 0;`, usernameField, (err, result) => {
       if (!result.length) return next(null, false);
 
-      crypto.scrypt(passwordField, 'salt', 32, (err, passEncrypted) => {
-      if (result[0].pass !== passEncrypted.toString('hex'))
+      const passEncrypted = crypto.createHmac('sha256', passwordField)
+        .update(usernameField).digest('hex')
+
+      if (result[0].pass !== passEncrypted)
         return next(null, false);
+        
       return next(null, result[0]);
       });
-    });
   }));
   passport.authenticationMiddleware = authenticationMiddleware;
 }

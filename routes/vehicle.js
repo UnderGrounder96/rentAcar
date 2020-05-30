@@ -12,7 +12,7 @@ router.get('/:vehicle_id', (req, res) => {
     if (!result.length)
       return res.render('page_not_found', { user: req.user });
     else {
-      db.query(`SELECT idCar, photo FROM cars
+      db.query(`SELECT idCar, photo, model FROM cars
         WHERE idCar NOT LIKE ?
         AND active NOT LIKE 0
         ORDER BY RAND()
@@ -44,7 +44,7 @@ router.get('/:vehicle_id', (req, res) => {
 
 router.post('/add/:car_id', (req, res) => {
   if (!req.user) return res.redirect('/');
-  
+
   const resv = {
     active: 1,
     idUser: req.user.idUser,

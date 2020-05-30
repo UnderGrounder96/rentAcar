@@ -89,7 +89,7 @@
     <div class="row cars_container card-deck-wrapper card-deck">
       <% carsArr.forEach( (car) => { %>
       <div class="col my-2 card text-center">
-      <img class="img-fluid"
+      <img class="img-fluid" loading="lazy" 
         src="/<%= car.photo %>"
         alt="<%= car.model %> image">
 
@@ -117,6 +117,8 @@
 </main>
 
 <%- include('footer.ejs') %>
+
+<%- include('spinner.ejs') %>
 
 <script src="/js/script.js"></script>
 </body>
