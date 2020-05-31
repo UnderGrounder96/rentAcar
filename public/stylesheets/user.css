@@ -3,8 +3,6 @@
 main {
   border: 5px solid;
   border-radius: 5px;
-  margin-top: 200px;
-  margin-bottom: 200px;
 }
 
 .car_header * {

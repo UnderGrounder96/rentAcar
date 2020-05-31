@@ -109,5 +109,5 @@ $(document).ready(() => {
 });
 
 $(window).on( "load", () => {
-  $('.se-pre-con').delay(1000).fadeOut(2000);
+  $('.spinner').delay(1000).fadeOut(2000);
 });

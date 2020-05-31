@@ -1,20 +1,23 @@
 body {
+  position: relative;
   font-family: "Lucida Grande";
   -webkit-animation-name: animatebottom;
-  -webkit-animation-duration: 2s;
+  -webkit-animation-duration: 1s;
   animation-name: animatebottom;
-  animation-duration: 2s;
+  animation-duration: 1s;
+}
+
+main {
   position: relative;
 }
 
-body .bg {
-  background: url('/images/logo.jpg') center no-repeat;
-  background-attachment: fixed;
-  opacity: 0.1;
+main::after {
+  content: "";
   z-index: -1;
-  width: auto;
-  position: fixed;
+  opacity: 0.1;
+  position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
+  background: url('/images/logo.jpg') no-repeat fixed center;
 }
 
 @-webkit-keyframes animatebottom {
@@ -77,7 +80,6 @@ input::-webkit-input-placeholder {
 
 .car_container {
   font: 18px 'David Libre', serif;
-  margin: 5% auto 5% auto;
 }
 
 .car_container .model {
@@ -108,10 +110,6 @@ input::-webkit-input-placeholder {
 #car_info {
   background-color: white;
   padding: 3%;
-}
-
-.cars_container {
-  margin-bottom: 15%;
 }
 
 .cars_container img {
@@ -156,19 +154,7 @@ input::-webkit-input-placeholder {
   font-weight: bold;
 }
 
-/* spinner */
-.no-js #loader {
-  display: none;
-}
-
-.js #loader {
-  display: block;
-  position: absolute;
-  left: 100px;
-  top: 0;
-}
-
-.se-pre-con {
+.spinner {
   position: fixed;
   left: 0px;
   top: 0px;

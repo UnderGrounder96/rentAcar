@@ -4,6 +4,7 @@
 <%- include('header.ejs') %>
 
 <body class="container shadow bg">
+<noscript> Please turn on JavaScript or change browsers!</noscript>
 
 <%- include('navbar.ejs') %>
 
@@ -89,7 +90,7 @@
     <div class="row cars_container card-deck-wrapper card-deck">
       <% carsArr.forEach( (car) => { %>
       <div class="col my-2 card text-center">
-      <img class="img-fluid" loading="lazy" 
+      <img class="img-fluid" loading="lazy"
         src="/<%= car.photo %>"
         alt="<%= car.model %> image">
 
