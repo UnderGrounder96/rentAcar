@@ -1,24 +1,59 @@
-<head>
-  <title> RentAcar! </title>
+<header class="container navbar py-3 my-3 align-top border-bottom">
+<nav class="col font-weight-bold form-inline">
+  <a class="navbar-brand" href="/">
+    <img class="img-fluid"  loading="lazy"
+      src="/images/logo.jpg" alt="Logo" width="150px">
+  </a>
 
-  <meta name="robots" content="noindex" />
-  <meta name="author" content="Lucio Afonso" />
-  <meta name="description" content="Car rental website" />
-  <meta name="keywords" content="car saloon, car showroom" />
+  <%if (user){ %>
+    <a class="nav-link" href="/catalog">Catalog</a>
+    <a class="nav-link" href="/library">Reservations</a>
+    <%if (user.admin){ %>
+      <a class="nav-link text-primary" href="/admin">
+        <strong>Administration</strong>
+      </a>
+    <% } %>
+  <% } %>
+</nav>
 
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-  <link rel="shortcut icon" href="/images/car.ico" />
-  <link rel="stylesheet" href="/stylesheets/style.css" />
+<%if (user){ %>
+  <div class="row">
+  <a class="nav-link" href="/user">
+    <i class="text-primary fa fa-user-circle fa-lg"></i>
+  </a>
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+  <a class="nav-link" href="/logout">
+    <i class="text-primary fa fa-sign-out fa-lg"></i>
+  </a>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-</head>
+  <form class="col form-row" action="/find" method="POST">
+  <div class="input-group">
+    <input type="search" name="item" class="form-control"
+      placeholder="Brand, model, year" required autofocus>
+    <div class="input-group-addon">
+      <button class="btn btn-outline-primary" type="submit">
+      <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+  </form>
+</div>
+
+<% } else { %>
+<form class="navbar-forml form-inline form-row" role="form" action="/login" method="post">
+  <div class="input-group col">
+    <input type="email"  class="form-control" name="email"
+      placeholder="E-mail" minlength="4" maxlength="25" required>
+  </div>
+  <div class="input-group col">
+    <input type="password" class="form-control" name="password"
+      placeholder="Password" minlength="4" maxlength="20"
+      autocomplete="new-password" required>
+  </div>
+  <div class="input-group-addon col">
+    <input type="submit" class="btn btn-outline-primary" value="Log in">
+  </div>
+</form>
+<% } %>
+</header>

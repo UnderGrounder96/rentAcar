@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include('header.ejs') %>
+<%- include('head.ejs') %>
 
 <body class="container shadow bg">
 
-<%- include('navbar.ejs') %>
+<%- include('header.ejs') %>
 
 <main class="container" role="main">
   <div class="container">
@@ -40,7 +40,7 @@
   </ul>
   <% } %>
 
-  <div id="cars1" class="hide">
+  <div id="cars1" class="hide container">
   <%if (carsArr) { %>
   <div class="row cars_container card-deck-wrapper card-deck">
     <% carsArr.forEach( (car) => { %>
@@ -69,7 +69,7 @@
   <% } %>
   </div>
 
-  <div id="resvs1" class="hide">
+  <div id="resvs1" class="hide container">
   <% if (resArr) {
     if (resArr.length) { %>
     <div class="row cars_container card-deck-wrapper card-deck">
@@ -111,7 +111,7 @@
   }%>
   </div>
 
-  <div id="users1" class="hide">
+  <div id="users1" class="hide container">
   <% if (userArr) { %>
   <div class="row cars_container card-deck-wrapper card-deck">
   <% userArr.forEach( (use) => { %>
