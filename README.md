@@ -1,17 +1,12 @@
-RentAcar!
-------------------------------------
-This NodeJS program simulates a car rental.
-
+# RentAcar! #
+This NodeJS program simulates a car rental.<br />
 Currently live at: https://rent-a-car-live.herokuapp.com/
 
+## Getting Started ##
+This program was created under Windows 10 (x64) Operative System using<br />
+  NodeJS 12.16.3 (+ ExpressJS 4.16.3), npm 6.14.4 and MySQL 5.7.14.
 
-Getting Started
-------------------
-This program was created under Windows 10 (x64) Operative System using NodeJS 12.16.3 (+ ExpressJS 4.16.3),
-  npm 6.14.4 and MySQL 5.7.14.
-
-Prerequisites
----------------
+## Prerequisites ##
 In order to use the ExpressJS program it is highly necessary to have an *internet connection* and install:
 
 	- NodeJS v12.16+ (includes npm v6.14+)
@@ -70,39 +65,37 @@ In order to use the ExpressJS program it is highly necessary to have an *interne
 
       Aside from the errors mentioned above everything should be working normally.
 
-Deployment
---------------
-The program was created to be easy to use and it is fool proof (to a dreggre).
-All user inputs return success or error messages.
-
+## Deployment ##
+The program was created to be easy to use and it is fool proof (to a dreggre).<br />
+All user inputs return success or error messages.<br />
 Before starting. Please rename the file '.env.default' to '.env', and set in it your MySQL credentials.
 
 In order to link all npm dependencies:
+```
+~/RentAcar> npm ln
+[*installation warnings*]
 
-    ~/RentAcar> npm ln
-    [*installation warnings*]
-
-    [audited 173 packages in 1.253s]
-    [found 0 vulnerabilities]
+[audited 173 packages in 1.253s]
+[found 0 vulnerabilities]
+```
 
  In order to start the NodeJS server, execute:
-
-    ~/RentAcar> npm start
-    [Database connected.]
-
-Then opening the (default) website on **Google Chrome**(*):
-
-  localhost:3000
+```
+~/RentAcar> npm start
+[Database connected.]
+```
+Then opening the (default) website on **Google Chrome**(*):<br />
+  [localhost:3000](http://localhost:3000)
 
 Files
 ------
 /RentAcar:
-  .env.default - please rename to .env and use your own MySQL credentials
-  .gitignore - git file that helps ignoring other files
-	LICENSE - license
-	app.js - main program
-	README.md - this readme
-	package.json - npm config file
+  .env.default - please rename to .env and use your own MySQL credentials<br />
+  .gitignore - git file that helps ignoring other files<br />
+	LICENSE - license<br />
+	app.js - main program<br />
+	README.md - this readme<br />
+	package.json - npm config file<br />
 
 /RentAcar/auth:
 	folder responsable for handling login information
@@ -127,10 +120,8 @@ Files
 
 Versioning
 ------------
-Version 2.0 - Current version
-
-Version 3.0(TBA) - Feature that allows to add new vehicles into the website
-
+Version 2.0 - Current version<br />
+Version 3.0(TBA) - Feature that allows to add new vehicles into the website<br />
 Version 5.5(TBA) - Real e-mail verification
 
 Author
@@ -143,25 +134,15 @@ This project is licensed under the GPL License - see the LICENSE.md file for det
 
 Acknowledgments
 ----------------------
-Official sites:
+Official sites:<br />
+http://npmjs.com/<br />
+http://mysql.com/<br />
+http://jquery.com/<br />
+http://nodejs.org/<br />
+http://expressjs.com/<br />
 
-	http://npmjs.com/
-
-	http://mysql.com/
-
-	http://jquery.com/
-
-	http://nodejs.org/
-
-	http://expressjs.com/
-
-
-Tutorials:
-
-	http://w3schools.com/bootstrap/
-
-	http://tutorialspoint.com/nodejs/
-
-	http://mysqlclient.readthedocs.io/
-
-	https://bit.ly/2N6J7Fc (code.tutsplus.com)
+Tutorials:<br />
+http://w3schools.com/bootstrap/<br />
+http://tutorialspoint.com/nodejs/<br />
+http://mysqlclient.readthedocs.io/<br />
+[http://code.tutsplus.com/](https://bit.ly/2N6J7Fc)
