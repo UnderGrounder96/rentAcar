@@ -1,24 +1,116 @@
-<head>
-  <title> RentAcar! </title>
+<header class="site-header py-3 my-3 align-top border-bottom">
+  <nav class="navbar navbar-expand-lg bg-inverse font-weight-bold">
+    <a class="navbar-brand" href="/">
+      <img
+        class="img-fluid"
+        loading="lazy"
+        src="/images/logo.jpg"
+        alt="Logo"
+        width="150px"
+      />
+    </a>
 
-  <meta name="robots" content="noindex" />
-  <meta name="author" content="Lucio Afonso" />
-  <meta name="description" content="Car rental website" />
-  <meta name="keywords" content="car saloon, car showroom" />
+    <button
+      class="navbar-toggler navbar-toggler-right"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarToggle"
+      aria-controls="navbarToggle"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="fa fa-bars fa-lg" style="font-size: 30px;"></span>
+    </button>
 
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <div class="collapse navbar-collapse" id="navbarToggle">
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <%if (user){ %>
+        <li class="nav-item">
+          <a class="nav-link" href="/catalog">Catalog</a>
+        </li>
 
-  <link rel="shortcut icon" href="/images/car.ico" />
-  <link rel="stylesheet" href="/stylesheets/style.css" />
+        <li class="nav-item">
+          <a class="nav-link" href="/library">Reservations</a>
+        </li>
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+        <%if (user.admin){ %>
+        <li class="nav-item">
+          <a class="nav-link text-primary" href="/admin">
+            <strong>Administration</strong>
+          </a>
+        </li>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-</head>
+        <% } %> <% } %> <%if (user){ %>
+        <li class="nav-item">
+          <a class="nav-link" href="/profile">
+            <i class="text-primary fa fa-user-circle fa-lg"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">
+            <i class="text-primary fa fa-sign-out fa-lg"></i>
+          </a>
+        </li>
+
+        <form class="navbar-forml form-inline" action="/find" method="POST">
+          <div class="input-group">
+            <input
+              type="search"
+              name="item"
+              class="form-control"
+              placeholder="Brand, model, year"
+              required
+              autofocus
+            />
+            <div class="input-group-addon">
+              <button class="btn btn-outline-primary" type="submit">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <% } else { %>
+        <form
+          class="form-row navbar-forml form-inline"
+          role="form"
+          action="/login"
+          method="post"
+        >
+          <div class="col input-group">
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              placeholder="your@email.com"
+              minlength="4"
+              maxlength="25"
+              required
+            />
+          </div>
+          <div class="col input-group">
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              placeholder="password"
+              minlength="4"
+              maxlength="20"
+              autocomplete="new-password"
+              required
+            />
+          </div>
+          <div class="col input-group-addon">
+            <input
+              type="submit"
+              class="btn btn-outline-primary"
+              value="Log in"
+            />
+          </div>
+        </form>
+        <% } %>
+      </ul>
+    </div>
+  </nav>
+</header>

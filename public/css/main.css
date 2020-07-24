@@ -1,3 +1,7 @@
+html {
+  min-height: 100%;
+}
+
 body {
   position: relative;
   font-family: "Lucida Grande";
@@ -5,9 +9,11 @@ body {
   -webkit-animation-duration: 1s;
   animation-name: animatebottom;
   animation-duration: 1s;
+  height: 100%;
 }
 
 main {
+  overflow: auto;
   position: relative;
 }
 
@@ -15,19 +21,34 @@ main::after {
   content: "";
   z-index: -1;
   opacity: 0.1;
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: url('/images/logo.jpg') no-repeat fixed center;
+  position: absolute; /* fixed or absolute*/
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("/images/logo.jpg") no-repeat fixed center;
 }
 
 @-webkit-keyframes animatebottom {
-  from { bottom:-100px; opacity:0 }
-  to { bottom:0px; opacity:1 }
+  from {
+    bottom: -100px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0px;
+    opacity: 1;
+  }
 }
 
 @keyframes animatebottom {
-  from{ bottom:-100px; opacity:0 }
-  to{ bottom:0; opacity:1 }
+  from {
+    bottom: -100px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
 }
 
 nav .navbar-brand {
@@ -45,13 +66,13 @@ img:hover {
   color: black;
 }
 
-.nav-link:hover {
-  border-bottom: 1px solid #E0E0E0;
+.nav-item .nav-link:hover {
+  text-decoration: underline;
+  opacity: 0.9;
 }
 
-a:hover {
+.list-inline-item a:hover {
   text-decoration: none;
-  color: LightGray;
 }
 
 nav input[type="text"],
@@ -60,28 +81,46 @@ input::-webkit-input-placeholder {
 }
 
 .jumbotron {
-  background-image: url('/images/jumbo1.jpg');
+  background-image: url("/images/jumbo1.jpg");
+  background-size: cover;
   color: white;
   position: relative;
+  -webkit-text-stroke-width: 0.3px;
+  -webkit-text-stroke-color: green;
 }
 
 .jumbotron::before {
   content: "";
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
 }
 
 #title {
-  font-family: 'FARRO', 'Constantia', 'Comic Sans MS', 'Franklin Gothic';
+  font-family: "FARRO", "Constantia", "Comic Sans MS", "Franklin Gothic";
+}
+
+h2.ellipisis,
+h6.ellipisis{
+  text-overflow: ellipsis;
 }
 
 .car_container {
-  font: 18px 'David Libre', serif;
+  font: 18px "David Libre", serif;
 }
-
+/*
+@media (max-width: 767.98px) {
+  .car_container .price,
+  .car_container .type,
+  .car_container .year,
+  .car_container .rating {
+    background-color: black;
+  }
+}
+*/
 .car_container .model {
   font-size: 40px;
   width: 100%;
@@ -158,8 +197,8 @@ input::-webkit-input-placeholder {
   position: fixed;
   left: 0px;
   top: 0px;
-	width: 100%;
-	height: 100%;
-	z-index: 9999;
-  background: url('/images/Preloader.gif') center no-repeat #fff;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url("/images/Preloader.gif") center no-repeat #fff;
 }

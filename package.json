@@ -1,6 +1,6 @@
 {
   "name": "rentacar",
-  "version": "2.0.1",
+  "version": "2.3.2",
   "description": "car showroom website",
   "author": "Lucio Afonso",
   "license": "SEE LICENSE IN LICENSE",
@@ -10,7 +10,7 @@
   "repository": "github:UnderGrounder96/RentAcar",
   "scripts": {
     "start": "node bin/www",
-    "test": "npx nodemon bin/www"
+    "develop": "npx nodemon bin/www"
   },
   "dependencies": {
     "cookie-parser": "^1.4.3",

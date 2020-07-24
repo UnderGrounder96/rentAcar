@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+  <%- include('head.ejs') %>
 
-<%- include('header.ejs') %>
+  <body class="container shadow bg">
+    <%- include('header.ejs') %>
 
-<body class="container shadow bg">
+    <main class="container text-center" role="main">
+      <img
+        class="img-fluid mx-auto d-block"
+        loading="lazy"
+        src="/images/Error.png"
+        loading="lazy"
+        alt="not_found"
+      />
+    </main>
 
-<%- include('navbar.ejs') %>
-
-<main class="container text-center" role="main">
-  <img class="img-fluid mx-auto d-block" loading="lazy" 
-    src="/images/Error.png" loading="lazy" alt="not_found">
-</main>
-
-<%- include('footer.ejs') %>
-
-</body>
+    <%- include('footer.ejs') %>
+  </body>
 </html>

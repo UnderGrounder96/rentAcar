@@ -1,7 +1,8 @@
 const router = require("express").Router();
 
 router.get("/", (req, res) => {
-  res.render("contact", { user: req.user });
+  if (!req.user) return res.redirect("/");
+  res.render("profile", { user: req.user });
 });
 
 module.exports = router;
