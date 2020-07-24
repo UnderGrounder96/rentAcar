@@ -1,59 +1,116 @@
-<header class="container navbar py-3 my-3 align-top border-bottom">
-<nav class="col font-weight-bold form-inline">
-  <a class="navbar-brand" href="/">
-    <img class="img-fluid"  loading="lazy"
-      src="/images/logo.jpg" alt="Logo" width="150px">
-  </a>
+<header class="site-header py-3 my-3 align-top border-bottom">
+  <nav class="navbar navbar-expand-lg bg-inverse font-weight-bold">
+    <a class="navbar-brand" href="/">
+      <img
+        class="img-fluid"
+        loading="lazy"
+        src="/images/logo.jpg"
+        alt="Logo"
+        width="150px"
+      />
+    </a>
 
-  <%if (user){ %>
-    <a class="nav-link" href="/catalog">Catalog</a>
-    <a class="nav-link" href="/library">Reservations</a>
-    <%if (user.admin){ %>
-      <a class="nav-link text-primary" href="/admin">
-        <strong>Administration</strong>
-      </a>
-    <% } %>
-  <% } %>
-</nav>
+    <button
+      class="navbar-toggler navbar-toggler-right"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarToggle"
+      aria-controls="navbarToggle"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="fa fa-bars fa-lg" style="font-size: 30px;"></span>
+    </button>
 
+    <div class="collapse navbar-collapse" id="navbarToggle">
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <%if (user){ %>
+        <li class="nav-item">
+          <a class="nav-link" href="/catalog">Catalog</a>
+        </li>
 
-<%if (user){ %>
-  <div class="row">
-  <a class="nav-link" href="/user">
-    <i class="text-primary fa fa-user-circle fa-lg"></i>
-  </a>
+        <li class="nav-item">
+          <a class="nav-link" href="/library">Reservations</a>
+        </li>
 
-  <a class="nav-link" href="/logout">
-    <i class="text-primary fa fa-sign-out fa-lg"></i>
-  </a>
+        <%if (user.admin){ %>
+        <li class="nav-item">
+          <a class="nav-link text-primary" href="/admin">
+            <strong>Administration</strong>
+          </a>
+        </li>
 
-  <form class="col form-row" action="/find" method="POST">
-  <div class="input-group">
-    <input type="search" name="item" class="form-control"
-      placeholder="Brand, model, year" required autofocus>
-    <div class="input-group-addon">
-      <button class="btn btn-outline-primary" type="submit">
-      <i class="fa fa-search"></i>
-      </button>
+        <% } %> <% } %> <%if (user){ %>
+        <li class="nav-item">
+          <a class="nav-link" href="/profile">
+            <i class="text-primary fa fa-user-circle fa-lg"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">
+            <i class="text-primary fa fa-sign-out fa-lg"></i>
+          </a>
+        </li>
+
+        <form class="navbar-forml form-inline" action="/find" method="POST">
+          <div class="input-group">
+            <input
+              type="search"
+              name="item"
+              class="form-control"
+              placeholder="Brand, model, year"
+              required
+              autofocus
+            />
+            <div class="input-group-addon">
+              <button class="btn btn-outline-primary" type="submit">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <% } else { %>
+        <form
+          class="form-row navbar-forml form-inline"
+          role="form"
+          action="/login"
+          method="post"
+        >
+          <div class="col input-group">
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              placeholder="your@email.com"
+              minlength="4"
+              maxlength="25"
+              required
+            />
+          </div>
+          <div class="col input-group">
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              placeholder="password"
+              minlength="4"
+              maxlength="20"
+              autocomplete="new-password"
+              required
+            />
+          </div>
+          <div class="col input-group-addon">
+            <input
+              type="submit"
+              class="btn btn-outline-primary"
+              value="Log in"
+            />
+          </div>
+        </form>
+        <% } %>
+      </ul>
     </div>
-  </div>
-  </form>
-</div>
-
-<% } else { %>
-<form class="navbar-forml form-inline form-row" role="form" action="/login" method="post">
-  <div class="input-group col">
-    <input type="email"  class="form-control" name="email"
-      placeholder="E-mail" minlength="4" maxlength="25" required>
-  </div>
-  <div class="input-group col">
-    <input type="password" class="form-control" name="password"
-      placeholder="Password" minlength="4" maxlength="20"
-      autocomplete="new-password" required>
-  </div>
-  <div class="input-group-addon col">
-    <input type="submit" class="btn btn-outline-primary" value="Log in">
-  </div>
-</form>
-<% } %>
+  </nav>
 </header>

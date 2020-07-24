@@ -1,19 +1,22 @@
-# RentAcar! #
+# RentAcar!
+
 This NodeJS program simulates a car rental.<br />
 Currently live at: https://rent-a-car-live.herokuapp.com/
 
-## Getting Started ##
+## Getting Started
+
 This program was created under Windows 10 (x64) Operative System using<br />
-  NodeJS 12.16.3 (+ ExpressJS 4.16.3), npm 6.14.4 and MySQL 5.7.14.
+NodeJS 12.16.3 (+ ExpressJS 4.16.3), npm 6.14.4 and MySQL 5.7.14.
 
-## Prerequisites ##
-In order to use the ExpressJS program it is highly necessary to have an *internet connection* and install:
+## Prerequisites
 
-	- NodeJS v12.16+ (includes npm v6.14+)
-	- MySQL v5.7+
+In order to use the ExpressJS program it is highly necessary to have an _internet connection_ and install:
 
-  i) Installing NodeJS v12.16+
-    It is possible that NodeJS has been already installed, to check use the following code in the command line:
+    - NodeJS v12.16+ (includes npm v6.14+)
+    - MySQL v5.7+
+
+i) Installing NodeJS v12.16+
+It is possible that NodeJS has been already installed, to check use the following code in the command line:
 
     $ node --version
     [v12.16.3]
@@ -28,8 +31,7 @@ In order to use the ExpressJS program it is highly necessary to have an *interne
       $ npm --version
       [v6.14.4]
 
-
-  ii) Installing MySQL v5.7+
+ii) Installing MySQL v5.7+
 
     In order to install the MySQL server on Windows it is very important to follow the instructions
     on their website http://dev.mysql.com/downloads/windows/.
@@ -43,10 +45,9 @@ In order to use the ExpressJS program it is highly necessary to have an *interne
     It is very important to run the file *./db/db.sql* on the server after the installation is complete.
     Again, no example will be shown here but under Workbench everything should turn out great.
 
-
-  iii) Testing
-    In order to test the program it's necessary to run the app and check if no errors were presented.
-    The most common errors could be:
+iii) Testing
+In order to test the program it's necessary to run the app and check if no errors were presented.
+The most common errors could be:
 
     1) NodeJS port error
       This happens when the program tries to run on a busy port,
@@ -65,12 +66,14 @@ In order to use the ExpressJS program it is highly necessary to have an *interne
 
       Aside from the errors mentioned above everything should be working normally.
 
-## Deployment ##
+## Deployment
+
 The program was created to be easy to use and it is fool proof (to a dreggre).<br />
 All user inputs return success or error messages.<br />
 Before starting. Please rename the file '.env.default' to '.env', and set in it your MySQL credentials.
 
 In order to link all npm dependencies:
+
 ```
 ~/RentAcar> npm ln
 [*installation warnings*]
@@ -79,61 +82,32 @@ In order to link all npm dependencies:
 [found 0 vulnerabilities]
 ```
 
- In order to start the NodeJS server, execute:
+In order to start the NodeJS server, execute:
+
 ```
 ~/RentAcar> npm start
 [Database connected.]
 ```
-Then opening the (default) website on **Google Chrome**(*):<br />
-  [localhost:3000](http://localhost:3000)
 
-Files
-------
-/RentAcar:
-  .env.default - please rename to .env and use your own MySQL credentials<br />
-  .gitignore - git file that helps ignoring other files<br />
-	LICENSE - license<br />
-	app.js - main program<br />
-	README.md - this readme<br />
-	package.json - npm config file<br />
+Then opening the (default) website on **Google Chrome**(\*):<br />
+[localhost:3000](http://localhost:3000)
 
-/RentAcar/auth:
-	folder responsable for handling login information
+## Versioning
 
-/RentAcar/bin:
-	www - main executable program file
+Version 2.3 - Current version<br />
+Version 3.5(TBA) - Real e-mail verification
+Version 5.9(TBA) - Working Payment
 
-/RentAcar/db:
-	folder containing all database information, from its representaion to actual SQL file code
+## Author
 
-/RentAcar/node_modules:
-	folder generated after a successufully "npm ln" installation
-
-/RentAcar/public:
-	folder containing all additional files used, from javascripts to database images
-
-/RentAcar/routes:
-	folder containing all controller files used
-
-/RentAcar/views:
-	folder containing all "visible" files used by the user
-
-Versioning
-------------
-Version 2.0 - Current version<br />
-Version 3.0(TBA) - Feature that allows to add new vehicles into the website<br />
-Version 5.5(TBA) - Real e-mail verification
-
-Author
----------
 Lucio Afonso
 
-License
----------
+## License
+
 This project is licensed under the GPL License - see the LICENSE file for details
 
-Acknowledgments
-----------------------
+## Acknowledgments
+
 Official sites:<br />
 http://npmjs.com/<br />
 http://mysql.com/<br />
