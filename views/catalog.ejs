@@ -23,23 +23,18 @@
           <% } %>
         </div>
 
-        <div
-          class="col container"
-          style="
-            overflow: hidden;
-          "
-        >
-          <h2 class="ellipisis"><em><%= brand.name %></em>:</h2>
-          <h6 class="ellipisis"><%= brand.details %></h6>
+        <div class="col container" style="overflow: hidden;">
+          <h2 class="media"><em><%= brand.name %></em>:</h2>
+          <h6 class="media"><%= brand.details %></h6>
 
-          <hr />
+          <hr class="media"/>
 
           <% if (carsArr.length) { %>
           <div class="row cars_container card-deck-wrapper card-deck">
             <% carsArr.forEach( (car) => { %>
             <div class="col my-2 card text-center">
               <img
-                class="card-img-top img-fluid mx-auto d-block"
+                class="img-fluid"
                 loading="lazy"
                 src="/<%= car.photo %>"
                 alt="<%= car.model %> image"

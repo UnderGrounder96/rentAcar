@@ -118,7 +118,6 @@ function _addZero(str) {
 
 function getHeight() {
   let fullHeighMinusHeader =
-    $(window).height() - $("header").outerHeight() - $("header").outerHeight();
-    console.log("fullHeighMinusHeader: "+ fullHeighMinusHeader.toFixed(2))
+    $(window).height() - $("header").outerHeight() - $("header").outerHeight() - 100;
   $("main").height(fullHeighMinusHeader.toFixed(2));
 }
