@@ -103,24 +103,19 @@ input::-webkit-input-placeholder {
   font-family: "FARRO", "Constantia", "Comic Sans MS", "Franklin Gothic";
 }
 
-h2.ellipisis,
-h6.ellipisis{
-  text-overflow: ellipsis;
-}
-
 .car_container {
   font: 18px "David Libre", serif;
 }
-/*
-@media (max-width: 767.98px) {
-  .car_container .price,
-  .car_container .type,
-  .car_container .year,
-  .car_container .rating {
-    background-color: black;
+
+@media only screen and (max-width: 900px) {
+  h2.media,
+  h6.media,
+  hr.media,
+  div.media{
+    display: none;
   }
 }
-*/
+
 .car_container .model {
   font-size: 40px;
   width: 100%;
