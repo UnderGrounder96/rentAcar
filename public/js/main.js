@@ -13,9 +13,9 @@ $(document).ready(() => {
   /* ----------------- CALC FULL HEIGHT ---------------------- */
   getHeight();
 
-  $(window).resize(() =>{
+  $(window).resize(() => {
     getHeight();
-  })
+  });
 
   /* -----------------DATE HANDLERS - USER---------------------- */
   let date = new Date(),
@@ -49,8 +49,7 @@ $(document).ready(() => {
 
     date = new Date(todayFullDate);
 
-    // needed for getDate()
-    --days;
+    --days; // needed for getDate()
     date.setDate(date.getDate() + days);
 
     todayDay = date.getDate();
@@ -69,17 +68,17 @@ $(document).ready(() => {
   $("#cars1").show();
 
   $("#cars").click(() => {
-    _show(this);
+    _hide("#cars");
     $("#cars1").show();
   });
 
   $("#resvs").click(() => {
-    _show(this);
+    _hide("#resvs");
     $("#resvs1").show();
   });
 
   $("#users").click(() => {
-    _show(this);
+    _hide("#users");
     $("#users1").show();
   });
 
@@ -105,9 +104,9 @@ $(document).ready(() => {
   */
 });
 
-function _show(toShow) {
+function _hide(toShow) {
   $(".hide").hide();
-  $("a").removeClass("active");
+  $("li").removeClass("active");
   $(toShow).addClass("active");
 }
 
@@ -118,6 +117,9 @@ function _addZero(str) {
 
 function getHeight() {
   let fullHeighMinusHeader =
-    $(window).height() - $("header").outerHeight() - $("header").outerHeight() - 100;
+    $(window).height() -
+    $("header").outerHeight() -
+    $("footer").outerHeight() -
+    100;
   $("main").height(fullHeighMinusHeader.toFixed(2));
 }
