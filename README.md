@@ -95,8 +95,9 @@ Then opening the (default) website on **Google Chrome**(\*):<br />
 ## Versioning
 
 Version 2.3 - Current version<br />
-Version 3.5(TBA) - Real e-mail verification
-Version 5.9(TBA) - Working Payment
+Version 3.0 - Pagination for SQL fetch<br />
+Version 5.5(TBA) - Real e-mail verification<br />
+Version 6.9(TBA) - Working Payment, Captcha and Paypal checkout demo
 
 ## Author
 
