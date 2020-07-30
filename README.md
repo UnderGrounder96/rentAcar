@@ -1,22 +1,24 @@
 # RentAcar!
 
-This NodeJS program simulates a car rental.<br />
+This NodeJS program simulates a car rental. <br />
 Currently live at: https://rent-a-car-live.herokuapp.com/
 
-## Getting Started
+## Getting Started #
 
-This program was created under Windows 10 (x64) Operative System using<br />
+This program was created under Windows 10 (x64) Operative System using <br />
 NodeJS 12.16.3 (+ ExpressJS 4.16.3), npm 6.14.4 and MySQL 5.7.14.
 
-## Prerequisites
+## Prerequisites ##
 
-In order to use the ExpressJS program it is highly necessary to have an _internet connection_ and install:
+In order to use the ExpressJS program it is highly necessary to have an _internet <br />
+connection_ and install:
 
     - NodeJS v12.16+ (includes npm v6.14+)
     - MySQL v5.7+
 
 i) Installing NodeJS v12.16+
-It is possible that NodeJS has been already installed, to check use the following code in the command line:
+It is possible that NodeJS has been already installed, to check use the following <br />
+code in the command line:
 
     $ node --version
     [v12.16.3]
@@ -33,21 +35,22 @@ It is possible that NodeJS has been already installed, to check use the followin
 
 ii) Installing MySQL v5.7+
 
-    In order to install the MySQL server on Windows it is very important to follow the instructions
-    on their website http://dev.mysql.com/downloads/windows/.
+    In order to install the MySQL server on Windows it is very important to follow
+    the instructions on their website http://dev.mysql.com/downloads/windows/.
     On windows there are various variables involved about having a MySQL server.
     For example to test the app, the program MySQL Workbench was used to monitor
     the dataflow and a Wamp server was used to simulate the actual server.
 
-    Therefore, no real instructions can be provided here!!! If the instructions under the official website were
-    followed a MySQL server should be working on the desired machine.
+    Therefore, no real instructions can be provided here!!!
+    If the instructions under the official website were followed a MySQL server
+    should be working on the desired machine.
 
-    It is very important to run the file *./db/db.sql* on the server after the installation is complete.
-    Again, no example will be shown here but under Workbench everything should turn out great.
+    It is very important to run the file *./db/db.sql* on the server after the
+    installation is complete.
 
 iii) Testing
-In order to test the program it's necessary to run the app and check if no errors were presented.
-The most common errors could be:
+In order to test the program it's necessary to run the app and check if no <br />
+errors were presented. The most common errors could be:
 
     1) NodeJS port error
       This happens when the program tries to run on a busy port,
@@ -66,7 +69,7 @@ The most common errors could be:
 
       Aside from the errors mentioned above everything should be working normally.
 
-## Deployment
+## Deployment ##
 
 The program was created to be easy to use and it is fool proof (to a dreggre).<br />
 All user inputs return success or error messages.<br />
@@ -92,22 +95,22 @@ In order to start the NodeJS server, execute:
 Then opening the (default) website on **Google Chrome**(\*):<br />
 [localhost:3000](http://localhost:3000)
 
-## Versioning
+## Versioning ##
 
 Version 2.3 - Current version<br />
 Version 3.0 - Pagination for SQL fetch<br />
 Version 5.5(TBA) - Real e-mail verification<br />
 Version 6.9(TBA) - Working Payment, Captcha and Paypal checkout demo
 
-## Author
+## Author ##
 
 Lucio Afonso
 
-## License
+## License ##
 
 This project is licensed under the GPL License - see the LICENSE file for details
 
-## Acknowledgments
+## Acknowledgments ##
 
 Official sites:<br />
 http://npmjs.com/<br />
