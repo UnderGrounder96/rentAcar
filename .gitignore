@@ -6,7 +6,6 @@ logs
 
 # env and package-lock file
 .env
-package-lock.json
 
 # Dependency directories
 node_modules/
