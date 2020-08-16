@@ -102,6 +102,27 @@ $(document).ready(() => {
       }
     });
   */
+
+  // FIXME: Needs work! Commented code not working!
+  // $("#imgZoom").css({ visibility: "hidden" });
+  // $("#preview").css({ display: "block" });
+
+  $("#imgZoom, #preview").mousemove((event) => {
+    $("#preview").css("visibility", "visible");
+    $("#imgZoom").css("opacity", 0);
+
+    $("#preview").css("background-image", "url('" + $("#hidden").val() + "')");
+
+    $("#preview").css(
+      "background-position",
+      -event.offsetX * 2 + "px " + -event.offsetY * 1 + "px"
+    );
+  });
+
+  $("#imgZoom, #preview").mouseleave(() => {
+    $("#imgZoom").css("opacity", 1);
+    $("#preview").css("visibility", "hidden");
+  });
 });
 
 function _hide(toShow) {
@@ -120,6 +141,6 @@ function getHeight() {
     $(window).height() -
     $("header").outerHeight() -
     $("footer").outerHeight() -
-    100;
+    65;
   $("main").height(fullHeighMinusHeader.toFixed(2));
 }
