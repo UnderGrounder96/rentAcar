@@ -11,11 +11,14 @@
       <div class="row car_container">
         <div class="col">
           <img
+            id="imgZoom"
             class="img-fluid pb-5"
             loading="lazy"
             src="/<%= car.photo %>"
             alt="<%= car.model %> image"
           />
+          <div id="preview"></div>
+          <input id="hidden" type="hidden" value="/<%= car.photo %>" />
 
           <%if (user) { %> <%if (!resv) { %>
           <form
@@ -173,7 +176,7 @@
 
           <div class="brand">
             <br />Brand:
-            <a href="/catalog/<%= car.brand %>">
+            <a href="/data/<%= car.brand %>">
               <%= car.brand %>
             </a>
           </div>
@@ -230,7 +233,5 @@
     </main>
 
     <%- include('footer.ejs') %>
-
-    <script src="/js/main.js"></script>
   </body>
 </html>

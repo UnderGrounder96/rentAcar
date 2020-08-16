@@ -8,7 +8,7 @@ const dotenv = require("dotenv").config(),
   });
 
 db.connect((err) => {
-  if (err) throw "Error connecting database!\n" + err;
+  if (err) throw "Database error: \n" + err;
 });
 
 module.exports = db;
