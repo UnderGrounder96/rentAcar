@@ -10,6 +10,9 @@ Currently live at: https://rent-a-car-live.herokuapp.com/
 This program was created under Windows 10 (x64) Operative System using <br />
 NodeJS 12.16.3 (+ ExpressJS 4.16.3), npm 6.14.4 and MySQL 5.7.14.
 
+Created to be easy to use and it is fool proof (to a degree).<br />
+All user inputs return success or error messages.<br />
+
 ## Prerequisites
 
 In order to use the ExpressJS program it is highly necessary to have an _internet connection_ and install:
@@ -55,24 +58,24 @@ errors were presented. The most common errors could be:
 
     2) MySQL database errors
       - If the file *./db/db.sql* was never ran against the server an error would be provided.
-      - A locahost/password/port/user error could be given if the server has different configuration
-      than provided by the file *./db/db.js* and each should be set appropriately.
+      - A localhost/password/port/user error could be occur if the server has different configuration
+      than provided by the file *./db/db.js*.
 
     3) Any possible error
       Could be on the computer's end. Bad installation or wrong configuration.
 
       Aside from the errors mentioned above everything should be working normally.
 
-## Deployment
+## Deployment (locally)
 
-The program was created to be easy to use and it is fool proof (to a dreggre).<br />
-All user inputs return success or error messages.<br />
-Before starting. Please rename the file '.env.default' to '.env', and set in it your MySQL credentials.
+Before starting please populate the MySQL server using the file `db/db.sql`.
+
+Also rename the file '.env.default' to '.env', and set in your MySQL credentials.
 
 In order to link all npm dependencies:
 
 ```
-~/RentAcar> npm i
+~/rentAcar> npm i
 [*installation warnings*]
 
 [audited 173 packages in 1.253s]
@@ -82,12 +85,32 @@ In order to link all npm dependencies:
 In order to start the NodeJS server, execute:
 
 ```
-~/RentAcar> npm start
+~/rentAcar> npm start
 [Database connected.]
 ```
 
 Then opening the (default) website on **Google Chrome**(\*):<br />
 [localhost:3000](http://localhost:3000)
+
+## Deployment (docker)
+
+Please assure that [docker](https://docs.docker.com/get-docker/) and [docker-compose](https://docs.docker.com/compose/install/) are installed.
+
+Also rename the file '.env.default' to '.env', and set `DB_HOST=db`.
+
+Executing the command `docker-compose up -d --build` should start the webapp:
+
+```
+~/rentAcar> docker-compose up -d
+[...]
+Creating rentacar_db_1 ... done
+Creating rentacar_web_1 ... done
+```
+
+Executing the command `docker-compose logs -t --follow` should provide logging.
+
+Then opening the (default) website on **Google Chrome**(\*):<br />
+[localhost:9000](http://localhost:9000)
 
 ## Versioning
 
