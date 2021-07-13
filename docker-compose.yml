@@ -4,11 +4,13 @@ services:
   web:
     build: ./
     image: rentacar:v1
+    container_name: web
     ports:
       - "9000:9000"
     working_dir: /app
     volumes:
       - ".:/app"
+      - "node_modules:/app/node_modules"
     command: sh docker-entrypoint.sh
     environment:
       - NODE_ENV="production"
@@ -29,3 +31,6 @@ services:
       - MYSQL_USER=${DB_USER}
       - MYSQL_PASSWORD=${DB_PASSWORD}
     restart: unless-stopped
+
+volumes:
+  node_modules:
