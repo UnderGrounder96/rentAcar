@@ -10,3 +10,6 @@ sh wait-for.sh ${DB_HOST}:${DB_PORT}
 
 echo "Starting the Node server..."
 npm start
+
+# echo "Starting for development server"
+# npm run develop
