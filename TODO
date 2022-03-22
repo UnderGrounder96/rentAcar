@@ -1,0 +1,5 @@
+- Improve zoom in on hover a vehicle, in vehicle page
+- find a way to trigger original page load, only once. Maybe transition should be considered
+- "jumbotron" text not really readable, in not logged index page
+- add responsiveness to login form on mobile
+- reorganize the reservation form, from reservation page
