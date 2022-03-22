@@ -2,7 +2,7 @@
 <html lang="en">
   <%- include('head.ejs') %>
 
-  <body class="container shadow">
+  <body>
     <noscript> Please turn on JavaScript or change browsers!</noscript>
 
     <%- include('header.ejs') %>
@@ -35,19 +35,13 @@
                 <i> <%= car.model %> </i>
               </strong>
               <br />
-              <a href="/catalog/<%= car.brand %>">
-                <%= car.brand %>
-              </a>
+              <a href="/catalog/<%= car.brand %>"> <%= car.brand %> </a>
               -
               <i><%= car.fullPrice %>&#36;</i>
               <br /><br />
-              <i class="col">
-                <%= new Date(car.dateIn).toDateString() %>
-              </i>
+              <i class="col"> <%= new Date(car.dateIn).toDateString() %> </i>
               <br />
-              <i class="col">
-                <%= new Date(car.dateOut).toDateString() %>
-              </i>
+              <i class="col"> <%= new Date(car.dateOut).toDateString() %> </i>
             </p>
             <a href="/vehicle/<%= car.idCar %>" class="btn btn-outline-primary">
               Edit
@@ -57,7 +51,7 @@
         </div>
       </div>
       <% } else { %>
-      <h4 class="text-center" style="margin: 255px 0 255px;">
+      <h4 class="text-center" style="margin: 255px 0 255px">
         Your reservation list is <strong> empty </strong> - head to
         <a href="/catalog"> catalog.</a>
       </h4>

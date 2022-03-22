@@ -2,7 +2,7 @@
 <html lang="en">
   <%- include('head.ejs') %>
 
-  <body class="container shadow">
+  <body>
     <noscript> Please turn on JavaScript or change browsers!</noscript>
 
     <%- include('header.ejs') %>
@@ -176,9 +176,7 @@
 
           <div class="brand">
             <br />Brand:
-            <a href="/data/<%= car.brand %>">
-              <%= car.brand %>
-            </a>
+            <a href="/data/<%= car.brand %>"> <%= car.brand %> </a>
           </div>
 
           <div class="price">
@@ -188,23 +186,17 @@
 
           <div class="type">
             Category:
-            <a href="/data/<%= car.type %>">
-              <%= car.type %>
-            </a>
+            <a href="/data/<%= car.type %>"> <%= car.type %> </a>
           </div>
 
           <div class="year">
             Production:
-            <a href="/data/<%= car.year %>">
-              <%= car.year %>
-            </a>
+            <a href="/data/<%= car.year %>"> <%= car.year %> </a>
           </div>
 
           <hr />
 
-          <div class="details text-justify">
-            <%= car.details %>
-          </div>
+          <div class="details text-justify"><%= car.details %></div>
         </div>
       </div>
 
