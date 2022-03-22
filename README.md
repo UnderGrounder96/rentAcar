@@ -107,7 +107,7 @@ Creating rentacar_db_1 ... done
 Creating rentacar_web_1 ... done
 ```
 
-Executing the command `docker-compose logs -t --follow` should provide logging.
+Executing the command `docker-compose logs --timestamps --follow` should provide logging.
 
 Then opening the (default) website on **Google Chrome**(\*):<br />
 [localhost:9000](http://localhost:9000)
