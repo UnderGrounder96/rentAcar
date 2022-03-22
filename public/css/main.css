@@ -1,20 +1,21 @@
-html {
-  min-height: 100%;
+* {
+  /* background-color: black; */
 }
 
 body {
-  position: relative;
-  font-family: "Lucida Grande";
+  overflow: hidden;
   -webkit-animation-name: animatebottom;
-  -webkit-animation-duration: 1s;
+  -webkit-animation-duration: 2s;
   animation-name: animatebottom;
-  animation-duration: 1s;
-  height: 100%;
+  animation-duration: 2s;
+
+  height: 100vh;
 }
 
 main {
   overflow: auto;
-  position: relative;
+  /* rezise main hotfix */
+  height: 80vh;
 }
 
 main::after {
@@ -22,12 +23,8 @@ main::after {
   z-index: -1;
   opacity: 0.1;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 0 auto;
-  background: url("/images/logo.jpg") no-repeat center center;
+  inset: 0;
+  background: url("/images/logo.jpg") center no-repeat fixed;
 }
 
 @-webkit-keyframes animatebottom {
@@ -60,7 +57,7 @@ nav .navbar-brand {
 
 img {
   display: block;
-  border: 0;
+  /* object-fit: cover; */
 }
 img:hover {
   opacity: 0.9;
@@ -188,7 +185,7 @@ input::-webkit-input-placeholder {
   font-weight: bold;
 }
 
-.spinner {
+/* .spinner {
   position: fixed;
   left: 0px;
   top: 0px;
@@ -196,7 +193,7 @@ input::-webkit-input-placeholder {
   height: 100%;
   z-index: 9999;
   background: #ffffff url("/images/Preloader.gif") no-repeat center center;
-}
+} */
 
 #preview {
   visibility: hidden;
