@@ -2,7 +2,7 @@
 <html lang="en">
   <%- include('head.ejs') %>
 
-  <body class="container shadow">
+  <body>
     <noscript> Please turn on JavaScript or change browsers!</noscript>
 
     <%- include('header.ejs') %>
@@ -46,19 +46,13 @@
         </div>
 
         <div class="clearfix">
-          <a href="/password-help" class="pull-right">
-            Forgot password?
-          </a>
-          <a href="/register">
-            Sign up, here
-          </a>
+          <a href="/password-help" class="pull-right"> Forgot password? </a>
+          <a href="/register"> Sign up, here </a>
         </div>
       </form>
 
       <%if (err === "yes") { %>
-      <p class="text-center text-danger">
-        Wrong e-mail or password inserted.
-      </p>
+      <p class="text-center text-danger">Wrong e-mail or password inserted.</p>
       <% } %>
     </main>
 

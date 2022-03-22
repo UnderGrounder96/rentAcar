@@ -2,11 +2,11 @@
 <html lang="en">
   <%- include('head.ejs') %>
 
-  <body class="container shadow">
+  <body>
     <noscript> Please turn on JavaScript or change browsers!</noscript>
 
     <%- include('header.ejs') %>
-    
+
     <main class="container" role="main">
       <% switch (res) { case "editCar": %>
       <h6 class="classified">
@@ -52,9 +52,7 @@
                 <em><%= car.model %></em>
               </strong>
               <br />
-              <a href="/catalog/<%= car.brand %>">
-                <%= car.brand %>
-              </a>
+              <a href="/catalog/<%= car.brand %>"> <%= car.brand %> </a>
               - <%=car.year%>
             </p>
             <a
@@ -81,9 +79,7 @@
               alt="<%= res.model %> image"
             />
             <p class="card-text">
-              <a href="/vehicle/<%= res.idCar %> %>">
-                <%= res.model %>
-              </a>
+              <a href="/vehicle/<%= res.idCar %> %>"> <%= res.model %> </a>
               -
               <strong>
                 <em><%= res.fullPrice %> &#36;</em>
@@ -151,9 +147,7 @@
 
           <hr />
 
-          <p class="py-3 synopsis text-justify">
-            <%= car.details %>
-          </p>
+          <p class="py-3 synopsis text-justify"><%= car.details %></p>
         </div>
 
         <div id="car_info" class="text-center card">
@@ -272,23 +266,17 @@
 
           <div class="category">
             User:
-            <a href="/admin/user/<%= resv.idUser %>">
-              <%= resv.fullName %>
-            </a>
+            <a href="/admin/user/<%= resv.idUser %>"> <%= resv.fullName %> </a>
           </div>
 
           <div class="category">
             Category:
-            <a href="/data/<%= resv.type %>">
-              <%= resv.type %>
-            </a>
+            <a href="/data/<%= resv.type %>"> <%= resv.type %> </a>
           </div>
 
           <div class="price">
             Price:
-            <em>
-              <%= resv.fullPrice %> &#36;
-            </em>
+            <em> <%= resv.fullPrice %> &#36; </em>
           </div>
 
           <div class="py-3 price">

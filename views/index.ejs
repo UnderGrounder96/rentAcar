@@ -2,7 +2,7 @@
 <html lang="en">
   <%- include('head.ejs') %>
 
-  <body class="container shadow">
+  <body>
     <noscript> Please turn on JavaScript or change browsers!</noscript>
 
     <%- include('header.ejs') %>
@@ -10,20 +10,16 @@
     <main class="container" role="main">
       <div class="jumbotron row">
         <div class="col">
-          <h1 id="title">
-            RentAcar!
-          </h1>
+          <h1 id="title">RentAcar!</h1>
 
-          <h4 id="title">
-            Driving by your side.
-          </h4>
+          <h4 id="title">Driving by your side.</h4>
 
           <!--search-->
           <form
             class="align-middle"
             action="/find"
             method="post"
-            style="-webkit-text-stroke-color: blue;"
+            style="-webkit-text-stroke-color: blue"
           >
             <div class="input-group">
               <input
@@ -48,9 +44,7 @@
         <div class="col-md text-center">
           <form action="/register" method="post">
             <div class="form-group">
-              <h6>
-                Join us now and gain a 30 days trial.
-              </h6>
+              <h6>Join us now and gain a 30 days trial.</h6>
               <input
                 class="form-control"
                 type="text"
@@ -109,9 +103,7 @@
       <hr />
 
       <div class="container">
-        <h3>
-          Trending:
-        </h3>
+        <h3>Trending:</h3>
         <%if (carsArr) { %>
         <div class="row cars_container card-deck-wrapper card-deck">
           <% carsArr.forEach( (car) => { %>
@@ -128,9 +120,7 @@
                 <em><%= car.model %></em>
               </strong>
               <br />
-              <a href="/data/<%= car.brand %>">
-                <%= car.brand %>
-              </a>
+              <a href="/data/<%= car.brand %>"> <%= car.brand %> </a>
               - <%= car.year %>
               <br />
               <em><%= car.price %> &#36;</em>

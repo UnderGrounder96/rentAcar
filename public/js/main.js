@@ -11,11 +11,11 @@ $(document).ready(() => {
   });
 
   /* ----------------- CALC FULL HEIGHT ---------------------- */
-  getHeight();
+  // getHeight();
 
-  $(window).resize(() => {
-    getHeight();
-  });
+  // $(window).resize(() => {
+  //   getHeight();
+  // });
 
   /* -----------------DATE HANDLERS - USER---------------------- */
   let date = new Date(),
@@ -138,9 +138,6 @@ function _addZero(str) {
 
 function getHeight() {
   let fullHeighMinusHeader =
-    $(window).height() -
-    $("header").outerHeight() -
-    $("footer").outerHeight() -
-    65;
+    $(window).height() - $("header").outerHeight() - $("footer").outerHeight();
   $("main").height(fullHeighMinusHeader.toFixed(2));
 }

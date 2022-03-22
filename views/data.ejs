@@ -2,29 +2,27 @@
 <html lang="en">
   <%- include('head.ejs') %>
 
-  <body class="container shadow">
+  <body>
     <noscript> Please turn on JavaScript or change browsers!</noscript>
 
     <%- include('header.ejs') %>
 
     <main class="container" role="main">
       <div class="row">
-        <div class="col-xs-1 text-center" style="position: relative; left: 0;">
+        <div class="col-xs-1 text-center" style="position: relative; left: 0">
           <% if (typeArr) { %> Search by type: <br />
           <br />
           <ul class="list-group list-group-flush">
             <% typeArr.forEach( (tp) => { %>
             <li class="list-group-item list-group-item-action">
-              <a href="/data/<%= tp.type%>">
-                <%= tp.type %>
-              </a>
+              <a href="/data/<%= tp.type%>"> <%= tp.type %> </a>
             </li>
             <% }) %>
           </ul>
           <% } %>
         </div>
 
-        <div class="col container" style="overflow: hidden;">
+        <div class="col container" style="overflow: hidden">
           <h2>Vehicles from <em><%= data %></em>:</h2>
 
           <% if (carsArr) { %>
@@ -41,9 +39,7 @@
               <p class="card-text text-center">
                 <strong><em><%= car.model %></em></strong>
                 <br />
-                <a href="/data/<%= car.brand %>">
-                  <%= car.brand %>
-                </a>
+                <a href="/data/<%= car.brand %>"> <%= car.brand %> </a>
                 - <%= car.year %>
                 <br />
                 <em><%= car.price %> &#36;</em>
