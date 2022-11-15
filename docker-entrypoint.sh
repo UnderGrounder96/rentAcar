@@ -1,15 +1,15 @@
 #!/bin/sh
 
-export $(cat .env)
+# export $(cat .env)
 
-echo "Installing Node server deps..."
-npm install
+# echo "Installing Node server deps..."
+# npm install
 
 echo "Waiting for MySQL to start..."
 sh wait-for.sh ${DB_HOST}:${DB_PORT}
 
-echo "Starting the Node server..."
-npm start
+# echo "Starting the Node server..."
+# npm start
 
-# echo "Starting for development server"
-# npm run develop
+echo "Starting for development server"
+npm run develop
