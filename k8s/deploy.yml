@@ -1,0 +1,90 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rentacar-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rentacar
+  template:
+    metadata:
+      labels:
+        app: rentacar
+    spec:
+      containers:
+        - name: rentacar
+          image: rentacar:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9000
+          envFrom:
+            - configMapRef:
+                name: rentacar-cm
+            - secretRef:
+                name: rentacar-sc
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: rentacar-db-sts
+  namespace: default
+spec:
+  serviceName: rentacar-db-svc
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rentacar-db
+  template:
+    metadata:
+      labels:
+        app: rentacar-db
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node
+                    operator: In
+                    values:
+                      - db
+      terminationGracePeriodSeconds: 10
+      containers:
+        - name: rentacar-db-image
+          image: mariadb
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: 50m
+              memory: 500Mi
+            limits:
+              cpu: 60m
+              memory: 600Mi
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: rentacar-db-vl-init
+              mountPath: /docker-entrypoint-initdb.d/db.sql
+              readOnly: true
+            - name: rentacar-db-vl
+              mountPath: /var/lib/mysql
+          envFrom:
+            - secretRef:
+                name: rentacar-db-sc
+      volumes:
+        - name: rentacar-db-vl-init
+          hostPath:
+            path: /db/db.sql
+            type: File
+  volumeClaimTemplates:
+    - metadata:
+        name: rentacar-db-vl
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 20Gi

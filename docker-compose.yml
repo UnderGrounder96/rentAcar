@@ -1,8 +1,8 @@
 ---
-version: "3.9"
 services:
   web:
     build: ./
+    image: rentacar:v1
     container_name: web
     ports:
       - "${PORT}:${PORT}"

@@ -1,0 +1,36 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rentacar-svc
+  namespace: default
+spec:
+  selector:
+    app: rentacar
+  type: LoadBalancer
+  ports:
+    - name: rentacar
+      protocol: TCP
+      port: 9000
+      targetPort: rentacar-port
+      nodePort: 32069
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rentacar-db-svc
+  namespace: default
+spec:
+  selector:
+    app: rentacar-db
+  type: ClusterIP
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 2000
+  ports:
+    - name: rentacar-db
+      protocol: TCP
+      port: 3306
+      targetPort: 3306

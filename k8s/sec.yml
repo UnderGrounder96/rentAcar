@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: rentacar-sc
+  namespace: default
+type: Opaque
+stringData:
+  DB_HOST: rentacar-db-svc
+  DB_PORT: "3306"
+data:
+  DB_DATABASE: YXV0aA==
+  DB_USER: YXV0aA==
+  DB_PASSWORD: ejlqOUVxQz5FOHp0LVZbPGYoekhYR29QK2VEMGNCLl5BPngtPXBRa10/
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: rentacar-db-sc
+  namespace: default
+type: Opaque
+data:
+  MYSQL_DATABASE: YXV0aA==
+  MYSQL_USER: YXV0aA==
+  MYSQL_PASSWORD: ejlqOUVxQz5FOHp0LVZbPGYoekhYR29QK2VEMGNCLl5BPngtPXBRa10/
+  MYSQL_ROOT_PASSWORD: NzpQLFd4KzMqeUN2LDRRS3t9W05CS0t1KlBuTiV2WV4=
