@@ -4,5 +4,5 @@
 
 ```
 ~/rentAcar $ docker-compose build
-~/rentAcar $ kubectl apply -f k8s/depl-prod.yml
+~/rentAcar $ kubectl apply -f k8s/
 ```
